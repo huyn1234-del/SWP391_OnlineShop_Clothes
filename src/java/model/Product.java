@@ -126,6 +126,11 @@ public class Product {
     public void setProduct_category_id(int product_category_id) {
         this.product_category_id = product_category_id;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" + "product_id=" + product_id + ", product_name=" + product_name + ", price=" + price + ", total_quantity=" + total_quantity + ", discount=" + discount + ", description=" + description + ", thumbnail=" + thumbnail + ", is_active=" + is_active + ", rated_star=" + rated_star + ", brand_id=" + brand_id + ", product_category_id=" + product_category_id + '}';
+    }
     
     
 }

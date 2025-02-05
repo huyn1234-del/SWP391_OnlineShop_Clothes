@@ -27,14 +27,11 @@ public class Order {
     private int orderStatusId;
     private String shippingCode;
     private int saleId;
-    private String paymentMethodName;
-    private String paymentStatusName;
-    private String orderStatusName;
 
     public Order() {
     }
 
-    public Order(int orderId, int customerId, String orderedDate, String receiveDate, String receiverName, String phone, String email, String address, int totalPrice, int shippingFee, int voucherId, int voucherPercent, int totalAmount, int paymentMethodId, int paymentStatusId, int orderStatusId, String shippingCode, int saleId, String paymentMethodName, String paymentStatusName, String orderStatusName) {
+    public Order(int orderId, int customerId, String orderedDate, String receiveDate, String receiverName, String phone, String email, String address, int totalPrice, int shippingFee, int voucherId, int voucherPercent, int totalAmount, int paymentMethodId, int paymentStatusId, int orderStatusId, String shippingCode, int saleId) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.orderedDate = orderedDate;
@@ -53,9 +50,6 @@ public class Order {
         this.orderStatusId = orderStatusId;
         this.shippingCode = shippingCode;
         this.saleId = saleId;
-        this.paymentMethodName = paymentMethodName;
-        this.paymentStatusName = paymentStatusName;
-        this.orderStatusName = orderStatusName;
     }
 
     public int getOrderId() {
@@ -202,29 +196,11 @@ public class Order {
         this.saleId = saleId;
     }
 
-    public String getPaymentMethodName() {
-        return paymentMethodName;
+    @Override
+    public String toString() {
+        return "Order{" + "orderId=" + orderId + ", customerId=" + customerId + ", orderedDate=" + orderedDate + ", receiveDate=" + receiveDate + ", receiverName=" + receiverName + ", phone=" + phone + ", email=" + email + ", address=" + address + ", totalPrice=" + totalPrice + ", shippingFee=" + shippingFee + ", voucherId=" + voucherId + ", voucherPercent=" + voucherPercent + ", totalAmount=" + totalAmount + ", paymentMethodId=" + paymentMethodId + ", paymentStatusId=" + paymentStatusId + ", orderStatusId=" + orderStatusId + ", shippingCode=" + shippingCode + ", saleId=" + saleId + '}';
     }
 
-    public void setPaymentMethodName(String paymentMethodName) {
-        this.paymentMethodName = paymentMethodName;
-    }
-
-    public String getPaymentStatusName() {
-        return paymentStatusName;
-    }
-
-    public void setPaymentStatusName(String paymentStatusName) {
-        this.paymentStatusName = paymentStatusName;
-    }
-
-    public String getOrderStatusName() {
-        return orderStatusName;
-    }
-
-    public void setOrderStatusName(String orderStatusName) {
-        this.orderStatusName = orderStatusName;
-    }
     
     
 }
