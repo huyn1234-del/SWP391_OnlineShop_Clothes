@@ -1,21 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dal;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author ADMIN
- */
 public class DBContext {
 
     protected Connection connection;
@@ -24,13 +15,17 @@ public class DBContext {
         
         try {
             String user = "sa";
-            String pass = "123";
+            String pass = "123456789";
             String url = "jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=OnlineShop";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public Connection getConnection() {
+        return connection;
     }
 
     public ResultSet getData(String sql) {
@@ -45,5 +40,4 @@ public class DBContext {
         } 
         return rs;
     }
-
 }

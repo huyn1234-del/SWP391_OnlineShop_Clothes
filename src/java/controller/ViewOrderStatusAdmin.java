@@ -45,8 +45,7 @@ public class ViewOrderStatusAdmin extends HttpServlet {
         request.setAttribute("orderStatusMap", orderStatusMap);
         request.setAttribute("listO", listO);
         request.getRequestDispatcher("OrderStatusAdmin.jsp").forward(request , response);
-    } 
-
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
