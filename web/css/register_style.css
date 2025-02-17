@@ -1,0 +1,97 @@
+/* Định dạng chung */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Khung chứa form */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.register-box {
+    background: #fff;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Tiêu đề */
+h2 {
+        color:black;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Định dạng nhóm input */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color:black;
+    margin-bottom: 5px;
+}
+
+/* Input và button */
+input, button {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Định dạng giới tính */
+.gender-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Nút đăng ký */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Liên kết đăng nhập */
+.text-center {
+        color:black;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.text-center a {
+    color: #00bfff;
+    text-decoration: none;
+}
+
+.text-center a:hover {
+        color:black;
+    text-decoration: underline;
+}

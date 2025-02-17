@@ -3,15 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/auth_controller/verify.java</file>
-            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/auth_controller/register.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/web/register.jsp</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/web/css/change_password_style.css</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/utils/Constants.java</file>
             <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/model/User.java</file>
-            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/dal/DBContext.java</file>
-            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/web/account/register.jsp</file>
-            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/web/account/css/register_style.css</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/auth_controller/Register.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/model/Brand.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/web/css/register_style.css</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/auth_controller/Login.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/auth_controller/Logout.java</file>
             <file>file:/E:/SWP391/Project/OnlineShop_Clothes/web/WEB-INF/web.xml</file>
-            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/dal/UserDAO.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/auth_controller/ChangePassword.java</file>
             <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/model/Voucher.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/web/css/verify_style.css</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/web/login.jsp</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/model/Order.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/dal/UserDAO.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/web/verify.jsp</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/auth_controller/Verify.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/web/success.jsp</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/utils/Email.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/dal/DBContext.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/model/Slider.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/model/Price.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/web/changePassword.jsp</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/src/java/dal/RoleDAO.java</file>
+            <file>file:/E:/SWP391/Project/OnlineShop_Clothes/web/css/login_style.css</file>
         </group>
     </open-files>
 </project-private>

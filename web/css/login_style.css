@@ -1,0 +1,97 @@
+/* Định dạng chung */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Khung đăng nhập */
+.container {
+    width: 350px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Tiêu đề */
+h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Nhãn */
+label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #555;
+}
+
+/* Input */
+input {
+    width: calc(100% - 20px); /* Đảm bảo input nhỏ hơn container */
+    padding: 10px;
+    margin: 5px auto 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    display: block;
+    background: #f8f9fa; /* Màu nền nhẹ hơn */
+}
+
+/* Nút đăng nhập */
+button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: #842029;
+    background: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #f5c2c7;
+    margin-bottom: 15px;
+    display: none; /* Ẩn mặc định */
+}
+
+/* Khi phần tử có nội dung, nó sẽ hiện lên */
+.error:not(:empty) {
+    display: block;
+}
+
+
+/* Liên kết */
+p {
+    font-size: 14px;
+    color: #666;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

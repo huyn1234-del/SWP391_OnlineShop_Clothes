@@ -1,0 +1,108 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 17, 2025, 1:28:25 AM
+    Author     : ADMIN
+*/
+
+/* Định dạng chung cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Khung chứa nội dung OTP */
+.otp-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+/* Tiêu đề */
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Ô nhập OTP */
+.otp-input {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    text-align: center;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    margin: 0 5px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Khi người dùng bấm vào ô nhập */
+.otp-input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Nhóm nút */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Nút xác thực và gửi lại OTP */
+.btn-custom {
+    width: 160px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    opacity: 0.8;
+}
+
+/* Màu riêng cho từng nút */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-outline-primary {
+    border: 2px solid #007bff;
+    color: #007bff;
+    background-color: white;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
+/* Ô nhập OTP với viền đen */
+.otp-input {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    text-align: center;
+    border: 2px solid #000; /* Viền màu đen */
+    border-radius: 5px;
+    margin: 0 5px;
+    outline: none;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Khi người dùng bấm vào ô nhập */
+.otp-input:focus {
+    border-color: #000; /* Giữ viền đen */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Hiệu ứng viền đen khi focus */
+}
+

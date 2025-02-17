@@ -9,7 +9,8 @@ package model;
  * @author ADMIN
  */
 public class User {
-     private int user_id;
+
+    private int user_id;
     private String username;
     private String password;
     private String first_name;
@@ -18,7 +19,9 @@ public class User {
     private String email;
     private boolean gender;
     private String dob;
+    private String verification_code;
     private String reset_password_code;
+    private String google_id;
     private String profile_picture_url;
     private boolean is_active;
     private boolean is_banned;
@@ -26,6 +29,7 @@ public class User {
 
     public User() {
     }
+
     public User(int user_id, String first_name, String last_name, String phone, boolean gender, String dob) {
         this.user_id = user_id;
         this.first_name = first_name;
@@ -34,8 +38,39 @@ public class User {
         this.gender = gender;
         this.dob = dob;
     }
+
+    public User(int user_id, String username, String first_name, String last_name) {
+        this.user_id = user_id;
+        this.username = username;
+        this.first_name = first_name;
+        this.last_name = last_name;
+    }
+
     
-    public User(int user_id, String username, String password, String first_name, String last_name, String phone, String email, boolean gender, String dob, String reset_password_code, String profile_picture_url, boolean is_active, boolean is_banned, Role role) {
+    
+    
+
+    public User(String username, String password, String first_name, String last_name, String phone, String email, boolean gender, String dob, String verification_code, String reset_password_code, String google_id, String profile_picture_url, boolean is_active, boolean is_banned, Role role) {
+        this.username = username;
+        this.password = password;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.phone = phone;
+        this.email = email;
+        this.gender = gender;
+        this.dob = dob;
+        this.verification_code = verification_code;
+        this.reset_password_code = reset_password_code;
+        this.google_id = google_id;
+        this.profile_picture_url = profile_picture_url;
+        this.is_active = is_active;
+        this.is_banned = is_banned;
+        this.role = role;
+    }
+    
+    
+
+    public User(int user_id, String username, String password, String first_name, String last_name, String phone, String email, boolean gender, String dob, String verification_code, String reset_password_code, String google_id, String profile_picture_url, boolean is_active, boolean is_banned, Role role) {
         this.user_id = user_id;
         this.username = username;
         this.password = password;
@@ -45,19 +80,13 @@ public class User {
         this.email = email;
         this.gender = gender;
         this.dob = dob;
+        this.verification_code = verification_code;
         this.reset_password_code = reset_password_code;
+        this.google_id = google_id;
         this.profile_picture_url = profile_picture_url;
         this.is_active = is_active;
         this.is_banned = is_banned;
         this.role = role;
-    }
-
-    public User(String username, String password, String firstname, String lastname, String phone, String userEmail, boolean gender, String dob, Object object, Object object0, String profile_imgdefaultjpg, boolean b, boolean b0, Role role) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public User(String username, String password, String firstname, String lastname, String phone, String userEmail, boolean gender, String dob, String verificationCode, Object object, Object object0, String profile_imgdefaultjpg, boolean b, boolean b0, Role role) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getUser_id() {
@@ -132,12 +161,28 @@ public class User {
         this.dob = dob;
     }
 
+    public String getVerification_code() {
+        return verification_code;
+    }
+
+    public void setVerification_code(String verification_code) {
+        this.verification_code = verification_code;
+    }
+
     public String getReset_password_code() {
         return reset_password_code;
     }
 
     public void setReset_password_code(String reset_password_code) {
         this.reset_password_code = reset_password_code;
+    }
+
+    public String getGoogle_id() {
+        return google_id;
+    }
+
+    public void setGoogle_id(String google_id) {
+        this.google_id = google_id;
     }
 
     public String getProfile_picture_url() {
@@ -171,5 +216,11 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "user_id=" + user_id + ", username=" + username + ", password=" + password + ", first_name=" + first_name + ", last_name=" + last_name + ", phone=" + phone + ", email=" + email + ", gender=" + gender + ", dob=" + dob + ", verification_code=" + verification_code + ", reset_password_code=" + reset_password_code + ", google_id=" + google_id + ", profile_picture_url=" + profile_picture_url + ", is_active=" + is_active + ", is_banned=" + is_banned + ", role=" + role + '}';
+    }
+
     
 }
