@@ -67,7 +67,6 @@ public class Email {
         } catch (MessagingException ex) {
             ex.printStackTrace();
         }
-
         return test;
     }
 

@@ -16,7 +16,7 @@
                 <div class="alert alert-danger">${registerError}</div>
             </c:if>
 
-            <form action="${pageContext.request.contextPath}/register" method="POST" autocomplete="off">
+            <form action="${pageContext.request.contextPath}/register" method="POST" >
                 <div class="form-group">
                     <label for="username">Tên người dùng</label>
                     <input type="text" name="username" id="username" value="${param.username}" placeholder="Nhập tên người dùng" required required maxlength="50">

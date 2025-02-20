@@ -14,7 +14,7 @@
             <p class="error"><%= request.getAttribute("loginError") %></p>
         <% } %>
 
-        <form action="<%= request.getContextPath() %>/login" method="post" autocomplete="off">
+        <form action="<%= request.getContextPath() %>/login" method="post" >
             <label>Email</label>
             <input type="text" name="email" required>
 
