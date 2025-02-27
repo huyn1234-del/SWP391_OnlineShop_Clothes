@@ -1,36 +1,57 @@
-package controller;
 
-import jakarta.servlet.RequestDispatcher;
+package order_controller;
+
+import dal.OrderDAO;
+import dal.OrderDetailDAO;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import dao.OrderDAO;
-import dao.OrderDetailDAO;
-import model.Order;
+import java.io.PrintWriter;
 import java.util.List;
+import model.Order;
+import model.User;
+import model.OrderDetail;
 
-public class OrderDetail extends HttpServlet {
-@Override
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    int orderId = Integer.parseInt(request.getParameter("orderId")); // Lấy `orderId` từ request
 
-    // Lấy thông tin đơn hàng
-    OrderDAO orderDAO = new OrderDAO();
-    Order order = orderDAO.getOrderById(orderId);
+@WebServlet(name = "OrderDetailServlet", urlPatterns = {"/orderdetail"})
+public class OrderDetailServlet extends HttpServlet {
 
-    // Lấy chi tiết sản phẩm trong đơn hàng
-    OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
-    List<model.OrderDetail> orderDetails = orderDetailDAO.getOrderDetailsByOrderId(orderId);
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-    // Gửi dữ liệu tới JSP
-    request.setAttribute("order", order);
-    request.setAttribute("orderDetails", orderDetails);
+        HttpSession sesion = request.getSession();
+        User account = (User) sesion.getAttribute("account");
+        OrderDAO orderDAO = new OrderDAO();
+        OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+        
+        try {
 
-    RequestDispatcher dispatcher = request.getRequestDispatcher("OrderDetail.jsp");
-    dispatcher.forward(request, response);
-}
+            int orderId = Integer.parseInt(request.getParameter("orderId"));
+            Order order = orderDAO.getOrderBySaleIdAndOrderId(account.getUser_id(), orderId);
+
+            request.setAttribute("order", order);
+
+            List<OrderDetail> orderDetails = orderDetailDAO.getOrderDetailByOrderId(orderId);
+
+            request.setAttribute("orderDetails", orderDetails);
+
+            
+            request.getRequestDispatcher("/management/order-detail.jsp").forward(request, response);
+        } catch (NumberFormatException e) {
+             request.getRequestDispatcher("/management/order-detail.jsp").forward(request, response);
+        }
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    }
 
 }

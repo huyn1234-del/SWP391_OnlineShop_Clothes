@@ -1,58 +1,100 @@
-package controller;
 
-import jakarta.servlet.RequestDispatcher;
+package order_controller;
+
+import dal.OrderDAO;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import jakarta.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
-import dao.OrderDAO;
 import model.Order;
+import model.User;
 
+@WebServlet(name="OrderList", urlPatterns={"/orderlist"})
 public class OrderList extends HttpServlet {
-@Override
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    OrderDAO orderDAO = new OrderDAO();
+   
 
-    // Lấy thông tin từ request
-    String startDate = request.getParameter("startDate");
-    String endDate = request.getParameter("endDate");
-    int page = 1;
-    String pageParam = request.getParameter("page");
-    if (pageParam != null && !pageParam.isEmpty()) {
-        page = Integer.parseInt(pageParam);
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        
+        OrderDAO odao = new OrderDAO();
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("account");
+        if (user == null) {
+            request.getRequestDispatcher("login").forward(request, response);
+        } else {
+            String beginDate = request.getParameter("begindate");
+        String endDate = request.getParameter("enddate");
+
+        if (beginDate == null) {
+            beginDate = (String) session.getAttribute("begin_date_o");
+            if (beginDate == null) beginDate = "";
+        }
+        
+        if (endDate == null) {
+            endDate = (String) session.getAttribute("end_date_o");
+            if (endDate == null) endDate = "";
+        }
+        
+        session.setAttribute("begin_date_o", beginDate);
+        session.setAttribute("end_date_o", endDate);
+        
+        String err = "";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        if ((beginDate.isEmpty() && !endDate.isEmpty()) || (!beginDate.isEmpty() && endDate.isEmpty())) {
+            err = "Hãy nhập cả ngày bắt đầu và kết thúc";
+            session.setAttribute("error_dmy", err);
+        } else if (!beginDate.isEmpty() && !endDate.isEmpty()) {
+            LocalDate begin = LocalDate.parse(beginDate, formatter);
+            LocalDate end = LocalDate.parse(endDate, formatter);
+            
+            long diff = ChronoUnit.DAYS.between(begin, end);
+            if (diff < 0) {
+                err = "Từ dd-MM-yyyy phải >= Đến dd-MM-yyyy";
+                session.setAttribute("error_dmy", err);
+            } else {
+                session.setAttribute("begin_date_o", beginDate);
+                session.setAttribute("end_date_o", endDate);
+                session.removeAttribute("error_dmy");
+            }
+        }
+
+        List<Order> order = odao.getOrderBySale(
+            user.getUser_id(),
+            beginDate.isEmpty() ? null : beginDate,
+            endDate.isEmpty() ? null : endDate
+        );
+
+        session.setAttribute("order_list", order);
+        response.sendRedirect(request.getContextPath() + "/management/order-list.jsp");
+        }
+    } 
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        processRequest(request, response);
+    } 
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        processRequest(request, response);
     }
 
-    int PAGE_SIZE = 10; // Số đơn hàng mỗi trang
-    int offset = (page - 1) * PAGE_SIZE;
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
-    List<Order> orders;
-    int totalOrders;
-
-    // Kiểm tra nếu có lọc theo ngày
-    if (startDate != null && endDate != null && !startDate.isEmpty() && !endDate.isEmpty()) {
-        orders = orderDAO.getOrdersByDate(startDate, endDate, offset, PAGE_SIZE);
-        totalOrders = orderDAO.getTotalOrdersByDate(startDate, endDate);
-    } else {
-        // Nếu không lọc, lấy toàn bộ đơn hàng
-        orders = orderDAO.getOrdersByPage(page, PAGE_SIZE);
-        totalOrders = orderDAO.getTotalOrderCount();
-    }
-
-    // Tính tổng số trang
-    int totalPages = (int) Math.ceil((double) totalOrders / PAGE_SIZE);
-
-    // Gửi dữ liệu tới JSP
-    request.setAttribute("orders", orders);
-    request.setAttribute("currentPage", page);
-    request.setAttribute("totalPages", totalPages);
-    request.setAttribute("startDate", startDate);
-    request.setAttribute("endDate", endDate);
-
-    // Forward tới JSP
-    RequestDispatcher dispatcher = request.getRequestDispatcher("OrderList.jsp");
-    dispatcher.forward(request, response);
-}
 }
