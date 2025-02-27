@@ -1,0 +1,10 @@
+<script src="${pageContext.request.contextPath}/common/js/jquery-3.3.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/common/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/common/js/jquery.nice-select.min.js"></script>
+<script src="${pageContext.request.contextPath}/common/js/jquery.nicescroll.min.js"></script>
+<script src="${pageContext.request.contextPath}/common/js/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath}/common/js/jquery.countdown.min.js"></script>
+<script src="${pageContext.request.contextPath}/common/js/jquery.slicknav.js"></script>
+<script src="${pageContext.request.contextPath}/common/js/mixitup.min.js"></script>
+<script src="${pageContext.request.contextPath}/common/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/common/js/main.js"></script>
