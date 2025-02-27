@@ -9,49 +9,38 @@ package model;
  * @author ADMIN
  */
 public class Slider {
-     int id;
-    String title;
+
+    int slider_id;
+    String tittle;
     String description;
-    String img;
-    int  status;
-  
+    String image_url;
+    String is_active;
+
     public Slider() {
     }
 
-    public Slider(int id, String description, String img, int status) {
-        this.id = id;
+    public Slider(int slider_id, String tittle, String description, String image_url, String is_active) {
+        this.slider_id = slider_id;
+        this.tittle = tittle;
         this.description = description;
-        this.img = img;
-        this.status = status;
+        this.image_url = image_url;
+        this.is_active = is_active;
     }
 
-    public Slider(int id, String title, String description, String img, int status) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.img = img;
-        this.status = status;
-    }
-
-    public Slider(String description, String img, int status) {
-        this.description = description;
-        this.img = img;
-        this.status = status;
-    }
-
-    public Slider(String title, String description, String img, int status) {
-        this.title = title;
-        this.description = description;
-        this.img = img;
-        this.status = status;
-    }
-    
     public int getId() {
-        return id;
+        return slider_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.slider_id = id;
+    }
+
+    public String getTittle() {
+        return tittle;
+    }
+
+    public void setTittle(String tittle) {
+        this.tittle = tittle;
     }
 
     public String getDescription() {
@@ -62,27 +51,25 @@ public class Slider {
         this.description = description;
     }
 
-    public String getImg() {
-        return img;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
-    public int getStatus() {
-        return status;
+    public String getIs_active() {
+        return is_active;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setIs_active(String is_active) {
+        this.is_active = is_active;
     }
 
-    public String getTitle() {
-        return title;
+    @Override
+    public String toString() {
+        return "Slider{" + "id=" + slider_id + ", tittle=" + tittle + ", description=" + description + ", image_url=" + image_url + ", is_active=" + is_active + '}';
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }
