@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.top-bar {
+    background-color: black;
+    text-align: right;
+    padding: 10px 20px;
+    padding-right: 340px;
+}
+
+.top-bar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px; /* Giảm padding hai bên để thu hẹp khoảng cách */
+}
+
+.logo {
+    margin-right: 20px; /* Giảm khoảng cách giữa logo và menu */
+}
+
+.logo h1 {
+    font-size: 35px;
+    font-weight: bold;
+    margin-left: 200px;
+}
+
+.logo .dot {
+    color: red;
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0px 90px 0px 90px;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;    
+}
+
+nav ul li a {
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.search-cart {
+    display: flex;
+    align-items: center;
+}
+
+.search-cart input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.search-btn {
+    background-color: white;
+    border: 1px solid green;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: green;
+    margin-left: 5px;
+}
+.search-btn:hover {
+    background-color: green;
+    color: white;
+    transition: 0.3s;
+}
+
+/* Khi hover vào "Đăng nhập" và "Đăng ký" */
+.top-bar a:hover {
+    color: #FF4E03;
+    transition: 0.3s;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    position: relative;
+}
+
+.cart i {
+    font-size: 20px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px;
+    border-radius: 50%;
+}
+
+nav ul li a::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    background: red;
+    transition: width 0.3s ease-in-out;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
