@@ -25,7 +25,7 @@
     <center>
         <!-- Form tìm kiếm -->
         <form action="searchSlider" method="GET" style="margin-bottom: 10px;">
-            <input type="text" name="search" placeholder="Search title..." value="${param.search}" />
+            <input type="text" name="search" placeholder="Search title..." value="${param.slider}" />
             <button type="submit">Search</button> 
         </form> 
         <table border="1px" width="60%">

@@ -73,7 +73,7 @@ public class SearchSliderServlet extends HttpServlet {
         }
 
         // Gửi danh sách slider về JSP
-        request.setAttribute("data", sliders);
+        request.setAttribute("slider", sliders);
         request.getRequestDispatcher("slider.jsp").forward(request, response);
 
     }
