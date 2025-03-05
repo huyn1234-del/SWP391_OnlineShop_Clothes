@@ -1,5 +1,3 @@
-
-
 package product_controller;
 
 import dal.ProductDAO;
