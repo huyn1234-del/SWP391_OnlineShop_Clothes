@@ -60,9 +60,10 @@ public class ProductSizeDAO extends DBContext {
 
     public List<ProductSize> getAllProductSizeById(String id) {
         List<ProductSize> pList = new ArrayList<>();
-        String sql = "select distinct ps.*, s.size_name \n"
-                + "from Product_Size as ps, Sizes as s\n"
-                + "where ps.size_id = s.size_id and quantity>0 and product_id = " + id;
+        String sql = """
+                     select distinct ps.*, s.size_name 
+                     from Product_Size as ps, Sizes as s
+                     where ps.size_id = s.size_id and quantity>0 and product_id = """ + id;
 
         try {
             PreparedStatement pre = connection.prepareStatement(sql);
@@ -82,10 +83,11 @@ public class ProductSizeDAO extends DBContext {
     }
 
     public void addSizeProduct(ProductSize p) {
-        String sql = "insert into Product_Size \n"
-                + "(size_id, product_id, quantity, weight) \n"
-                + "values \n"
-                + "(?, ?, ?, ?)";
+        String sql = """
+                     insert into Product_Size 
+                     (size_id, product_id, quantity, weight) 
+                     values 
+                     (?, ?, ?, ?)""";
         try {
             PreparedStatement pre = connection.prepareStatement(sql);
             pre.setInt(1, p.getSize_id());

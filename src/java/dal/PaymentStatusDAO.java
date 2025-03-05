@@ -7,10 +7,6 @@ import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Thanh Tan
- */
 public class PaymentStatusDAO extends DBContext {
 
     public PaymentStatus getPaymentStatusById(int id) {

@@ -10,31 +10,31 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProductDAO extends DBContext {
-    
-    public int getTotalQuantity(int pid){
+
+    public int getTotalQuantity(int pid) {
         String sql = "select SUM(quantity) from Product_Size where product_id = ?";
-        
+
         try {
-            PreparedStatement ps =connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, pid);
-            
+
             ResultSet rs = ps.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 return rs.getInt(1);
-            }       
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
-        
+
     }
 
     public boolean updateTotalQuantity(int pid) {
-        
+
         int totalQuantity = getTotalQuantity(pid);
-        
-        if(totalQuantity == 0){
+
+        if (totalQuantity == 0) {
             return false;
         }
         String sql = """
@@ -57,7 +57,7 @@ public class ProductDAO extends DBContext {
 
         return false;
     }
-    
+
     public boolean updateProductRating(int pid, int rating) {
         String sql = """
                      UPDATE [dbo].[Products]
@@ -93,14 +93,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                p = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                p = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
             }
         } catch (SQLException ex) {
             Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -122,14 +121,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                Product product = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
                 pList.add(product);
             }
         } catch (SQLException ex) {
@@ -151,14 +149,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                Product product = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
                 pList.add(product);
             }
         } catch (SQLException ex) {
@@ -178,14 +175,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                Product product = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
                 pList.add(product);
             }
         } catch (SQLException ex) {
@@ -206,14 +202,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                Product product = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
                 pList.add(product);
             }
         } catch (SQLException ex) {
@@ -234,14 +229,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                Product product = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
                 pList.add(product);
             }
         } catch (SQLException ex) {
@@ -268,14 +262,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                Product product = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
                 pList.add(product);
             }
         } catch (SQLException ex) {
@@ -286,11 +279,11 @@ public class ProductDAO extends DBContext {
 
     public List<Product> getHotProduct() {
         List<Product> pList = new ArrayList<>();
-        String sql = "select top 8 p.product_id, p.product_name,p.price, p.total_quantity, p.discount,p.description, p.thumbnail, p.is_active, p.rated_star,p.brand_id,p.product_category_id, sum(od.TotalPrice) as TotalPrice\n"
+        String sql = "select top 8 p.product_id, p.product_name, p.price, p.total_quantity, p.description, p.thumbnail, p.is_active, p.rated_star, p.brand_id, p.product_category_id, sum(od.TotalPrice) as TotalPrice\n"
                 + "from Products as p, Order_Details as od, Orders as o\n"
                 + "where p.product_id = od.product_id and od.order_id = o.order_id and p.total_quantity > 0\n"
                 + "and o.payment_status_id = 2\n"
-                + "group by p.product_id, p.product_name, p.price, p.total_quantity, p.discount,p.description, p.thumbnail, p.is_active, p.rated_star,p.brand_id,p.product_category_id\n"
+                + "group by p.product_id, p.product_name, p.price, p.total_quantity, p.description, p.thumbnail, p.is_active, p.rated_star, p.brand_id, p.product_category_id\n"
                 + "order by sum(od.TotalPrice) desc, p.product_id";
 
         try {
@@ -301,14 +294,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                Product product = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
                 pList.add(product);
             }
         } catch (SQLException ex) {
@@ -319,13 +311,13 @@ public class ProductDAO extends DBContext {
 
     public List<Product> getAllHotProduct(String s) {
         List<Product> pList = new ArrayList<>();
-        String sql = "select p.product_id, p.product_name,p.price, p.total_quantity, p.discount,p.description, p.thumbnail, p.is_active, p.rated_star,p.brand_id,p.product_category_id, sum(od.TotalPrice) as TotalPrice\n"
+        String sql = "select p.product_id, p.product_name, p.price, p.total_quantity, p.description, p.thumbnail, p.is_active, p.rated_star, p.brand_id, p.product_category_id, sum(od.TotalPrice) as TotalPrice\n"
                 + "from Products as p\n"
                 + "left join Order_Details as od on p.product_id = od.product_id\n"
                 + "left join Orders as o on od.order_id = o.order_id\n"
                 + "and o.payment_status_id = 2\n"
                 + "where p.product_id in (" + s + ")\n"
-                + "group by p.product_id, p.product_name, p.price, p.total_quantity, p.discount,p.description, p.thumbnail, p.is_active, p.rated_star,p.brand_id,p.product_category_id\n"
+                + "group by p.product_id, p.product_name, p.price, p.total_quantity, p.description, p.thumbnail, p.is_active, p.rated_star, p.brand_id, p.product_category_id\n"
                 + "order by sum(od.TotalPrice) desc, p.product_id";
 
         try {
@@ -336,14 +328,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                Product product = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
                 pList.add(product);
             }
         } catch (SQLException ex) {
@@ -365,14 +356,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                Product product = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
                 pList.add(product);
             }
         } catch (SQLException ex) {
@@ -394,43 +384,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
-                pList.add(product);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return pList;
-    }
-
-    public List<Product> getSaleProduct() {
-        List<Product> pList = new ArrayList<>();
-        String sql = "select top 8 * from Products\n"
-                + "where discount!=0 and total_quantity > 0";
-
-        try {
-            PreparedStatement pre = connection.prepareStatement(sql);
-            ResultSet rs = pre.executeQuery();
-            while (rs.next()) {
-                int product_id = rs.getInt("product_id");
-                String product_name = rs.getString("product_name");
-                int price = rs.getInt("price");
-                int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
-                String description = rs.getString("description");
-                String thumbnail = rs.getString("thumbnail");
-                boolean is_active = rs.getBoolean("is_active");
-                int rated_star = rs.getInt("rated_star");
-                int brand_id = rs.getInt("brand_id");
-                int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                Product product = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
                 pList.add(product);
             }
         } catch (SQLException ex) {
@@ -455,14 +415,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                Product product = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
                 list.add(product);
             }
         } catch (SQLException ex) {
@@ -473,21 +432,20 @@ public class ProductDAO extends DBContext {
 
     public void addProduct(Product p) {
         String sql = "insert into Products \n"
-                + "(product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id)\n"
+                + "(product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id)\n"
                 + "values \n"
-                + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pre = connection.prepareStatement(sql);
             pre.setString(1, p.getProduct_name());
             pre.setInt(2, p.getPrice());
             pre.setInt(3, p.getTotal_quantity());
-            pre.setInt(4, p.getDiscount());
-            pre.setString(5, p.getDescription());
-            pre.setString(6, p.getThumbnail());
-            pre.setBoolean(7, p.isIs_active());
-            pre.setInt(8, p.getRated_star());
-            pre.setInt(9, p.getBrand_id());
-            pre.setInt(10, p.getProduct_category_id());
+            pre.setString(4, p.getDescription());
+            pre.setString(5, p.getThumbnail());
+            pre.setBoolean(6, p.isIs_active());
+            pre.setInt(7, p.getRated_star());
+            pre.setInt(8, p.getBrand_id());
+            pre.setInt(9, p.getProduct_category_id());
             pre.execute();
         } catch (SQLException ex) {
             Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -499,7 +457,6 @@ public class ProductDAO extends DBContext {
                 + "product_name = ?, \n"
                 + "price = ?, \n"
                 + "total_quantity = ?, \n"
-                + "discount = ?, \n"
                 + "description = ?, \n"
                 + "thumbnail = ?, \n"
                 + "is_active = ?, \n"
@@ -512,14 +469,13 @@ public class ProductDAO extends DBContext {
             pre.setString(1, p.getProduct_name());
             pre.setInt(2, p.getPrice());
             pre.setInt(3, p.getTotal_quantity());
-            pre.setInt(4, p.getDiscount());
-            pre.setString(5, p.getDescription());
-            pre.setString(6, p.getThumbnail());
-            pre.setBoolean(7, p.isIs_active());
-            pre.setInt(8, p.getRated_star());
-            pre.setInt(9, p.getBrand_id());
-            pre.setInt(10, p.getProduct_category_id());
-            pre.setInt(11, p.getProduct_id());
+            pre.setString(4, p.getDescription());
+            pre.setString(5, p.getThumbnail());
+            pre.setBoolean(6, p.isIs_active());
+            pre.setInt(7, p.getRated_star());
+            pre.setInt(8, p.getBrand_id());
+            pre.setInt(9, p.getProduct_category_id());
+            pre.setInt(10, p.getProduct_id());
             pre.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -528,8 +484,9 @@ public class ProductDAO extends DBContext {
 
     public List<Product> searchProduct(String s) {
         List<Product> list = new ArrayList<>();
-        String sql = "select * from Products \n "
-                + "where product_name like ? and total_quantity > 0";
+        String sql = """
+                     select * from Products 
+                      where product_name like ? and total_quantity > 0""";
         try {
             PreparedStatement pre = connection.prepareStatement(sql);
             pre.setString(1, "%" + s + "%");
@@ -540,14 +497,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                Product product = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                Product product = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
                 list.add(product);
             }
         } catch (SQLException ex) {
@@ -569,14 +525,13 @@ public class ProductDAO extends DBContext {
                 String product_name = rs.getString("product_name");
                 int price = rs.getInt("price");
                 int total_quantity = rs.getInt("total_quantity");
-                int discount = rs.getInt("discount");
                 String description = rs.getString("description");
                 String thumbnail = rs.getString("thumbnail");
                 boolean is_active = rs.getBoolean("is_active");
                 int rated_star = rs.getInt("rated_star");
                 int brand_id = rs.getInt("brand_id");
                 int product_category_id = rs.getInt("product_category_id");
-                p = new Product(product_id, product_name, price, total_quantity, discount, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
+                p = new Product(product_id, product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id);
             }
         } catch (SQLException ex) {
             Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -584,9 +539,4 @@ public class ProductDAO extends DBContext {
         return p;
     }
 
-//    public static void main(String[] args) {
-//        ProductDAO pdao = new ProductDAO();
-//        List<Product> pList = pdao.updateProduct();
-//        System.out.println(p);
-//    }
 }
