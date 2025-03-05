@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Product"%>
 <%@page import="java.util.*" %>
+<%@page import="model.ProductCategory"%>
+<%@page import="dal.ProductCategoryDAO"%>
 <%@page import="java.text.NumberFormat"%>
 
 <!DOCTYPE html>
@@ -21,9 +23,7 @@
 
         <!-- Font awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
         <jsp:include page="../common/css.jsp" />
-
         <style>
             .criteria{
                 border: 1px solid #bb9797;
@@ -37,7 +37,6 @@
                 display: flex;
                 align-items: center;
                 font-size: 30px;
-
             }
 
             .content{
@@ -110,7 +109,6 @@
 
             select{
                 padding: 16px;
-
             }
 
             .input{
@@ -132,9 +130,6 @@
             <!-- END menu -->
 
             <div class="col-md-10" style="padding: 40px;">
-
-
-
                 <!-- START products -->
                 <div class="product">
                     <div class="container products" >
@@ -142,19 +137,14 @@
                             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                                 <div class="container-fluid">
                                     <h5 class="navbar-brand" href="#">Quản lý sản phẩm</h5>
-
                                     <div class="" id="navbarSupportedContent">
                                         <form class="d-flex" role="search" action="../searchproduct" method="get">
-                                            <input maxlength="500" placeholder="Tìm kiếm sản phẩm" name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                            <input maxlength="500" placeholder="Tìm kiếm sản phẩm" name="search" class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Tìm kiếm">
                                             <button class="btn btn-outline-success" type="submit">Search</button>
                                         </form>
                                     </div>
-
-
-                                    <div class="">
-                                        <div class="d-flex add" role="search" style="background-color: black">
-                                            <a href="add-product.jsp"><i style="color: white;" class="fa-solid fa-plus"></i></a>
-                                        </div>
+                                    <div class="d-flex add" role="search" style="background-color: black">
+                                        <a href="add-product.jsp"><i style="color: white;" class="fa-solid fa-plus"></i></a>
                                     </div>
                                 </div>
                             </nav>
@@ -165,35 +155,32 @@
                                     <th scope="col">STT</th>
                                     <th scope="col" style="width: 20%">Tên</th>
                                     <th scope="col">Ảnh</th>
+                                    <th scope="col">Danh mục</th> <!-- Chuyển cột danh mục lên đây -->
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Giá(₫)</th>
-                                    <th scope="col">Giảm giá(%)</th>
                                     <th scope="col">Xem</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-
                                 <!-- START Product item -->
                                 <%
                                     List<Product> pList = (ArrayList<Product>) session.getAttribute("product_list");
+                                    ProductCategoryDAO pcdao = new ProductCategoryDAO();  // Tạo đối tượng DAO cho danh mục sản phẩm
                                     int num = 1;
                                     for (Product p : pList) {
                                         double price = p.getPrice();
                                         Locale vietnameseLocale = new Locale("vi", "VN");
                                         NumberFormat formatter = NumberFormat.getNumberInstance(vietnameseLocale);
                                         String formattedAmount = formatter.format(price);
+                                        ProductCategory category = pcdao.getProductCategories(p.getProduct_category_id());
                                 %>
                                 <tr>
-
                                     <td><%= num%></td>
-
                                     <td><%= p.getProduct_name()%></td>
-
                                     <td class="product-img">
                                         <img src="../<%= p.getThumbnail()%>">
                                     </td>
-
+                                    <td><%= category != null ? category.getProduct_category_name() : "Không có danh mục" %></td> <!-- Hiển thị tên danh mục -->
                                     <td>
                                         <%
                                             if(p.isIs_active()==true) {   
@@ -207,84 +194,65 @@
                                             }
                                         %>   
                                     </td>
-
                                     <td><%= formattedAmount%></td>
-
-                                    <td><%= p.getDiscount()%></td>
-
                                     <td>
                                         <%
                                             if(p.isIs_active()==true) {
                                         %>
-
                                         <div class="edit" style="background-color: red">
                                             <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=hide" onclick="return confirm('Ẩn sản phẩm này?')">
                                                 <i style="color: black;" class="bi bi-eye-slash-fill"></i>
                                             </a>
                                         </div>
-
                                         <%
                                             } else {
                                         %>
-
                                         <div class="edit" style="background-color: greenyellow">
                                             <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=show" onclick="return confirm('Hiện sản phẩm này?')">
                                                 <i style="color: black;" class="bi bi-eye-fill"></i>
                                             </a>
                                         </div>
-
                                         <% 
                                             }
                                         %> 
-                                        
-                                        <div class="edit"style="background-color: black">
+                                        <div class="edit" style="background-color: black">
                                             <a style="color: white;" href="..\viewproduct?pid=<%= p.getProduct_id()%>"><i class="fa-solid fa-circle-info"></i></a>  
                                         </div>
-
                                         <div class="edit" style="background-color: black">
                                             <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=edit"><i style="color: white;" class="fa-solid fa-pen"></i></a>
                                         </div>
                                     </td>
                                     <%
                                         num++;
-                                        }
+                                    }
                                     %>
-
                                 </tr>
                                 <!-- END Product item -->
-
                             </tbody>
                         </table>
-
                         <!-- START PAGE -->
-
-                        <div style="display: flex;
-                             justify-content: center;">
-
+                        <div style="display: flex; justify-content: center;">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
-
                                     <%
-                                     int cur_page = (int) session.getAttribute("cur_page");
-                                     int total_page = (int) session.getAttribute("num_page");
-                                     if(cur_page > 1) {
+                                        int cur_page = (int) session.getAttribute("cur_page");
+                                        int total_page = (int) session.getAttribute("num_page");
+                                        if (cur_page > 1) {
                                     %>
                                     <li class="page-item">
-                                        <a class="page-link" href="../productpaging?p=<%= cur_page - 1%>" aria-label="Previous">
+                                        <a class="page-link" href="../productpaging?p=<%= cur_page - 1 %>" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
                                     <%
-                                       }
-
-                                       for (int i = 1; i <= total_page; i++) {
+                                        }
+                                        for (int i = 1; i <= total_page; i++) {
                                     %>
                                     <li class="page-item <%= (cur_page == i) ? "active" : "" %>">
                                         <a class="page-link" href="../productpaging?p=<%= i %>"><%= i %></a>
                                     </li>
                                     <%
                                         }
-
                                         if (cur_page < total_page) {
                                     %>
                                     <li class="page-item">
@@ -297,18 +265,12 @@
                                     %>
                                 </ul>
                             </nav>
-
                         </div>
                         <!-- END PAGE -->
-
                     </div>
                 </div>
                 <!-- END products -->
-
-
             </div>
         </div>
-
-
     </body>
 </html>

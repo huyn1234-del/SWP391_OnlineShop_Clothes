@@ -1,12 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Product"%>
 <%@page import="java.util.*" %>
+<%@page import="java.text.NumberFormat"%>
+
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Marketing Page</title>
+        <title>Quản lý sản phẩm</title>
         <link rel="icon" href="img/webLogo.jpg" type="image/x-icon" />
         <!-- CSS Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
@@ -123,17 +125,12 @@
     </head>
     <body>
         <div class="row">
-            <jsp:include page="../common/header.jsp" />
-            
+            <jsp:include page="../common/headermanage.jsp" />
             <!-- START HEADER -->
-
             <jsp:include page="marketing_header.jsp" />
-
             <!-- END menu -->
 
             <div class="col-md-10" style="padding: 40px;">
-
-
 
                 <!-- START products -->
                 <div class="product">
@@ -141,20 +138,18 @@
                         <div>
                             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                                 <div class="container-fluid">
-                                    <h5 class="navbar-brand" href="#">Manage Products</h5>
+                                    <h5 class="navbar-brand" href="#">Quản lý sản phẩm</h5>
 
                                     <div class="" id="navbarSupportedContent">
                                         <form class="d-flex" role="search" action="../searchproduct" method="get">
-                                            <input placeholder="Search products" name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                            <input placeholder="Tìm kiếm sản phẩm" name="search" class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Tìm kiếm">
                                             <button class="btn btn-outline-success" type="submit">Search</button>
                                         </form>
                                     </div>
 
 
-                                    <div class="">
-                                        <div class="d-flex add" role="search">
-                                            <a href="add-product.jsp"><i style="color: white;" class="fa-solid fa-plus"></i></a>
-                                        </div>
+                                    <div class="d-flex add" role="search">
+                                        <a href="add-product.jsp"><i style="color: white;" class="fa-solid fa-plus"></i></a>
                                     </div>
                                 </div>
                             </nav>
@@ -162,21 +157,19 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Discount</th>
-                                    <th scope="col">Rating</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">STT</th>
+                                    <th scope="col" style="width: 20%">Tên</th>
+                                    <th scope="col">Ảnh</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Giá(₫)</th>
+                                    <th scope="col">Xem</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-
                                 <!-- START Product item -->
-                                <%  List<Product> search = (ArrayList<Product>) session.getAttribute("search_product");
+                                <%  
+                                    List<Product> search = (ArrayList<Product>) session.getAttribute("search_product");
                                     if (search != null) {
                                         for (Product p : search) {
                                 %>
@@ -194,21 +187,19 @@
                                         <%
                                             if(p.isIs_active()==true) {   
                                         %>
-                                        <p style="color: green">Active</p>
+                                        <p style="color: green">Hiện</p>
                                         <%
                                             } else {
                                         %>
-                                        <p style="color: Red">Inactive</p> 
+                                        <p style="color: Red">Ẩn</p> 
                                         <% 
                                             }
                                         %>   
                                     </td>
 
                                     <td><%= p.getPrice()%></td>
-                                    
-                                    <td><%= p.getDiscount()%></td>
 
-                                    <td><%= p.getRated_star()%></td>
+                                    <!-- <td><%= p.getRated_star()%></td> -->    
 
                                     <td>
                                         <%
@@ -216,7 +207,7 @@
                                         %>
 
                                         <div class="edit" style="background-color: red">
-                                            <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=hide" onclick="return confirm('Hide this product?')">
+                                            <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=hide" onclick="return confirm('Ẩn sản phẩm này?')">
                                                 <i style="color: black;" class="bi bi-eye-slash-fill"></i>
                                             </a>
                                         </div>
@@ -226,7 +217,7 @@
                                         %>
 
                                         <div class="edit" style="background-color: greenyellow">
-                                            <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=show" onclick="return confirm('Show this product?')">
+                                            <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=show" onclick="return confirm('Hiện sản phẩm này?')">
                                                 <i style="color: black;" class="bi bi-eye-fill"></i>
                                             </a>
                                         </div>
@@ -251,17 +242,11 @@
                         </table>
 
                         <!-- START PAGE -->
-
-                        <div style="display: flex;
-                             justify-content: center;">
-
+                        <div style="display: flex; justify-content: center;">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
-
-                                    
                                 </ul>
                             </nav>
-
                         </div>
                         <!-- END PAGE -->
 
@@ -269,10 +254,8 @@
                 </div>
                 <!-- END products -->
 
-
             </div>
         </div>
-
 
     </body>
 </html>

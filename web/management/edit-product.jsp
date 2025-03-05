@@ -33,17 +33,15 @@
         <div class="container">
             <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
                 <a href="../productlist" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                    <i style="margin-right: 10px;
-                       font-size: 24px;" class="bi bi-arrow-90deg-left"></i>
+                    <i style="margin-right: 10px; font-size: 24px;" class="bi bi-arrow-90deg-left"></i>
                     <span class="fs-4">Quay lại</span>
                 </a>                
             </header>
         </div>
 
-
         <div class="container">
             <main>
-                <div class="py-5 text-center" >
+                <div class="py-5 text-center">
                     <img class="d-block mx-auto mb-4" src="#" alt="" width="72">
                     <h2>Chỉnh sửa thông tin sản phẩm</h2>
                 </div>
@@ -65,12 +63,6 @@
                                 <div class="col-sm-6">
                                     <label for="price" class="form-label">Giá(₫)</label>
                                     <input value="<%= p.getPrice()%>" name="price" type="number" class="form-control" id="price" required min="0" max="10000000">
-                                </div>
-
-                                <!-- Discount -->
-                                <div class="col-sm-6">
-                                    <label for="discount" class="form-label">Giảm giá(%)</label>
-                                    <input value="<%= p.getDiscount()%>" name="discount" type="number" class="form-control" id="discount" required min="0" max="100">
                                 </div>
 
                                 <!-- Description -->
@@ -109,7 +101,7 @@
                                         <label class="form-check-label" for="statusShow">Hiện</label>
                                     </div>
                                     <div class="form-check">
-                                        <input type="radio" class="form-check-input" id="statusHide" name="status" value="0" <%= p.isIs_active()==false ? "checked" : "" %>>
+                                        <input type="radio" class="form-check-input" id="statusHide" name="status" value="0" <%= p.isIs_active()==false ? "checked" : "" %> >
                                         <label class="form-check-label" for="statusHide">Ẩn</label>
                                     </div>
                                 </div>
@@ -204,8 +196,6 @@
                     }
                 });
             });
-
-
         </script>
     </body>
 </html>
