@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author ADMIN
+ * @author Dell
  */
 public class ProductImg {
     int product_image_id, product_id;
@@ -21,6 +21,11 @@ public class ProductImg {
         this.product_id = product_id;
         this.image_url = image_url;
         this.is_active = is_active;
+    }
+    
+    public ProductImg(int product_id, String image_url) {
+        this.product_id = product_id;
+        this.image_url = image_url;
     }
 
     public int getProduct_image_id() {
@@ -54,4 +59,7 @@ public class ProductImg {
     public void setIs_active(int is_active) {
         this.is_active = is_active;
     }
+    
+    
+    
 }
