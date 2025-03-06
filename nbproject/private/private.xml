@@ -55,6 +55,11 @@
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PaymentStatusDAO.java</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/sale-dashboard.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductImageDAO.java</file>
+            <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/controller/DetailSliderServlet.java</file>
+            <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/model/Slider.java</file>
+            <file>file:/D:/SWP391_OnlineShop_Clothes/web/detailFeedback.jsp</file>
+            <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/dal/SliderDAO.java</file>
+            <file>file:/D:/SWP391_OnlineShop_Clothes/web/detailSlider.jsp</file>
         </group>
     </open-files>
 </project-private>

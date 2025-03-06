@@ -5,7 +5,7 @@
 
 package controller;
 
-import dal.SliderDAO;
+import dal.FeedbackDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,16 +13,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.Slider;
+import model.ProductFeedback;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name ="SliderServlet", urlPatterns = ("/slider"))
-
-public class SliderServlet extends HttpServlet {
+@WebServlet(name="DetailFeedbackServler", urlPatterns={"/detailFeedback"})
+public class DetailFeedbackServler extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -39,14 +37,13 @@ public class SliderServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddSliderServlet</title>");  
+            out.println("<title>Servlet DetailFeedbackServler</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddSliderServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet DetailFeedbackServler at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-        
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,10 +57,26 @@ public class SliderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        SliderDAO slider = new SliderDAO();
-        List<Slider> list = slider.getAllSlider();
-        request.setAttribute("slider", list);
-        request.getRequestDispatcher("slider.jsp").forward(request, response);        
+        String id_raw = request.getParameter("id");
+        int id;
+        FeedbackDAO fdb = new FeedbackDAO();
+
+        try {
+            id = Integer.parseInt(id_raw);
+            ProductFeedback feedback = fdb.InfoFeedback(id);
+
+            if (feedback == null) { // Nếu không tìm thấy khách hàng
+                request.setAttribute("error", "Không tìm thấy feedback với ID: " + id);
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+                return;
+            }
+
+            request.setAttribute("feedback", feedback);
+            request.getRequestDispatcher("detailFeedback.jsp").forward(request, response);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            response.sendRedirect("error.jsp");
+        }
     } 
 
     /** 
@@ -76,8 +89,7 @@ public class SliderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       processRequest(request, response);
-        
+        processRequest(request, response);
     }
 
     /** 
@@ -88,6 +100,5 @@ public class SliderServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
 
 }

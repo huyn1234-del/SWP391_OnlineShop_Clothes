@@ -16,12 +16,7 @@ public class ProductFeedback {
     String thumbnail;
     int rating, is_active;
     Date create_at, update_at;
-    String customer_name, customer_img;
-    
-    
-    Product product;
-    User user;
-    
+    String customer_name, customer_img,product_name;
 
     public ProductFeedback() {
     }
@@ -92,11 +87,12 @@ public class ProductFeedback {
     
     
     
-    public ProductFeedback(int feedback_id, int customer_id, int order_id, int product_id, String review, String thumbnail, int rating, int is_active, Date create_at, Date update_at, String customer_name, String customer_img) {
+    public ProductFeedback(int feedback_id, int customer_id, int order_id, int product_id, String product_name, String review, String thumbnail, int rating, int is_active, Date create_at, Date update_at, String customer_name, String customer_img) {
         this.feedback_id = feedback_id;
         this.customer_id = customer_id;
         this.order_id = order_id;
         this.product_id = product_id;
+        this.product_name = product_name;
         this.review = review;
         this.thumbnail = thumbnail;
         this.rating = rating;
@@ -130,38 +126,7 @@ public class ProductFeedback {
         this.is_active = is_active;
     }
 
-    public Date getCreate_at() {
-        return create_at;
-    }
-
-    public void setCreate_at(Date create_at) {
-        this.create_at = create_at;
-    }
-
-    public Date getUpdate_at() {
-        return update_at;
-    }
-
-    public void setUpdate_at(Date update_at) {
-        this.update_at = update_at;
-    }
-
-    public String getCustomer_name() {
-        return customer_name;
-    }
-
-    public void setCustomer_name(String customer_name) {
-        this.customer_name = customer_name;
-    }
-
-    public String getCustomer_img() {
-        return customer_img;
-    }
-
-    public void setCustomer_img(String customer_img) {
-        this.customer_img = customer_img;
-    }
-    
+ 
     
 
     public String getThumbnail() {
@@ -171,6 +136,28 @@ public class ProductFeedback {
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
+    
+    public ProductFeedback(int feedback_id, int customer_id, int product_id, String customer_name, String product_name, String review, int rating, int is_active) {
+        this.feedback_id = feedback_id;
+        this.customer_id = customer_id;
+        this.product_id = product_id;
+        this.customer_name = customer_name;
+        this.product_name = product_name;
+        this.review = review;
+        this.rating = rating;
+        this.is_active = is_active;
+        
+    }
+
+    public ProductFeedback(int feedback_id, String customer_name, String product_name, String review, int rating, int is_active) {
+        this.feedback_id = feedback_id;
+        this.review = review;
+        this.rating = rating;
+        this.is_active = is_active;
+        this.customer_name = customer_name;
+        this.product_name = product_name;
+    }
+    
     
     
 
@@ -206,6 +193,14 @@ public class ProductFeedback {
         this.product_id = product_id;
     }
 
+    public String getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
     public String getReview() {
         return review;
     }
@@ -229,7 +224,45 @@ public class ProductFeedback {
     public void setIs_active(int is_active) {
         this.is_active = is_active;
     }
+
+    public Date getCreate_at() {
+        return create_at;
+    }
+
+    public void setCreate_at(Date create_at) {
+        this.create_at = create_at;
+    }
+
+    public Date getUpdate_at() {
+        return update_at;
+    }
+
+    public void setUpdate_at(Date update_at) {
+        this.update_at = update_at;
+    }
+
+    public String getCustomer_name() {
+        return customer_name;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
+
+    public String getCustomer_img() {
+        return customer_img;
+    }
+
+    public void setCustomer_img(String customer_img) {
+        this.customer_img = customer_img;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductFeedback{" + "feedback_id=" + feedback_id + ", customer_id=" + customer_id + ", order_id=" + order_id + ", product_id=" + product_id + ", product_name=" + product_name + ", review=" + review + ", thumbnail=" + thumbnail + ", rating=" + rating + ", is_active=" + is_active + ", create_at=" + create_at + ", update_at=" + update_at + ", customer_name=" + customer_name + ", customer_img=" + customer_img + '}';
+    }
+
     
-    
+
     
 }

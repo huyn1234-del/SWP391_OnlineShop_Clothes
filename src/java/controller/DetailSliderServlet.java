@@ -13,16 +13,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
 import model.Slider;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name ="SliderServlet", urlPatterns = ("/slider"))
-
-public class SliderServlet extends HttpServlet {
+@WebServlet(name="DetailSliderServlet", urlPatterns={"/detailSlider"})
+public class DetailSliderServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -39,14 +37,13 @@ public class SliderServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddSliderServlet</title>");  
+            out.println("<title>Servlet DetailSliderServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddSliderServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet DetailSliderServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-        
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,11 +57,22 @@ public class SliderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        SliderDAO slider = new SliderDAO();
-        List<Slider> list = slider.getAllSlider();
-        request.setAttribute("slider", list);
-        request.getRequestDispatcher("slider.jsp").forward(request, response);        
-    } 
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            SliderDAO sliderDAO = new SliderDAO();
+            Slider slider = sliderDAO.getSliderbyid(id);
+
+            if (slider != null) {
+                request.setAttribute("slider", slider);
+                request.getRequestDispatcher("detailSlider.jsp").forward(request, response);
+            } else {
+                response.sendRedirect("sliderList.jsp?error=Slider not found");
+            }
+        } catch (NumberFormatException e) {
+            response.sendRedirect("sliderList.jsp?error=Invalid ID format");
+        }
+    }
+    
 
     /** 
      * Handles the HTTP <code>POST</code> method.
@@ -76,8 +84,7 @@ public class SliderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       processRequest(request, response);
-        
+        processRequest(request, response);
     }
 
     /** 
@@ -88,6 +95,5 @@ public class SliderServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
 
 }

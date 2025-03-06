@@ -4,7 +4,8 @@
  */
 package controller;
 
-import dal.SliderDAO;
+import dal.FeedbackDAO;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,16 +13,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.Slider;
+import model.ProductFeedback;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name ="SearchSliderServlet", urlPatterns = ("/searchSlider"))
-
-public class SearchSliderServlet extends HttpServlet {
+@WebServlet(name = "UpdateFeedbackServlet", urlPatterns = {"/updateFeedback"})
+public class UpdateFeedbackServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +39,10 @@ public class SearchSliderServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SearchSliderServlet</title>");
+            out.println("<title>Servlet UpdateFeedbackServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SearchSliderServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateFeedbackServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,21 +60,23 @@ public class SearchSliderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String searchTitle = request.getParameter("search");
-        // Tạo instance của SliderDAO
-        SliderDAO sdb = new SliderDAO();
-        List<Slider> sliders;
-        // Nếu có search, lọc theo title, nếu không lấy toàn bộ sliders
-        if (searchTitle != null && !searchTitle.trim().isEmpty()) {
-            sliders = sdb.getSlider(searchTitle);
-        } else {
-            sliders = sdb.getSlider(""); // Lấy tất cả sliders
+        try {
+            int feedbackId = Integer.parseInt(request.getParameter("id"));
+
+            FeedbackDAO feedbackDAO = new FeedbackDAO();
+            ProductFeedback feedback = feedbackDAO.getFeedbackById(feedbackId);
+
+            if (feedback != null) {
+                request.setAttribute("feedback", feedback);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("updateFeedback.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                response.sendRedirect("error.jsp");
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            response.sendRedirect("error.jsp");
         }
-
-        // Gửi danh sách slider về JSP
-        request.setAttribute("slider", sliders);
-        request.getRequestDispatcher("slider.jsp").forward(request, response);
-
     }
 
     /**
@@ -89,7 +90,27 @@ public class SearchSliderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            int feedbackId = Integer.parseInt(request.getParameter("feedback_id"));
+            String review = request.getParameter("review");
+            int rating = Integer.parseInt(request.getParameter("rating"));
+            int isActive = Integer.parseInt(request.getParameter("is_active"));
+
+            FeedbackDAO feedbackDAO = new FeedbackDAO();
+            ProductFeedback feedback = new ProductFeedback();
+            feedback.setFeedback_id(feedbackId);
+            feedback.setReview(review);
+            feedback.setRating(rating);
+            feedback.setIs_active(isActive);
+
+            feedbackDAO.updateFeedback(feedback);
+
+            response.sendRedirect("ListFeedback.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("errorMessage", "Lỗi cập nhật phản hồi!");
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
     }
 
     /**
