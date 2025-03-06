@@ -6,19 +6,42 @@ package model;
 
 /**
  *
- * @author ADMIN
+ * @author Dell
  */
 public class ProductSize {
+
     int size_id, product_id, quantity;
     String size_name;
+    int weight;
 
     public ProductSize() {
+    }
+
+    public ProductSize(int size_id, int product_id, int quantity, int weight) {
+        this.size_id = size_id;
+        this.product_id = product_id;
+        this.quantity = quantity;
+        this.weight = weight;
+    }
+
+    public ProductSize(int size_id, int product_id, String size_name) {
+        this.size_id = size_id;
+        this.product_id = product_id;
+        this.size_name = size_name;
     }
 
     public ProductSize(int size_id, int product_id, int quantity, String size_name) {
         this.size_id = size_id;
         this.product_id = product_id;
         this.quantity = quantity;
+        this.size_name = size_name;
+    }
+
+    public String getSize_name() {
+        return size_name;
+    }
+
+    public void setSize_name(String size_name) {
         this.size_name = size_name;
     }
 
@@ -46,12 +69,12 @@ public class ProductSize {
         this.quantity = quantity;
     }
 
-    public String getSize_name() {
-        return size_name;
+    public int getWeight() {
+        return weight;
     }
 
-    public void setSize_name(String size_name) {
-        this.size_name = size_name;
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
-    
+
 }
