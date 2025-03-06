@@ -4,55 +4,52 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductSizeDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/ProductSize.java</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/mkt_dashboard.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductFeedbackDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/utils/Email.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/order_controller/SaleDashboard.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/order-list.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/ViewProduct.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/SliderDao.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/marketing_header.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/SizeDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/RoleDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductDAO.java</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/product-list.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/OrderDetailDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PostDAO.java</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/SearchProduct.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Product.java</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/ProductPaging.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/add-product.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/OrderDAO.java</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/view-product.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PostFeedbackDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/DBContext.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/EditProduct.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/list-order-sm.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/OrderDetail.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductCategoryDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/order_controller/OrderList.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/order_controller/OrderDetailServlet.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/common/home_marketing.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/UpdateProduct.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/header.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/mkt_controller/MarkertingDashboard.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/mkt_controller/MKTDashboardFilter.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/UserDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Order.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/ProductFilter.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/common/header.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Post.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductFeedbackDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/order-list.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/marketing_header.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/RoleDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/ProductImg.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Price.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/footer.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/PostCategory.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/add-product.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/ProductFeedback.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/ProductCategory.java</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/sale-panel.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/mkt_controller/MarketingHome.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/DBContext.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/marketingfilter.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/list-order-sm.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/order-detail.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/BrandDAO.java</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/ProductList.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/common/headermanage.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Brand.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Cart.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/AddProduct.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductCategoryDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/auth_controller/Login.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/order_controller/OrderList.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/utils/Constants.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/order_controller/OrderDetailServlet.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/slider_controller/HomeSlider.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/UpdateProduct.java</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/edit-product.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/AddProduct.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PriceDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/list-order-pending.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/mkt_controller/MKTDashboardFilter.java</file>
             <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/search-product.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/PostFeedback.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/UserDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/Pagination.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/ProductFilter.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PaymentStatusDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/web/management/sale-dashboard.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductImageDAO.java</file>
         </group>
     </open-files>
 </project-private>
