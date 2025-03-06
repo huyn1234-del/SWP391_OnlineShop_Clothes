@@ -1,26 +1,58 @@
-<%-- 
-    Document   : detailSlider
-    Created on : Feb 20, 2025, 1:22:13 PM
-    Author     : Admin
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.Slider"%>
+<jsp:useBean id="slider" class="model.Slider" scope="request" />
+
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Slider Detail</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #fef6ff;
+            }
+            .container {
+                width: 50%;
+                margin: auto;
+                padding: 20px;
+                background: #fff;
+                border-radius: 10px;
+            }
+            input, textarea {
+                width: 100%;
+                padding: 8px;
+                margin: 5px 0;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }
+            .btn {
+                background-color: gray;
+                color: white;
+                padding: 8px 16px;
+                border: none;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
-    <tbody>
-        items="${requestScope.data}" var="c"
-    <td>
-        <img src="${c.image_url}" alt="Slider Image" width="100" height="50"/>
-    </td>
-    <td>${c.tittle}</td>
-    <td>${c.description}</td>
-    <td>${c.is_active}</td>
+        <div class="container">
+            <h2>Slider ID: <%= slider.getId() %></h2>
+            <label>Title:</label>
+            <input type="text" value="<%= slider.getTittle() %>" readonly />
 
-</tbody>      
-</body>
+            <label>Description:</label>
+            <textarea readonly><%= slider.getDescription() %></textarea>
+
+            <label>Image:</label>
+            <br>
+            <img src="<%= slider.getImage_url() %>" alt="Slider Image" width="100" height="50" />
+            <br>
+            
+            <label>Status:</label>
+            <input type="text" value="<%= slider.getIs_active().equals("True") ? "Active" : "Inactive" %>" readonly />
+
+            <a href="slider">Back</a> 
+
+        </div>
+    </body>
 </html>
