@@ -20,6 +20,9 @@
 <c:set var="startIndex" value="${(currentPage - 1) * rowsPerPage}" />
 <c:set var="endIndex" value="${startIndex + rowsPerPage > totalFeedback ? totalFeedback : startIndex + rowsPerPage}" />
 
+<c:set var="orderBy" value="${param.orderBy ne null ? param.orderBy : 'customer_name'}" />
+<c:set var="orderDir" value="${param.orderDir ne null ? param.orderDir : 'ASC'}" />
+
 <style>
     .checkbox-group {
         display: flex;
@@ -80,17 +83,18 @@
                         <c:when test="${col == '2'}">Customer ID</c:when>
                         <c:when test="${col == '3'}">Product ID</c:when>
                         <c:when test="${col == '4'}">
-                            <a href="?orderBy=customer_name&orderDir=${orderBy == 'customer_name' and orderDir == 'ASC' ? 'DESC' : 'ASC'}">Customer Name</a>
+                            <a href="sortFeedback?orderBy=customer_name&orderDir=${orderBy == 'customer_name' and orderDir == 'ASC' ? 'DESC' : 'ASC'}">Customer Name</a>
+                        
                         </c:when>
                         <c:when test="${col == '5'}">
-                            <a href="?orderBy=product_name&orderDir=${orderBy == 'product_name' and orderDir == 'ASC' ? 'DESC' : 'ASC'}">Product Name</a>
+                            <a href="sortFeedback?orderBy=product_name&orderDir=${orderBy == 'product_name' and orderDir == 'ASC' ? 'DESC' : 'ASC'}">Product Name</a>
                         </c:when>
                         <c:when test="${col == '6'}">Review</c:when>
                         <c:when test="${col == '7'}">
-                            <a href="?orderBy=rating&orderDir=${orderBy == 'rating' and orderDir == 'ASC' ? 'DESC' : 'ASC'}">Rate Star</a>
+                            <a href="sortFeedback?orderBy=rating&orderDir=${orderBy == 'rating' and orderDir == 'ASC' ? 'DESC' : 'ASC'}">Rate Star</a>
                         </c:when>
                         <c:when test="${col == '8'}">
-                            <a href="?orderBy=is_active&orderDir=${orderBy == 'is_active' and orderDir == 'ASC' ? 'DESC' : 'ASC'}">Status</a>
+                            <a href="sortFeedback?orderBy=is_active&orderDir=${orderBy == 'is_active' and orderDir == 'ASC' ? 'DESC' : 'ASC'}">Status</a>
                         </c:when>
                     </c:choose>
                 </th>

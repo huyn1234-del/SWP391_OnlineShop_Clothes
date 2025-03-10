@@ -27,7 +27,7 @@ public class CustomerDAO extends DBContext {
                 + "      ,[phone]\n"
                 + "      ,[is_active]      \n"
                 + "  FROM [OnlineShop_Clothes].[dbo].[Users]\n"
-                + "  "; // Truy vấn lấy tất cả danh mục
+                + "  Where role_id=5 "; // Truy vấn lấy tất cả danh mục
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);

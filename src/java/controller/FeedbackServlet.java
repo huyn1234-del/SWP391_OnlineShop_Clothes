@@ -94,7 +94,7 @@ public class FeedbackServlet extends HttpServlet {
         request.getSession().setAttribute("selectedColumns", selectedColumns != null ? String.join(",", selectedColumns) : "1,2,3,4,5,6,7,8");
         response.sendRedirect("feedback");
     }
-
+    
     /**
      * Returns a short description of the servlet.
      *
