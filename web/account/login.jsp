@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Đăng nhập</title>
-    <link rel="stylesheet" href="./css/login_style.css">
+    <link rel="stylesheet" href="./account/css/login_style.css">
 </head>
 <body>
     <div class="container">
@@ -24,7 +24,7 @@
             <button type="submit">Đăng nhập</button>
         </form>
 
-        <p>Chưa có tài khoản? <a href="<%= request.getContextPath() %>/register.jsp">Đăng ký ngay</a></p> <br>
+        <p>Chưa có tài khoản? <a href="register">Đăng ký ngay</a></p> <br>
 
     </div>
 </body>

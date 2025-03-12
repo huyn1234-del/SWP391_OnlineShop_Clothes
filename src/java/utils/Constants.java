@@ -14,5 +14,7 @@ public class Constants {
 
     public static final String EMAIL_PASSWORD = "yuob vtea dhnf sqeo";
 
-    public static final String GOOGLE_GRANT_TYPE = "authorization_code";
 }
+
+
+

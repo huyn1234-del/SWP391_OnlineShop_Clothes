@@ -41,7 +41,7 @@ public class Register extends HttpServlet {
         User account = (User) session.getAttribute("account");
         
         if(account == null){
-            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            request.getRequestDispatcher("account/register.jsp").forward(request, response);
             return;
         }
         
@@ -140,7 +140,7 @@ public class Register extends HttpServlet {
 
     private void sendErrorMessage(String error, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("registerError", error);
-        request.getRequestDispatcher("/register.jsp").forward(request, response);
+        request.getRequestDispatcher("account/register.jsp").forward(request, response);
     }
 
 }

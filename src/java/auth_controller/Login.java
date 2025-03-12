@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
         User account = (User) session.getAttribute("account");
         
         if(account == null){
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/account/login.jsp").forward(request, response);
             return;
         }
         
@@ -61,7 +61,7 @@ public class Login extends HttpServlet {
             case 2 -> response.sendRedirect(request.getContextPath()+"/salemanagerdashboard");
             case 3 -> response.sendRedirect(request.getContextPath()+"/orderlist");
             case 4 -> response.sendRedirect(request.getContextPath()+"/marketinghome");
-//            default -> response.sendRedirect(request.getContextPath()+"/homeslider");
+            default -> response.sendRedirect(request.getContextPath()+"/homeslider");
 
         }
         
@@ -119,8 +119,7 @@ public class Login extends HttpServlet {
             case 2 -> response.sendRedirect(request.getContextPath()+"/salemanagerdashboard");
             case 3 -> response.sendRedirect(request.getContextPath()+"/orderlist");
             case 4 -> response.sendRedirect(request.getContextPath()+"/marketinghome");
-//            default -> response.sendRedirect(request.getContextPath()+"/homeslider");
-            default -> response.sendRedirect("success.jsp");
+            default -> response.sendRedirect(request.getContextPath()+"/homeslider");
 
         }
                 
@@ -129,7 +128,7 @@ public class Login extends HttpServlet {
 
     private void sendErrorMessage(String error, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("loginError", error);
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("account/login.jsp").forward(request, response);
     }
     
     private void saveRememberMe(String email, HttpServletResponse response){

@@ -55,13 +55,13 @@ public class Verify extends HttpServlet {
             if (!checkSendMail) {
                 String errorMessage = "Không thể gửi mail!";
                 request.setAttribute("error", errorMessage);
-                request.getRequestDispatcher("/register.jsp").forward(request, response);
+                request.getRequestDispatcher("account/register.jsp").forward(request, response);
                 return;
             }
 
             request.setAttribute("userId", userId);
 
-            request.getRequestDispatcher("/verify.jsp").forward(request, response);
+            request.getRequestDispatcher("account/verify.jsp").forward(request, response);
         } catch (NumberFormatException e) {
             response.sendRedirect(request.getContextPath()+"/login");
             
