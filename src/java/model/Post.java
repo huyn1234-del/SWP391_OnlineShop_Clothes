@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  *
- * @author ADMIN
+ * @author Dell
  */
 public class Post {
     int post_id;

@@ -3,12 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package slider_controller;
+package post_controller;
 
+import dal.PostCategoryDAO;
 import dal.PostDAO;
-import dal.ProductDAO;
-import dal.SlidersDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,15 +17,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import model.Post;
-import model.Product;
-import model.Sliders;
+import model.PostCategory;
+import model.PostFeedback;
+import model.User;
 
 /**
  *
  * @author Dell
  */
-@WebServlet(name="HomeSlider", urlPatterns={"/homeslider"})
-public class HomeSlider extends HttpServlet {
+@WebServlet(name="HPostDetail", urlPatterns={"/hpostdetail"})
+public class HPostDetail extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,23 +38,37 @@ public class HomeSlider extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        SlidersDAO sld = new SlidersDAO();
-        ProductDAO pdao = new ProductDAO();
-        PostDAO podao = new PostDAO();
-        List<Sliders> sList = sld.getAllSliders();  
-        List<Product> pList = pdao.getHotProduct();
-        List<Post> poList = podao.getNewPost();
-        String tabfilter = "hot";
+         HttpSession session = request.getSession();
+        PostDAO pdao = new PostDAO();
+        PostCategoryDAO pcdao = new PostCategoryDAO();
         
-        session.setAttribute("mainpage", "home");
-        session.setAttribute("hsList", sList);
-        session.setAttribute("hpList", pList);
-        session.setAttribute("poList", poList);
-        session.setAttribute("tabfilter", tabfilter);
-        response.sendRedirect(request.getContextPath()+"/common/home.jsp");
+        String bid = request.getParameter("bid");
+        if(bid==null){
+            Post ppostdetail = (Post)session.getAttribute("ppostdetail");
+            bid = ppostdetail.getPost_id()+"";
+        }
+        Post p = pdao.getPostByID(bid);
+        PostCategory pc = pdao.getPostCategoryByPostID(bid);
+        User u = pdao.getUserByPostID(bid);
+        List<PostCategory> pcList = pcdao.getAllPostCategory();
+        List<Post> plist = pdao.get3PostByCategoryId(pc.getPost_category_id()+"", bid);
+       
+        Post afterPost = pdao.getPostAfter(u.getUser_id()+"", bid);
+        Post beforePost = pdao.getPostBefore(u.getUser_id()+"", bid);
         
-         
+        
+        session.setAttribute("afterPost", afterPost);
+        session.setAttribute("beforePost", beforePost);
+        session.setAttribute("relatedPostList", plist);
+        session.setAttribute("pofpage", 0);
+        session.setAttribute("postcategorylist", pcList);
+        session.setAttribute("ppostdetail", p);
+        session.setAttribute("ppostcategory", pc);
+        session.setAttribute("ppostauthor", u);
+        
+        
+        
+        response.sendRedirect(request.getContextPath()+"/common/hblogdetail.jsp");
         
     } 
 

@@ -6,20 +6,20 @@ package model;
 
 /**
  *
- * @author ADMIN
+ * @author Dell
  */
-public class PostCategories {
+public class PostCategory {
     int post_category_id;
     String post_category_name;
     int is_active;
 
-    public PostCategories() {
-    }
-
-    public PostCategories(int post_category_id, String post_category_name, int is_active) {
+    public PostCategory(int post_category_id, String post_category_name, int is_active) {
         this.post_category_id = post_category_id;
         this.post_category_name = post_category_name;
         this.is_active = is_active;
+    }
+
+    public PostCategory() {
     }
 
     public int getPost_category_id() {
@@ -45,11 +45,6 @@ public class PostCategories {
     public void setIs_active(int is_active) {
         this.is_active = is_active;
     }
-
-    @Override
-    public String toString() {
-        return "PostCategories{" + "post_category_id=" + post_category_id + ", post_category_name=" + post_category_name + ", is_active=" + is_active + '}';
-    }
+    
     
 }
-

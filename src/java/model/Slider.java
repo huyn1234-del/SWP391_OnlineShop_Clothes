@@ -27,6 +27,9 @@ public class Slider {
         this.is_active = is_active;
     }
 
+  
+    
+
     public int getId() {
         return slider_id;
     }
@@ -66,7 +69,7 @@ public class Slider {
     public void setIs_active(String is_active) {
         this.is_active = is_active;
     }
-
+    
     @Override
     public String toString() {
         return "Slider{" + "id=" + slider_id + ", tittle=" + tittle + ", description=" + description + ", image_url=" + image_url + ", is_active=" + is_active + '}';

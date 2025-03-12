@@ -3,29 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package slider_controller;
+package post_controller;
 
-import dal.PostDAO;
-import dal.ProductDAO;
-import dal.SlidersDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import model.Post;
-import model.Product;
-import model.Sliders;
 
 /**
  *
  * @author Dell
  */
-@WebServlet(name="HomeSlider", urlPatterns={"/homeslider"})
-public class HomeSlider extends HttpServlet {
+@WebServlet(name="PostPagination", urlPatterns={"/postpagination"})
+public class PostPagination extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -38,24 +35,31 @@ public class HomeSlider extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        SlidersDAO sld = new SlidersDAO();
-        ProductDAO pdao = new ProductDAO();
-        PostDAO podao = new PostDAO();
-        List<Sliders> sList = sld.getAllSliders();  
-        List<Product> pList = pdao.getHotProduct();
-        List<Post> poList = podao.getNewPost();
-        String tabfilter = "hot";
+        List<Post> allpostlist = (List<Post>)session.getAttribute("allpostlist");
+        int cpage = Integer.parseInt(request.getParameter("cpage"));
+        List<Post> top6post = select6Post(allpostlist, cpage);
         
-        session.setAttribute("mainpage", "home");
-        session.setAttribute("hsList", sList);
-        session.setAttribute("hpList", pList);
-        session.setAttribute("poList", poList);
-        session.setAttribute("tabfilter", tabfilter);
-        response.sendRedirect(request.getContextPath()+"/common/home.jsp");
         
-         
         
+        session.setAttribute("top6post", top6post);
+        session.setAttribute("cpostpage", cpage);
+        
+        
+        response.sendRedirect(request.getContextPath()+"/common/post.jsp");
     } 
+    
+    public static List<Post> select6Post( List<Post> pList, int pageNum){
+        List<Post> top6List = new ArrayList<>();
+        for(int i = pageNum*6;i<=pageNum*6+5;i++){
+            if(i>=pList.size()) {
+                break;
+            } else {
+                top6List.add(pList.get(i));
+            }
+        }
+        
+        return top6List;
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 

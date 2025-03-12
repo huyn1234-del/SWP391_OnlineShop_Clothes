@@ -8,19 +8,22 @@ import java.util.Date;
 
 /**
  *
- * @author ADMIN
+ * @author Dell
  */
-public class Post_Feedbacks {
-     int post_feedback_id, customer_id,post_id;
+public class PostFeedback {
+    int post_feedback_id, customer_id,post_id;
     String review;
     int is_active;
     String username,profile_picture_url;
     Date create_at, modified_at;
-
-    public Post_Feedbacks() {
+  
+    Post post;
+    User user;
+    String time_create;
+    public PostFeedback() {
     }
 
-    public Post_Feedbacks(int post_feedback_id, int customer_id, int post_id, String review, int is_active, String username, String profile_picture_url, Date create_at, Date modified_at) {
+    public PostFeedback(int post_feedback_id, int customer_id, int post_id, String review, int is_active, String username, String profile_picture_url, Date create_at, Date modified_at) {
         this.post_feedback_id = post_feedback_id;
         this.customer_id = customer_id;
         this.post_id = post_id;
@@ -31,6 +34,83 @@ public class Post_Feedbacks {
         this.create_at = create_at;
         this.modified_at = modified_at;
     }
+    
+    
+
+    public PostFeedback(int post_feedback_id, int customer_id, int post_id, String review, int is_active) {
+        this.post_feedback_id = post_feedback_id;
+        this.customer_id = customer_id;
+        this.post_id = post_id;
+        this.review = review;
+        this.is_active = is_active;
+    }
+
+    public PostFeedback(int post_feedback_id, String review, int is_active, Post post, User user, String time_create) {
+        this.post_feedback_id = post_feedback_id;
+        this.review = review;
+        this.is_active = is_active;
+        this.post = post;
+        this.user = user;
+        this.time_create = time_create;
+    }
+
+    public PostFeedback(int post_feedback_id, int customer_id, int post_id, String review, int is_active, String username, String profile_picture_url) {
+        this.post_feedback_id = post_feedback_id;
+        this.customer_id = customer_id;
+        this.post_id = post_id;
+        this.review = review;
+        this.is_active = is_active;
+        this.username = username;
+        this.profile_picture_url = profile_picture_url;
+    }
+
+    public PostFeedback(int post_feedback_id, int customer_id, String review, int is_active, String username, String profile_picture_url, Post post) {
+        this.post_feedback_id = post_feedback_id;
+        this.customer_id = customer_id;
+        this.review = review;
+        this.is_active = is_active;
+        this.username = username;
+        this.profile_picture_url = profile_picture_url;
+        this.post = post;
+    }
+
+    public PostFeedback(int post_feedback_id, String review, int is_active, Post post, User user) {
+        this.post_feedback_id = post_feedback_id;
+        this.review = review;
+        this.is_active = is_active;
+        this.post = post;
+        this.user = user;
+    }
+
+    public Date getCreate_at() {
+        return create_at;
+    }
+
+    public void setCreate_at(Date create_at) {
+        this.create_at = create_at;
+    }
+
+    public Date getModified_at() {
+        return modified_at;
+    }
+
+    public void setModified_at(Date modified_at) {
+        this.modified_at = modified_at;
+    }
+
+
+
+    
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
+    
+    
 
     public int getPost_feedback_id() {
         return post_feedback_id;
@@ -88,21 +168,22 @@ public class Post_Feedbacks {
         this.profile_picture_url = profile_picture_url;
     }
 
-    public Date getCreate_at() {
-        return create_at;
+    public Post getPost() {
+        return post;
     }
 
-    public void setCreate_at(Date create_at) {
-        this.create_at = create_at;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
-    public Date getModified_at() {
-        return modified_at;
+    public String getTime_create() {
+        return time_create;
     }
 
-    public void setModified_at(Date modified_at) {
-        this.modified_at = modified_at;
+    public void setTime_create(String time_create) {
+        this.time_create = time_create;
     }
- 
+    
+    
     
 }
