@@ -27,7 +27,13 @@ public class Slider {
         this.is_active = is_active;
     }
 
-  
+    public Slider(int slider_id, String tittle, String description, String is_active) {
+        this.slider_id = slider_id;
+        this.tittle = tittle;
+        this.description = description;
+        this.is_active = is_active;
+    }
+    
     
 
     public int getId() {

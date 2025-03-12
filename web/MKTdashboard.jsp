@@ -34,8 +34,8 @@
                 <a href="CustomerServlet" class="flex items-center space-x-2 text-gray-300 hover:text-white">
                     <span></span> <span>Customer</span>
                 </a>
-                <a href="#" class="flex items-center space-x-2 text-gray-300 hover:text-white">
-                    <span></span> <span>...</span>
+                <a href="feedback" class="flex items-center space-x-2 text-gray-300 hover:text-white">
+                    <span></span> <span>Feedback</span>
                 </a>
                 <a href="#" class="flex items-center space-x-2 text-gray-300 hover:text-white">
                     <span></span> <span>...</span>

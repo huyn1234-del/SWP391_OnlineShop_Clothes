@@ -170,37 +170,66 @@ public class SliderDAO extends DBContext {
             System.out.println(e);
         }
     }
-    
-    
-    public void hideSlider(int id){
-        String sql = "UPDATE [dbo].[Sliders]\n"               
+
+    public void hideSlider(int id) {
+        String sql = "UPDATE [dbo].[Sliders]\n"
                 + " set    [is_active] = 'False'\n"
                 + " WHERE slider_id =?";
         try {
-            PreparedStatement st = connection.prepareStatement(sql);           
+            PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             st.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e);            
+            System.out.println(e);
         }
     }
-    
-    public void showSlider(int id){
-        String sql = "UPDATE [dbo].[Sliders]\n"               
+
+    public void showSlider(int id) {
+        String sql = "UPDATE [dbo].[Sliders]\n"
                 + "    set  [is_active] = 'True'\n"
                 + " WHERE slider_id =?";
         try {
-            PreparedStatement st = connection.prepareStatement(sql);           
+            PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             st.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e);            
+            System.out.println(e);
         }
+    }
+
+    public Slider InfoSlider(int id) {
+        String sql = "SELECT TOP (1000) [slider_id]\n"
+                + "      ,[tittle]\n"
+                + "      ,[description]\n"
+                + "      ,[image_url]\n"
+                + "      ,[is_active]\n"
+                + "  FROM [OnlineShop_Clothes].[dbo].[Sliders]\n"
+                + "  where slider_id = ?";
+        Slider slider = null;
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                return new Slider(
+                        rs.getInt("slider_id"),
+                        rs.getString("tittle"),
+                        rs.getString("description"),
+                        rs.getString("image_url"),
+                        rs.getString("is_active"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
     public static void main(String[] args) {
         SliderDAO slider = new SliderDAO();
-        List<Slider> list = slider.getAllSlider();      
+        List<Slider> list = slider.getAllSlider();
         System.out.println(list.get(1).getId());
 
     }

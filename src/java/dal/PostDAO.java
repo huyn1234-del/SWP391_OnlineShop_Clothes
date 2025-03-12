@@ -55,6 +55,65 @@ public class PostDAO extends DBContext{
     }
     
     
+    public List<Post> getAllPostMarketing () {
+        List<Post> pList = new ArrayList<>();
+       String sql = "select p.*, (u.first_name+' '+u.last_name) as author_name  \n" +
+                    "from Posts as p, Users as u \n" +
+                    "where p.author_id = u.user_id;";
+        try {
+            PreparedStatement pre = connection.prepareStatement(sql);
+            ResultSet rs = pre.executeQuery();
+            while (rs.next()) {
+                int post_id = rs.getInt("post_id");
+                String title = rs.getString("title");
+                String content = rs.getString("content");
+                String thumbnail = rs.getString("thumbnail");
+                int author_id = rs.getInt("author_id");
+                int is_active = rs.getInt("is_active");
+                Date created_at = rs.getDate("created_at");
+               Date modified_at = rs.getDate("modified_at");
+                int post_category_id = rs.getInt("post_category_id");
+                String author_name = rs.getString("author_name");
+                Post post = new Post(post_id, title, content, thumbnail, author_id, is_active, created_at, modified_at, post_category_id,author_name);
+                pList.add(post);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return pList;
+    }
+    
+    
+    public List<Post> getAllPostMarketingByAuthorId (String id) {
+        List<Post> pList = new ArrayList<>();
+       String sql = "select p.*, (u.first_name+' '+u.last_name) as author_name  \n" +
+                    "from Posts as p, Users as u \n" +
+                    "where p.author_id = u.user_id and p.author_id=?;";
+        try {
+            PreparedStatement pre = connection.prepareStatement(sql);
+            pre.setString(1, id);
+            ResultSet rs = pre.executeQuery();
+            while (rs.next()) {
+                int post_id = rs.getInt("post_id");
+                String title = rs.getString("title");
+                String content = rs.getString("content");
+                String thumbnail = rs.getString("thumbnail");
+                int author_id = rs.getInt("author_id");
+                int is_active = rs.getInt("is_active");
+                Date created_at = rs.getDate("created_at");
+               Date modified_at = rs.getDate("modified_at");
+                int post_category_id = rs.getInt("post_category_id");
+                String author_name = rs.getString("author_name");
+                Post post = new Post(post_id, title, content, thumbnail, author_id, is_active, created_at, modified_at, post_category_id,author_name);
+                pList.add(post);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return pList;
+    }
+    
+    
     public List<Post> getAllPostByCategoryId(String id) {
         List<Post> pList = new ArrayList<>();
        String sql = "select * from Posts \n" +
@@ -114,6 +173,75 @@ public class PostDAO extends DBContext{
             Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return pList;
+    }
+    
+    
+    public void AddNewPost(Post p) {
+       
+       String sql = "INSERT INTO Posts (title, content, thumbnail, author_id, is_active, created_at, modified_at, post_category_id)\n" +
+                    "VALUES \n" +
+                    "(?, ?, ?, ?, 1, GETDATE(), GETDATE(), ?)";
+        try {
+            PreparedStatement pre = connection.prepareStatement(sql);
+            pre.setString(1, p.getTitle());
+            pre.setString(2, p.getContent());
+            pre.setString(3, p.getThumbnail());
+            pre.setInt(4, p.getAuthor_id());
+            pre.setInt(5, p.getPost_category_id());
+            pre.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
+    
+    
+    public void EditPost(Post p) {
+       
+       String sql = "update Posts\n" +
+                    "set \n" +
+                    "title =?,\n" +
+                    "content =?,\n" +
+                    "thumbnail=?,\n" +
+                    "is_active = ?,\n" +
+                    "modified_at = GETDATE(),\n" +
+                    "post_category_id = ?\n" +
+                    "where post_id = ?";
+        try {
+            PreparedStatement pre = connection.prepareStatement(sql);
+            pre.setString(1, p.getTitle());
+            pre.setString(2, p.getContent());
+            pre.setString(3, p.getThumbnail());
+            pre.setInt(4, p.getIs_active());
+            pre.setInt(5, p.getPost_category_id());
+            pre.setInt(6, p.getPost_id());
+            pre.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
+    
+    
+     public void ShowHidePost(String id, String is_active) {
+       
+       String sql = "update Posts\n" +
+                    "set \n" +
+                    "is_active = ?\n" +
+                    "where post_id = ?";
+        try {
+            PreparedStatement pre = connection.prepareStatement(sql);
+            pre.setString(1, is_active);
+            pre.setString(2, id);
+            
+            pre.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
     
     public Post getPostAfter(String auid, String pid) {
@@ -241,6 +369,33 @@ public class PostDAO extends DBContext{
                 int post_category_id = rs.getInt("post_category_id");
                 
                 Post post = new Post(post_id, title, content, thumbnail, author_id, is_active, created_at, modified_at, post_category_id);
+                pList.add(post);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return pList;
+    }
+    
+    
+    public List<Post> getAllPostByFilterMkt(String sql) {
+        List<Post> pList = new ArrayList<>();
+       
+        try {
+            PreparedStatement pre = connection.prepareStatement(sql);
+            ResultSet rs = pre.executeQuery();
+            while (rs.next()) {
+                int post_id = rs.getInt("post_id");
+                String title = rs.getString("title");
+                String content = rs.getString("content");
+                String thumbnail = rs.getString("thumbnail");
+                int author_id = rs.getInt("author_id");
+                int is_active = rs.getInt("is_active");
+                Date created_at = rs.getDate("created_at");
+               Date modified_at = rs.getDate("modified_at");
+                int post_category_id = rs.getInt("post_category_id");
+                 String author_name = rs.getString("authorname");
+                Post post = new Post(post_id, title, content, thumbnail, author_id, is_active, created_at, modified_at, post_category_id,author_name);
                 pList.add(post);
             }
         } catch (SQLException ex) {
@@ -398,19 +553,85 @@ public class PostDAO extends DBContext{
     
     
     
-   
+    public List<SaleChart> getNumberPostByDay(LocalDate startDate, LocalDate endDate) {
+        List<SaleChart> sList = new ArrayList<>();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String sql = "select count(post_id) as Total_number from Posts\n"
+                + "where created_at <= ?";
+
+          int daybetween= (int)ChronoUnit.DAYS.between(startDate, endDate);
+
+
+        for (int i = 0; i <= daybetween; i++) {
+
+            try {
+                PreparedStatement pre = connection.prepareStatement(sql);
+                LocalDate date = startDate.plusDays(i);
+                pre.setString(1, date + "");
+
+                ResultSet rs = pre.executeQuery();
+                while (rs.next()) {
+
+                    String fdate = dtf.format(date);
+                    int value = rs.getInt("Total_number");
+                    SaleChart saleChart = new SaleChart(fdate, value);
+                    sList.add(saleChart);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+        return sList;
+    }
+    
+    
+     public List<SaleChart> getPostEachDay(LocalDate startDate, LocalDate endDate) {
+        List<SaleChart> sList = new ArrayList<>();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String sql = "select count(post_id) as Total_number from Posts\n"
+                + "where YEAR(created_at)=? AND MONTH(created_at)=? AND DAY(created_at)=?  ";
+
+          int daybetween= (int)ChronoUnit.DAYS.between(startDate, endDate);
+
+
+        for (int i = 0; i <= daybetween; i++) {
+
+            try {
+                PreparedStatement pre = connection.prepareStatement(sql);
+                LocalDate date = startDate.plusDays(i);
+                pre.setString(1, date.getYear()+  "");
+         pre.setString(2, date.getMonthValue()+  "");
+             pre.setString(3, date.getDayOfMonth() +  "");
+                ResultSet rs = pre.executeQuery();
+                while (rs.next()) {
+
+                    String fdate = dtf.format(date);
+                    int value = rs.getInt("Total_number");
+                    SaleChart saleChart = new SaleChart(fdate, value);
+                    sList.add(saleChart);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+        return sList;
+    }
     
     
     
-//    public static void main(String[] args) {
-//        PostDAO pdao = new PostDAO();
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
-//              String pobegin = "2024-09-21";
-//                      LocalDate poDate = LocalDate.parse(pobegin, formatter);
-//
-//        List<SaleChart> list=pdao.getPostEachDay(poDate, LocalDate.now());
-//        System.out.println(list.get(0).getValue());
-//    
-//    }
+    public static void main(String[] args) {
+        PostDAO pdao = new PostDAO();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+              String pobegin = "2024-09-21";
+                      LocalDate poDate = LocalDate.parse(pobegin, formatter);
+
+        List<SaleChart> list=pdao.getPostEachDay(poDate, LocalDate.now());
+        System.out.println(list.get(0).getValue());
+    
+    }
 }

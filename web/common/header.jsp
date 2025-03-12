@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="model.User" %>
 <%@page import="jakarta.servlet.http.Cookie" %>
+<%@page import="model.Cart" %>
 <%@page import="utils.Constants" %>
 
 <!-- Offcanvas Menu Begin -->
@@ -103,10 +104,26 @@
                         </form>
 
                     </div>
-                   
+                    <%
+                        Cookie[] cookies = request.getCookies();
+
+                        String txt = "";
+                        if (cookies != null) {
+                            for (Cookie cookie : cookies) {
+                                if (cookie.getName().equals(Constants.COOKIE_CART)) {
+                                    txt = cookie.getValue();
+                                    break; 
+                                }
+                            }
+                        }
+
+                        Cart cart = new Cart(txt);
+                        int cartSize = cart.cartSize(txt);
+                    %>
                     <div style="display: flex; align-items: center;padding: 0;width: 100%" class="col-md-2">
                         <a href="<%=s%>/cart"><img style="width: 25px"  src="<%=s%>/common/img/icon/cart.png" alt=""> 
-                          </a></div>
+                            <span style="font-weight: bold;width: 100%;text-align: center;padding-right: 8px">
+                                <%=cartSize%></span></a></div>
 
 
 
