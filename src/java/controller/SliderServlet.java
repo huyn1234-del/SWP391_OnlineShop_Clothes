@@ -20,7 +20,7 @@ import model.Slider;
  *
  * @author Admin
  */
-//@WebServlet(name ="SliderServlet", urlPatterns = ("/slider"))
+@WebServlet(name ="SliderServlet", urlPatterns = ("/slider"))
 
 public class SliderServlet extends HttpServlet {
    
