@@ -1,15 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author ADMIN
- */
 public class Product {
-
     int product_id;
     String product_name;
     int price;
@@ -24,7 +15,7 @@ public class Product {
 
     public Product() {
     }
-
+    
     public Product(int product_id, String product_name, int price, int total_quantity, int discount, String description, String thumbnail, boolean is_active, int rated_star, int brand_id, int product_category_id) {
         this.product_id = product_id;
         this.product_name = product_name;
@@ -38,7 +29,20 @@ public class Product {
         this.brand_id = brand_id;
         this.product_category_id = product_category_id;
     }
-
+    
+    public Product(String product_name, int price, int total_quantity, int discount, String description, String thumbnail, boolean is_active, int rated_star, int brand_id, int product_category_id) {
+        this.product_name = product_name;
+        this.price = price;
+        this.total_quantity = total_quantity;
+        this.discount = discount;
+        this.description = description;
+        this.thumbnail = thumbnail;
+        this.is_active = is_active;
+        this.rated_star = rated_star;
+        this.brand_id = brand_id;
+        this.product_category_id = product_category_id;
+    }
+    
     public int getProduct_id() {
         return product_id;
     }

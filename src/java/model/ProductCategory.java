@@ -6,10 +6,10 @@ package model;
 
 /**
  *
- * @author ADMIN
+ * @author Dell
  */
 public class ProductCategory {
-      int product_category_id;
+    int product_category_id;
     String product_category_name;
     int is_active;
 
@@ -50,4 +50,6 @@ public class ProductCategory {
     public String toString() {
         return "ProductCategory{" + "product_category_id=" + product_category_id + ", product_category_name=" + product_category_name + ", is_active=" + is_active + '}';
     }
+    
+    
 }
