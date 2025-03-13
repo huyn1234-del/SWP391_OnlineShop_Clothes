@@ -42,6 +42,12 @@
 
             <label>Product Name:</label>
             <input type="text" value="<%= feedback.getProduct_name() %>" readonly />
+            
+            <label>Email:</label>
+            <input type="text" value="" readonly />
+            
+            <label>Phone:</label>
+            <input type="text" value="" readonly />
 
             <label>Review:</label>
             <input type="text" value="<%= feedback.getReview() %>" readonly />

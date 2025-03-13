@@ -5,15 +5,20 @@
         <group>
             <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/controller/SortFeedbackServlet.java</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/controller/UpdateCustomerServlet.java</file>
+            <file>file:/D:/SWP391_OnlineShop_Clothes/web/success.jsp</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/dal/DBContext.java</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/web/updateFeedback.jsp</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/model/Slider.java</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/web/updateCustomer.jsp</file>
+            <file>file:/D:/SWP391_OnlineShop_Clothes/web/login.jsp</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/model/ProductFeedback.java</file>
+            <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/auth_controller/Login.java</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/model/Customer.java</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/controller/FeedbackServlet.java</file>
+            <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/auth_controller/ChangePassword.java</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/controller/DetailSliderServlet.java</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/dal/CustomerDAO.java</file>
+            <file>file:/D:/SWP391_OnlineShop_Clothes/web/ListCustomer.jsp</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/web/ListFeedback.jsp</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/web/detailFeedback.jsp</file>
             <file>file:/D:/SWP391_OnlineShop_Clothes/src/java/dal/SliderDAO.java</file>
