@@ -17,60 +17,36 @@ import model.Product;
 @WebServlet(name="ProductList", urlPatterns={"/productlist"})
 public class ProductList extends HttpServlet {
    
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
-        ProductDAO pdao = new ProductDAO();
-        List<Product> list = pdao.getAllProduct();
-        List<Product> plist = pdao.getProductPaging(1);
-        HttpSession session = request.getSession();
-        
-        session.setAttribute("product_list", plist);
-        session.setAttribute("cur_page", 1);
-        session.setAttribute("num_page", getNumberOfPage(list.size(), 3));
-        response.sendRedirect(request.getContextPath() + "/management/product-list.jsp");
-        
-    } 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
-     * Handles the HTTP <code>GET</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+throws ServletException, IOException {
+    response.setContentType("text/html;charset=UTF-8");
+    
+    ProductDAO pdao = new ProductDAO();
+    List<Product> list = pdao.getAllProduct(); // Lấy tất cả sản phẩm
+    List<Product> plist = pdao.getProductPaging(1); // Lấy sản phẩm của trang 1
+    HttpSession session = request.getSession();
+    
+    session.setAttribute("product_list", plist); // Lưu danh sách sản phẩm trang hiện tại vào session
+    session.setAttribute("cur_page", 1); // Lưu số trang hiện tại vào session
+    session.setAttribute("num_page", getNumberOfPage(list.size(), 3)); // Lưu tổng số trang vào session
+    response.sendRedirect(request.getContextPath() + "/management/product-list.jsp"); // Chuyển hướng đến trang product-list.jsp
+}
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
     } 
 
-    /** 
-     * Handles the HTTP <code>POST</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /** 
-     * Returns a short description of the servlet.
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
