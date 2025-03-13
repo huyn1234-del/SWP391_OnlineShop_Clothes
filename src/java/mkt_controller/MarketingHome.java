@@ -3,7 +3,7 @@ package mkt_controller;
 
 import dal.PostDAO;
 import dal.ProductDAO;
-//import dal.SliderDao;
+import dal.SliderDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -25,16 +25,16 @@ public class MarketingHome extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
   HttpSession session = request.getSession();
-//        SliderDao sld = new SliderDao();
+        SliderDao sld = new SliderDao();
         ProductDAO pdao = new ProductDAO();
         PostDAO podao = new PostDAO();
-//        List<Slider> sList = sld.getAllSliders();  
+        List<Slider> sList = sld.getAllSliders();  
         List<Product> pList = pdao.getHotProduct();
         List<Post> poList = podao.getNewPost();
         String tabfilter = "hot";
         
         session.setAttribute("mainpage", "home");
-//        session.setAttribute("hsList", sList);
+        session.setAttribute("hsList", sList);
         session.setAttribute("hpList", pList);
         session.setAttribute("poList", poList);
         session.setAttribute("tabfilter", tabfilter);
