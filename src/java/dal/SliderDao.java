@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package dal;
 
 import java.sql.PreparedStatement;
@@ -7,7 +10,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Slider;
 
-public class SliderDao extends DBContext {
+/**
+ *
+ * @author quanpyke
+ */
+public class SliderDAO extends DBContext {
 
     public ArrayList<Slider> getAllSliders() {
         ArrayList<Slider> list = new ArrayList<>();
@@ -151,6 +158,9 @@ public class SliderDao extends DBContext {
         }
 
         return list;
-    }      
+    }
+        
+       
+        
 }
     
