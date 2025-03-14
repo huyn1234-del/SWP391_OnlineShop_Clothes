@@ -3,7 +3,7 @@ package mkt_controller;
 
 import dal.PostDAO;
 import dal.ProductDAO;
-import dal.SliderDao;
+import dal.SliderDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -25,7 +25,7 @@ public class MarketingHome extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
   HttpSession session = request.getSession();
-        SliderDao sld = new SliderDao();
+        SliderDAO sld = new SliderDAO();
         ProductDAO pdao = new ProductDAO();
         PostDAO podao = new PostDAO();
         List<Slider> sList = sld.getAllSliders();  
