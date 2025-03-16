@@ -1,8 +1,3 @@
-<%-- 
-    Document   : listpostmarketing
-    Created on : Sep 27, 2024, 9:37:00 PM
-    Author     : Dell
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Post"%>
@@ -205,7 +200,7 @@
                                     List<PostCategory> postcategorylist = (List<PostCategory>)session.getAttribute("listpostcategorymkt");
                                     %>
                                     <div class="btn-group" style="">
-                                      <button  style="color: black;"type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                      <button  style="color: black;" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                         <%=pcmktName.equals("")?"Phân loại":pcmktName%>
                                       </button>
                                       <ul class="dropdown-menu">
