@@ -3,29 +3,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package slider_controller;
+package product_controller;
 
-import dal.PostDAO;
 import dal.ProductDAO;
-import dal.SlidersDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import model.Post;
 import model.Product;
-import model.Sliders;
 
 /**
  *
- * @author ADMIN
+ * @author Dell
  */
-@WebServlet(name="HomeSlider", urlPatterns={"/homeslider"})
-public class HomeSlider extends HttpServlet {
+@WebServlet(name="ProductSort", urlPatterns={"/productsort"})
+public class ProductSort extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,25 +36,67 @@ public class HomeSlider extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        SlidersDAO sld = new SlidersDAO();
+       HttpSession session = request.getSession();
+       List<Product> apList = (List<Product>)session.getAttribute("apList");
         ProductDAO pdao = new ProductDAO();
-        PostDAO podao = new PostDAO();
-        List<Sliders> sList = sld.getAllSliders();  
-        List<Product> pList = pdao.getHotProduct();
-        List<Post> poList = podao.getNewPost();
-        String tabfilter = "hot";
         
-        session.setAttribute("mainpage", "home");
-        session.setAttribute("hsList", sList);
-        session.setAttribute("hpList", pList);
-        session.setAttribute("poList", poList);
-        session.setAttribute("tabfilter", tabfilter);
-        response.sendRedirect(request.getContextPath()+"/common/home.jsp");
+       String sortValue = request.getParameter("sortValue");
+       if(sortValue.equals("low")){
+           apList.sort(new Comparator<Product>() {
+               @Override
+               public int compare(Product o1, Product o2) {
+                   return o1.getPrice()-o2.getPrice();
+               }
+           });
+       } else if(sortValue.equals("high")){
+          apList.sort(new Comparator<Product>() {
+               @Override
+               public int compare(Product o1, Product o2) {
+                   return o2.getPrice()-o1.getPrice();
+               }
+           }); 
+       } else if(sortValue.equals("rate")){
+           apList.sort(new Comparator<Product>() {
+               @Override
+               public int compare(Product o1, Product o2) {
+                   return (o2.getRated_star()-o1.getRated_star());
+               }
+           }); 
+       } else if(sortValue.equals("best")){
+           String s = "";
+           for (Product product : apList) {
+               s+=product.getProduct_id()+","; 
+           }
+           s = s.substring(0, s.length()-1);
+           apList = pdao.getAllHotProduct(s);
+       }
+       int totalProduct = apList.size();
+        int npage = totalProduct/9 + 1;
+        int cpage = 0;
+        List<Product> p9List = select9Products(apList, cpage);
         
-         
         
+        session.setAttribute("sortValue", sortValue);
+        session.setAttribute("ppList", p9List);  
+        session.setAttribute("curpage", cpage);
+        session.setAttribute("ppage", npage);
+        session.setAttribute("totalProduct", totalProduct);
+       
+       response.sendRedirect(request.getContextPath()+"/common/product.jsp");
     } 
+    
+    public static List<Product> select9Products( List<Product> pList, int pageNum){
+        List<Product> top9List = new ArrayList<>();
+        for(int i = pageNum*9;i<=pageNum*9+8;i++){
+            if(i>=pList.size()) {
+                break;
+            } else {
+                top9List.add(pList.get(i));
+            }
+        }
+        
+        return top9List;
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 

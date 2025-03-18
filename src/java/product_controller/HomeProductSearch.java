@@ -11,6 +11,7 @@ import dal.ProductCategoryDAO;
 import dal.ProductDAO;
 import dal.SizeDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -27,10 +28,10 @@ import model.Size;
 
 /**
  *
- * @author Dell
+ * @author ADMIN
  */
-@WebServlet(name="HomeProduct", urlPatterns={"/homeproduct"})
-public class HomeProduct extends HttpServlet {
+@WebServlet(name="HomeProductSearch", urlPatterns={"/homeproductsearch"})
+public class HomeProductSearch extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -42,50 +43,57 @@ public class HomeProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         HttpSession session = request.getSession();
-        session.setAttribute("sql", null);
         ProductDAO pdao = new ProductDAO();
-        ProductCategoryDAO pcdao = new ProductCategoryDAO();
-        BrandDAO bdao = new BrandDAO();
-        SizeDAO sdao = new SizeDAO();
-        PriceDAO prdao = new PriceDAO();
-        
-        
-        
-        List<Product> apList = pdao.getAllProductWithQuantity();
-        List<ProductCategory> pcList = pcdao.getAllProductCategory();
-        List<Brand> bList = bdao.getAllBrand();
-        List<Size> sList = sdao.getAllSize();
-        List<Price> prList = prdao.getAllPrice();
         int cpage = 0;
+        
+        String name = request.getParameter("pname");
+        
+        if(name.length()==0) {
+            response.sendRedirect(request.getContextPath()+"/homeproduct");
+        } else {
+        List<Product> apList = pdao.getAllProductByName(name);
+        
         int totalProduct = apList.size();
-        int npage = totalProduct/9 + 1;
+        int npage = apList.size()/9 + 1;    
         List<Product> p9List = select9Products(apList, cpage);
-        int max = getMaxPrice(prList);
         
         
-        
-        session.setAttribute("maxPrice", max);
-        session.setAttribute("prList", prList);
-        session.setAttribute("apList", apList);
-        session.setAttribute("ppList", p9List);
-        session.setAttribute("bList", bList);
-        session.setAttribute("sList", sList);
-        session.setAttribute("pcList", pcList);
-        session.setAttribute("ppage", npage);
-        session.setAttribute("curpage", cpage);
-        session.setAttribute("pname", "");
-        session.setAttribute("totalProduct", totalProduct);
-        session.setAttribute("mainpage", "shop");
+        session.setAttribute("sql", null);
         session.setAttribute("fcid", null);
         session.setAttribute("fbid", null);
         session.setAttribute("fsid", null);
         session.setAttribute("fpid", null);
-        response.sendRedirect(request.getContextPath()+"/common/product.jsp");
+        session.setAttribute("apList", apList);  
+        session.setAttribute("ppList", p9List);  
+        session.setAttribute("pname", name);
+        session.setAttribute("ppage", npage);
+        session.setAttribute("curpage", cpage);
+        session.setAttribute("totalProduct", totalProduct);
         
-
+        
+        //Set up for filter:
+        ProductCategoryDAO pcdao = new ProductCategoryDAO();
+        BrandDAO bdao = new BrandDAO();
+        SizeDAO sdao = new SizeDAO();
+        PriceDAO prdao = new PriceDAO();
+        List<ProductCategory> pcList = pcdao.getAllProductCategory();
+        List<Brand> bList = bdao.getAllBrand();
+        List<Size> sList = sdao.getAllSize();
+        List<Price> prList = prdao.getAllPrice();
+        int max = getMaxPrice(prList);
+        session.setAttribute("maxPrice", max);
+        session.setAttribute("prList", prList);
+        session.setAttribute("bList", bList);
+        session.setAttribute("sList", sList);
+        session.setAttribute("pcList", pcList);
+        session.setAttribute("mainpage", "shop");
+        response.sendRedirect(request.getContextPath()+"/common/product.jsp");
+        }
+        
+        
     } 
-    
     
     public static List<Product> select9Products( List<Product> pList, int pageNum){
         List<Product> top9List = new ArrayList<>();
@@ -100,6 +108,9 @@ public class HomeProduct extends HttpServlet {
         return top9List;
     }
     
+   
+    
+    
     public static int getMaxPrice(List<Price> pList){
         int max = 0;
         for (Price price : pList) {
@@ -109,7 +120,6 @@ public class HomeProduct extends HttpServlet {
         return max;
     }
 
-    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
      * Handles the HTTP <code>GET</code> method.

@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import model.Product;
 
-@WebServlet(name="ProductList", urlPatterns={"/productlist"})
+@WebServlet(name="ProductList", urlPatterns={"/management/productlist"})
 public class ProductList extends HttpServlet {
    
     /** 
