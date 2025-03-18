@@ -60,7 +60,7 @@ public class Login extends HttpServlet {
             case 1 -> response.sendRedirect(request.getContextPath()+"/admindashboard");
             case 2 -> response.sendRedirect(request.getContextPath()+"/salemanagerdashboard");
             case 3 -> response.sendRedirect(request.getContextPath()+"/orderlist");
-            case 4 -> response.sendRedirect(request.getContextPath()+"/marketinghome");
+            case 4 -> response.sendRedirect(request.getContextPath()+"/mktdashboard");
             default -> response.sendRedirect(request.getContextPath()+"/homeslider");
 
         }
@@ -118,7 +118,7 @@ public class Login extends HttpServlet {
             case 1 -> response.sendRedirect(request.getContextPath()+"/admindashboard");
             case 2 -> response.sendRedirect(request.getContextPath()+"/salemanagerdashboard");
             case 3 -> response.sendRedirect(request.getContextPath()+"/orderlist");
-            case 4 -> response.sendRedirect(request.getContextPath()+"/marketinghome");
+            case 4 -> response.sendRedirect(request.getContextPath()+"/management/mktdashboard");
             default -> response.sendRedirect(request.getContextPath()+"/homeslider");
 
         }
