@@ -14,11 +14,12 @@
         <script type="text/javascript">
             function Delete(id) {
                 if (confirm("Bạn có chắc chắn muốn xóa ID = " + id)) {
-                    window.location = "delete?id=" + id;
+                    window.location = "${pageContext.request.contextPath}/deleteSlider?id=" + id;
+
                 }
             }
         </script>
-       
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Quản lý sản phẩm</title>
         <link rel="icon" href="img/webLogo.jpg" type="image/x-icon" />
@@ -140,45 +141,45 @@
             <jsp:include page="marketing_header.jsp"/>
             <!-- END menu -->
 
-    <center>
-        <!-- Form tìm kiếm -->
-        <form action="searchSlider" method="GET" style="margin-bottom: 10px;">
-            <input type="text" name="search" placeholder="Search title..." value="${param.slider}" />
-            <button type="submit">Search</button> 
-        </form> 
-        <table border="1px" width="60%">
-            
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Tittle</th>
-                    <th>Image</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${requestScope.slider}" var="s">
-                    <c:set var="id" value="${s.id}"/>
-                    <tr>
-                        <td>${id}</td>
-                        <td>${s.tittle}</td>
-                        <td>
-                            <img src="${pageContext.request.contextPath}/${s.image_url}" alt="Slider Image" width="100" height="50"/>
-                        </td>
-                        <td>${s.is_active}</td>
-                        <td><a href="detailSlider?id=${id}">detail</a></td> 
-                        <td><a href="hideSlider?id=${id}">Hide</a></td>
-                        <td><a href="showSlider?id=${id}">Show</a></td>
-                        <td><a href="#" onclick="Delete('${id}')">Delete</a></td>
-                        <td><a href="updateSlider?id=${id}">Edit</a></td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-        <h3><a href="addSlider.jsp">add</a></h3>
-    </center>
+            <center>
+                <!-- Form tìm kiếm -->
+                <form action="searchSlider" method="GET" style="margin-bottom: 10px;">
+                    <input type="text" name="search" placeholder="Search title..." value="${param.slider}" />
+                    <button type="submit">Search</button> 
+                </form> 
+                <table border="1px" width="60%">
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tittle</th>
+                            <th>Image</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${requestScope.slider}" var="s">
+                            <c:set var="id" value="${s.id}"/>
+                            <tr>
+                                <td>${id}</td>
+                                <td>${s.tittle}</td>
+                                <td>
+                                    <img src="${pageContext.request.contextPath}/${s.image_url}" alt="Slider Image" width="100" height="50"/>
+                                </td>
+                                <td>${s.is_active}</td>
+                                <td><a href="detailSlider?id=${id}">detail</a></td> 
+                                <td><a href="hideSlider?id=${id}">Hide</a></td>
+                                <td><a href="showSlider?id=${id}">Show</a></td>
+                                <td><a href="#" onclick="Delete('${id}')">Delete</a></td>
+                                <td><a href="updateSlider?id=${id}">Edit</a></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+                <h3><a href="addSlider.jsp">add</a></h3>
+            </center>
         </div>
-</body>
+    </body>
 </html>
 
 
