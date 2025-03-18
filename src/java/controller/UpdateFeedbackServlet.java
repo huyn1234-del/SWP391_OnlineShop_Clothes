@@ -19,7 +19,7 @@ import model.ProductFeedback;
  *
  * @author Admin
  */
-@WebServlet(name = "UpdateFeedbackServlet", urlPatterns = {"/updateFeedback"})
+@WebServlet(name = "UpdateFeedbackServlet", urlPatterns = {"/management/updateFeedback"})
 public class UpdateFeedbackServlet extends HttpServlet {
 
     /**
@@ -68,14 +68,12 @@ public class UpdateFeedbackServlet extends HttpServlet {
 
             if (feedback != null) {
                 request.setAttribute("feedback", feedback);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("updateFeedback.jsp");
-                dispatcher.forward(request, response);
-            } else {
-                response.sendRedirect("error.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/management/updateFeedback.jsp");
+                dispatcher.forward(request, response);               
             }
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+           
         }
     }
 
@@ -124,3 +122,5 @@ public class UpdateFeedbackServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+

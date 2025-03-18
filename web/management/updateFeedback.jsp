@@ -56,7 +56,7 @@
                 <label>Sản phẩm:</label>
                 <input type="text" value="<%= feedback.getProduct_name() %>" readonly>
 
-                <label>Đánh giá:</label>
+                <label>Rate star:</label>
                 <select name="rating">
                     <option value="1" <%= feedback.getRating() == 1 ? "selected" : "" %>>1</option>
                     <option value="2" <%= feedback.getRating() == 2 ? "selected" : "" %>>2</option>
@@ -65,7 +65,7 @@
                     <option value="5" <%= feedback.getRating() == 5 ? "selected" : "" %>>5</option>
                 </select>
 
-                <label>Rate star:</label>
+                <label>Đánh giá:</label>
                 <textarea name="review" required><%= feedback.getReview() %></textarea>
 
                 <label>Status:</label>

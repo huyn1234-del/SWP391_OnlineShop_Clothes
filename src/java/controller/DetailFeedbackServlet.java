@@ -19,8 +19,8 @@ import model.ProductFeedback;
  *
  * @author Admin
  */
-@WebServlet(name="DetailFeedbackServler", urlPatterns={"/detailFeedback"})
-public class DetailFeedbackServler extends HttpServlet {
+@WebServlet(name="DetailFeedbackServle", urlPatterns={"/management/detailFeedback"})
+public class DetailFeedbackServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -67,15 +67,15 @@ public class DetailFeedbackServler extends HttpServlet {
 
             if (feedback == null) { // Nếu không tìm thấy khách hàng
                 request.setAttribute("error", "Không tìm thấy feedback với ID: " + id);
-                request.getRequestDispatcher("error.jsp").forward(request, response);
+                request.getRequestDispatcher("/management/error.jsp").forward(request, response);
                 return;
             }
 
             request.setAttribute("feedback", feedback);
-            request.getRequestDispatcher("detailFeedback.jsp").forward(request, response);
+            request.getRequestDispatcher("/management/detailFeedback.jsp").forward(request, response);
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("/management/error.jsp");
         }
     } 
 
@@ -102,3 +102,5 @@ public class DetailFeedbackServler extends HttpServlet {
     }// </editor-fold>
 
 }
+
+
