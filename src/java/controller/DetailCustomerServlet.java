@@ -19,7 +19,7 @@ import model.Customer;
  *
  * @author Admin
  */
-@WebServlet(name = "DetailCustomerServlet", urlPatterns = {"/detailCustomer"})
+@WebServlet(name = "DetailCustomerServlet", urlPatterns = {"/management/detailCustomer"})
 public class DetailCustomerServlet extends HttpServlet {
 
     /**
@@ -70,15 +70,15 @@ public class DetailCustomerServlet extends HttpServlet {
 
             if (customer == null) { // Nếu không tìm thấy khách hàng
                 request.setAttribute("error", "Không tìm thấy khách hàng với ID: " + id);
-                request.getRequestDispatcher("error.jsp").forward(request, response);
+                request.getRequestDispatcher("/management/error.jsp").forward(request, response);
                 return;
             }
 
             request.setAttribute("customer", customer);
-            request.getRequestDispatcher("detailCustomer.jsp").forward(request, response);
+            request.getRequestDispatcher("/management/detailCustomer.jsp").forward(request, response);
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("/management/error.jsp");
         }
 
     }
@@ -108,3 +108,5 @@ public class DetailCustomerServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+

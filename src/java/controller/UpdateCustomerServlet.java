@@ -19,7 +19,7 @@ import model.Customer;
  *
  * @author Admin
  */
-@WebServlet(name = "UpdateCustomerServlet", urlPatterns = {"/updateCustomer"})
+@WebServlet(name = "UpdateCustomerServlet", urlPatterns = {"/management/updateCustomer"})
 public class UpdateCustomerServlet extends HttpServlet {
 
     /**
@@ -69,7 +69,7 @@ public class UpdateCustomerServlet extends HttpServlet {
         if (customer != null) {
             // Lưu vào request attribute để truyền sang JSP
             request.setAttribute("customer", customer);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("updateCustomer.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/management/updateCustomer.jsp");
             dispatcher.forward(request, response);
         } else {
             response.sendRedirect("");
@@ -122,3 +122,5 @@ public class UpdateCustomerServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+

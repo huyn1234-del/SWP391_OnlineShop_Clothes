@@ -20,7 +20,7 @@ import model.Customer;
  *
  * @author Admin
  */
-@WebServlet(name ="CustomerServlet", urlPatterns = ("/CustomerServlet"))
+@WebServlet(name ="CustomerServlet", urlPatterns = ("/management/CustomerServlet"))
 
 public class CustomerServlet extends HttpServlet {
    
@@ -62,7 +62,7 @@ public class CustomerServlet extends HttpServlet {
         CustomerDAO customer = new CustomerDAO();
         List<Customer> list = customer.getAllCustomer();
         request.setAttribute("Customer", list);
-        request.getRequestDispatcher("ListCustomer.jsp").forward(request, response);
+        request.getRequestDispatcher("/management/ListCustomer.jsp").forward(request, response);
     } 
 
     /** 
@@ -88,3 +88,5 @@ public class CustomerServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+

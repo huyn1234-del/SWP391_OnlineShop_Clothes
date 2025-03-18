@@ -17,41 +17,34 @@ import model.Customer;
  */
 public class CustomerDAO extends DBContext {
 
-    public List<Customer> getAllCustomer() {
-        List<Customer> list = new ArrayList<>();
-        String sql = "SELECT [user_id]    \n"
-                + "      ,[first_name]\n"
-                + "      ,[last_name]\n"
-                + "      ,[gender]\n"
-                + "      ,[email]\n"
-                + "      ,[phone]\n"
-                + "      ,[is_active]      \n"
-                + "  FROM [OnlineShop_Clothes].[dbo].[Users]\n"
-                + "  "; // Truy vấn lấy tất cả danh mục
+     public List<Customer> getAllCustomer() {     
+    List<Customer> list = new ArrayList<>();     
+    String sql = "SELECT [user_id], [first_name], [last_name], [gender], [email], [phone], [is_active] " 
+               + "FROM [OnlineShop_Clothes].[dbo].[Users] "
+               + "WHERE role_id = 5"; // Thêm điều kiện lọc theo role_id
 
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
+    try {         
+        PreparedStatement st = connection.prepareStatement(sql);         
+        ResultSet rs = st.executeQuery();          
 
-            while (rs.next()) {
-                // Lấy dữ liệu từ ResultSet đúng cột của bảng
-                Customer customer = new Customer(
-                        rs.getInt("user_id"),
-                        rs.getString("first_name"),
-                        rs.getString("last_name"),
-                        rs.getBoolean("gender"),
-                        rs.getString("email"),
-                        rs.getString("phone"),
-                        rs.getBoolean("is_active")
-                );
-                list.add(customer);
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        while (rs.next()) {             
+            Customer customer = new Customer(
+                rs.getInt("user_id"),                         
+                rs.getString("first_name"),                         
+                rs.getString("last_name"),                         
+                rs.getBoolean("gender"),                         
+                rs.getString("email"),                         
+                rs.getString("phone"),                         
+                rs.getBoolean("is_active")
+            );             
+            list.add(customer);         
+        }     
+    } catch (SQLException e) {         
+        System.out.println(e);     
+    }      
 
-        return list;
-    }
+    return list; 
+}
 
     public Customer InfoCustomer(int id) {
         String sql = "SELECT [user_id],[first_name], [last_name], [phone], [email], [gender], [dob], [is_active] "

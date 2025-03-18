@@ -20,7 +20,7 @@ import model.Customer;
  *
  * @author Admin
  */
-@WebServlet(name="SearchCustomerServlet", urlPatterns={"/searchCustomer"})
+@WebServlet(name="SearchCustomerServlet", urlPatterns={"/management/searchCustomer"})
 public class SearchCustomerServlet extends HttpServlet {
    
     /** 
@@ -69,7 +69,7 @@ public class SearchCustomerServlet extends HttpServlet {
         }
 
         request.setAttribute("Customer", customers);
-        request.getRequestDispatcher("searchCustomer.jsp").forward(request, response);
+        request.getRequestDispatcher("/management/searchCustomer.jsp").forward(request, response);
     }
 
     /** 
@@ -95,3 +95,5 @@ public class SearchCustomerServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+
