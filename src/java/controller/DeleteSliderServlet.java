@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name ="DeleteSliderServlet", urlPatterns = ("/deleteSlider"))
+@WebServlet(name ="DeleteSliderServlet", urlPatterns = ("/management/deleteSlider"))
 public class DeleteSliderServlet extends HttpServlet {
    
     /** 
@@ -90,3 +90,5 @@ public class DeleteSliderServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+

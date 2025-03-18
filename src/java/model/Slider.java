@@ -15,7 +15,7 @@ public class Slider {
     String description;
     String image_url;
     String is_active;
-
+    
     public Slider() {
     }
 

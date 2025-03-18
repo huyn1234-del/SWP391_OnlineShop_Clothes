@@ -19,7 +19,7 @@ import model.Slider;
  *
  * @author Admin
  */
-@WebServlet(name="DetailSliderServlet", urlPatterns={"/detailSlider"})
+@WebServlet(name="DetailSliderServlet", urlPatterns={"/management/detailSlider"})
 public class DetailSliderServlet extends HttpServlet {
    
     /** 
@@ -64,12 +64,12 @@ public class DetailSliderServlet extends HttpServlet {
 
             if (slider != null) {
                 request.setAttribute("slider", slider);
-                request.getRequestDispatcher("detailSlider.jsp").forward(request, response);
+                request.getRequestDispatcher("/management/detailSlider.jsp").forward(request, response);
             } else {
-                response.sendRedirect("sliderList.jsp?error=Slider not found");
+                response.sendRedirect("/management/sliderList.jsp?error=Slider not found");
             }
         } catch (NumberFormatException e) {
-            response.sendRedirect("sliderList.jsp?error=Invalid ID format");
+            response.sendRedirect("/management/sliderList.jsp?error=Invalid ID format");
         }
     }
     
@@ -97,3 +97,5 @@ public class DetailSliderServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+

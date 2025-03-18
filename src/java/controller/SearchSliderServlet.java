@@ -19,7 +19,7 @@ import model.Slider;
  *
  * @author Admin
  */
-@WebServlet(name ="SearchSliderServlet", urlPatterns = ("/searchSlider"))
+@WebServlet(name ="SearchSliderServlet", urlPatterns = ("/management/searchSlider"))
 
 public class SearchSliderServlet extends HttpServlet {
 
@@ -74,7 +74,7 @@ public class SearchSliderServlet extends HttpServlet {
 
         // Gửi danh sách slider về JSP
         request.setAttribute("slider", sliders);
-        request.getRequestDispatcher("slider.jsp").forward(request, response);
+        request.getRequestDispatcher("/management/slider.jsp").forward(request, response);
 
     }
 
@@ -103,3 +103,5 @@ public class SearchSliderServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+
