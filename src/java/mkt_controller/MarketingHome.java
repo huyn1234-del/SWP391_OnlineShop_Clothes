@@ -16,6 +16,8 @@ import java.util.List;
 import model.Post;
 import model.Product;
 import model.Slider;
+import model.Sliders;
+
 
 @WebServlet(name="MarketingHome", urlPatterns={"/marketinghome"})
 public class MarketingHome extends HttpServlet {
@@ -28,7 +30,7 @@ public class MarketingHome extends HttpServlet {
         SliderDAO sld = new SliderDAO();
         ProductDAO pdao = new ProductDAO();
         PostDAO podao = new PostDAO();
-        List<Slider> sList = sld.getAllSliders();  
+        List<Sliders> sList = sld.getAllSliders();  
         List<Product> pList = pdao.getHotProduct();
         List<Post> poList = podao.getNewPost();
         String tabfilter = "hot";
