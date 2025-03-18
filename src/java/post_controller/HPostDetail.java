@@ -23,7 +23,7 @@ import model.User;
 
 /**
  *
- * @author Dell
+ * @author ADMIN
  */
 @WebServlet(name="HPostDetail", urlPatterns={"/hpostdetail"})
 public class HPostDetail extends HttpServlet {

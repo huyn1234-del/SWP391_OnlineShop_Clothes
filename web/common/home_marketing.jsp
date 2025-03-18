@@ -1,7 +1,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="model.Slider"%>
+<%@page import="model.Sliders"%>
 <%@page import="model.Product"%>
 <%@page import="model.Post"%>
 <%@page import="java.util.*" %>
@@ -156,17 +156,17 @@
         <section class="hero">
             <div class="hero__slider owl-carousel">
                 <%
-                List<Slider> sList = (List<Slider>)session.getAttribute("hsList");
-                for (Slider slider : sList) {
-                    if(slider.getStatus()==1){
+                List<Sliders> sList = (List<Sliders>)session.getAttribute("hsList");
+                for (Sliders sliders : sList) {
+                    if(sliders.getStatus()==1){
                 %>
-                <div class="hero__items set-bg" data-setbg="../<%=slider.getImg()%>">
+                <div class="hero__items set-bg" data-setbg="../<%=sliders.getImg()%>">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-5 col-lg-7 col-md-8">
                                 <div class="hero__text">                        
-                                    <h2 style="color: white;"><%=slider.getTitle()%></h2>
-                                    <p style="color: white;"><%=slider.getDescription()%></p>
+                                    <h2 style="color: white;"><%=sliders.getTitle()%></h2>
+                                    <p style="color: white;"><%=sliders.getDescription()%></p>
                                     <a href="../sliderlist" class="primary-btn">Quản lý Slider <span class="arrow_right"></span></a>
 
                                 </div>
@@ -225,7 +225,7 @@
 
                     <%
                     for (Product product : pList) {
-                    int price =product.getPrice() - product.getPrice()*product.getDiscount()/100;
+                    int price =product.getPrice() ;
                     String cmoney = numberFormat.format(price);
                     if(product.isIs_active()){
                     %>

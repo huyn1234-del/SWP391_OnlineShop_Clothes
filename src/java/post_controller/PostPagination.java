@@ -19,7 +19,7 @@ import model.Post;
 
 /**
  *
- * @author Dell
+ * @author ADMIN
  */
 @WebServlet(name="PostPagination", urlPatterns={"/postpagination"})
 public class PostPagination extends HttpServlet {

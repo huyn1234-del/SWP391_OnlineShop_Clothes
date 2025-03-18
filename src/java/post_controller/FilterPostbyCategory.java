@@ -22,7 +22,7 @@ import model.PostCategory;
 
 /**
  *
- * @author Dell
+ * @author ADMIN
  */
 @WebServlet(name="FilterPostbyCategory", urlPatterns={"/filterpostbycategory"})
 public class FilterPostbyCategory extends HttpServlet {

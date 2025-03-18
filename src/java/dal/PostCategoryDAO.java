@@ -17,7 +17,7 @@ import model.PostCategory;
 
 /**
  *
- * @author Dell
+ * @author ADMIN
  */
 public class PostCategoryDAO extends DBContext{
      public List<PostCategory> getAllPostCategory() {

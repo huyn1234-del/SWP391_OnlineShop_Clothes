@@ -18,14 +18,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Post;
 import model.PostCategory;
-import model.Product;
 import model.Role;
 import model.SaleChart;
 import model.User;
 
 /**
  *
- * @author Dell
+ * @author ADMIN
  */
 public class PostDAO extends DBContext{
     public List<Post> getAllPost () {
@@ -434,7 +433,7 @@ public class PostDAO extends DBContext{
     }
     
     public PostCategory getPostCategoryByPostID(String id) {
-       PostCategory p = new PostCategory();
+        PostCategory p = new PostCategory();
        String sql = "select * from Post_Categories\n" +
                     "where post_category_id = (\n" +
                     "select post_category_id\n" +

@@ -23,7 +23,7 @@ import model.ProductFeedback;
 
 /**
  *
- * @author Dell
+ * @author ADMIN
  */
 @WebServlet(name="HPostList", urlPatterns={"/hpostlist"})
 public class HPostList extends HttpServlet {
