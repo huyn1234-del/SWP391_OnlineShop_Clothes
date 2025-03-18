@@ -20,7 +20,7 @@ import model.ProductFeedback;
  *
  * @author Admin
  */
-@WebServlet(name="SearchFeedbackServlet", urlPatterns={"/searchFeedback"})
+@WebServlet(name="SearchFeedbackServlet", urlPatterns={"/management/searchFeedback"})
 public class SearchFeedbackServlet extends HttpServlet {
    
     /** 
@@ -71,7 +71,7 @@ public class SearchFeedbackServlet extends HttpServlet {
 
         // Gửi danh sách slider về JSP
         request.setAttribute("Feedback", list);
-        request.getRequestDispatcher("ListFeedback.jsp").forward(request, response);
+        request.getRequestDispatcher("/management/ListFeedback.jsp").forward(request, response);
     } 
 
     /** 
@@ -97,3 +97,5 @@ public class SearchFeedbackServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+

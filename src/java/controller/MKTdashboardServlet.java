@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name ="MKTdashboardServlet", urlPatterns = ("/mktdashboard"))
+@WebServlet(name ="MKTdashboardServlet", urlPatterns = ("/management/mktdashboard"))
 public class MKTdashboardServlet extends HttpServlet {
    
     /** 
@@ -66,7 +66,7 @@ public class MKTdashboardServlet extends HttpServlet {
         request.setAttribute("postCountproduct", postCountproduct); 
         request.setAttribute("postCountcustomer", postCountcustomer); 
         request.setAttribute("postCountfeedback", postCountfeedback); 
-        request.getRequestDispatcher("MKTdashboard.jsp").forward(request, response); // Chuyển hướng đến JSP
+        request.getRequestDispatcher("/management/MKTdashboard.jsp").forward(request, response); // Chuyển hướng đến JSP
     } 
 
     /** 
@@ -92,3 +92,5 @@ public class MKTdashboardServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+

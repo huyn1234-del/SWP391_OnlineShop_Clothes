@@ -3,10 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package post_controller;
+package product_controller;
 
-import dal.PostCategoryDAO;
-import dal.PostDAO;
+import dal.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,17 +15,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import model.Post;
-import model.PostCategory;
-import model.ProductFeedback;
+import model.Product;
 
 /**
  *
- * @author ADMIN
+ * @author Dell
  */
-@WebServlet(name="HPostList", urlPatterns={"/hpostlist"})
-public class HPostList extends HttpServlet {
+@WebServlet(name="ProductSort", urlPatterns={"/productsort"})
+public class ProductSort extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -38,53 +36,66 @@ public class HPostList extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        PostDAO pdao = new PostDAO();
-        PostCategoryDAO pcdao = new PostCategoryDAO();
-        List<Post> pList = pdao.getAllPost();
-        List<Post> top6post = select6Post(pList, 0);
-        List<PostCategory> pcList = pcdao.getAllPostCategory();
+       HttpSession session = request.getSession();
+       List<Product> apList = (List<Product>)session.getAttribute("apList");
+        ProductDAO pdao = new ProductDAO();
         
-        session.setAttribute("allpostlist", pList);
-        session.setAttribute("top6post", top6post);
-        session.setAttribute("postcategorylist", pcList);
-        session.setAttribute("cpostpage", 0);
+       String sortValue = request.getParameter("sortValue");
+       if(sortValue.equals("low")){
+           apList.sort(new Comparator<Product>() {
+               @Override
+               public int compare(Product o1, Product o2) {
+                   return o1.getPrice()-o2.getPrice();
+               }
+           });
+       } else if(sortValue.equals("high")){
+          apList.sort(new Comparator<Product>() {
+               @Override
+               public int compare(Product o1, Product o2) {
+                   return o2.getPrice()-o1.getPrice();
+               }
+           }); 
+       } else if(sortValue.equals("rate")){
+           apList.sort(new Comparator<Product>() {
+               @Override
+               public int compare(Product o1, Product o2) {
+                   return (o2.getRated_star()-o1.getRated_star());
+               }
+           }); 
+       } else if(sortValue.equals("best")){
+           String s = "";
+           for (Product product : apList) {
+               s+=product.getProduct_id()+","; 
+           }
+           s = s.substring(0, s.length()-1);
+           apList = pdao.getAllHotProduct(s);
+       }
+       int totalProduct = apList.size();
+        int npage = totalProduct/9 + 1;
+        int cpage = 0;
+        List<Product> p9List = select9Products(apList, cpage);
         
         
-        //Reset
-         Reset(session);
-        
-        response.sendRedirect(request.getContextPath()+"/common/post.jsp");
-        
-        
-//        List<PostCategory> postcategorylist = (List<PostCategory>)session.getAttribute("postcategorylist");
-//        for (PostCategory postCategory : postcategorylist) {
-//            
-//        }
-        
+        session.setAttribute("sortValue", sortValue);
+        session.setAttribute("ppList", p9List);  
+        session.setAttribute("curpage", cpage);
+        session.setAttribute("ppage", npage);
+        session.setAttribute("totalProduct", totalProduct);
+       
+       response.sendRedirect(request.getContextPath()+"/common/product.jsp");
     } 
     
-    public static void Reset(HttpSession session){
-        session.setAttribute("pobegin", "");
-        session.setAttribute("poend", "");
-        session.setAttribute("author", "");
-        session.setAttribute("title", "");
-        session.setAttribute("sortPostValue", "");
-        session.setAttribute("mainpage", "blog");
-        session.setAttribute("ploi", "");
-    }
-    
-    public static List<Post> select6Post( List<Post> pList, int pageNum){
-        List<Post> top6List = new ArrayList<>();
-        for(int i = pageNum*6;i<=pageNum*6+5;i++){
+    public static List<Product> select9Products( List<Product> pList, int pageNum){
+        List<Product> top9List = new ArrayList<>();
+        for(int i = pageNum*9;i<=pageNum*9+8;i++){
             if(i>=pList.size()) {
                 break;
             } else {
-                top6List.add(pList.get(i));
+                top9List.add(pList.get(i));
             }
         }
         
-        return top6List;
+        return top9List;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author quanpyke
+ * @author ADMIN
  */
 public class Sliders {
     int id;

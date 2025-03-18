@@ -19,7 +19,7 @@ import model.ProductFeedback;
  *
  * @author Admin
  */
-@WebServlet(name = "FeedbackServlet", urlPatterns = {"/feedback"})
+@WebServlet(name = "FeedbackServlet", urlPatterns = {"/management/feedback"})
 public class FeedbackServlet extends HttpServlet {
 
     /**
@@ -74,7 +74,7 @@ public class FeedbackServlet extends HttpServlet {
 
         // Đặt danh sách feedback vào requestScope với tên thống nhất
         request.setAttribute("Feedback", feedbackList);
-        request.getRequestDispatcher("ListFeedback.jsp").forward(request, response);
+        request.getRequestDispatcher("/management/ListFeedback.jsp").forward(request, response);
     }
 
     /**
@@ -94,7 +94,7 @@ public class FeedbackServlet extends HttpServlet {
         request.getSession().setAttribute("selectedColumns", selectedColumns != null ? String.join(",", selectedColumns) : "1,2,3,4,5,6,7,8");
         response.sendRedirect("feedback");
     }
-
+    
     /**
      * Returns a short description of the servlet.
      *
@@ -106,3 +106,5 @@ public class FeedbackServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+

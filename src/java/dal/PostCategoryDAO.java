@@ -11,6 +11,10 @@ import java.util.logging.Logger;
 import model.Post;
 import model.PostCategory;
 
+/**
+ *
+ * @author ADMIN
+ */
 public class PostCategoryDAO extends DBContext{
      public List<PostCategory> getAllPostCategory() {
         List<PostCategory> pList = new ArrayList<>();

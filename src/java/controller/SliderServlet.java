@@ -20,7 +20,7 @@ import model.Slider;
  *
  * @author Admin
  */
-@WebServlet(name ="SliderServlet", urlPatterns = ("/slider"))
+@WebServlet(name ="SliderServlet", urlPatterns = ("/management/slider"))
 
 public class SliderServlet extends HttpServlet {
    
@@ -63,7 +63,7 @@ public class SliderServlet extends HttpServlet {
         SliderDAO slider = new SliderDAO();
         List<Slider> list = slider.getAllSlider();
         request.setAttribute("slider", list);
-        request.getRequestDispatcher("slider.jsp").forward(request, response);        
+        request.getRequestDispatcher("/management/slider.jsp").forward(request, response);        
     } 
 
     /** 
@@ -91,3 +91,5 @@ public class SliderServlet extends HttpServlet {
     
 
 }
+
+

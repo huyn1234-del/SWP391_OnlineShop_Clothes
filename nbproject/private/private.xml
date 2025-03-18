@@ -56,6 +56,62 @@
             <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/ProductCategory.java</file>
             <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/post_controller/HPostList.java</file>
             <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/post_controller/PostPagination.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PostDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/BrandDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/RoleDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/web/management/mkt_dashboard.jsp</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PostCategoryDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/PostCategory.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/web/common/home_marketing.jsp</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/web/common/headermanage.jsp</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Sliders.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/ProductPaging.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PostFeedbackDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Slider.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/web/WEB-INF/web.xml</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/post_controller/HPostDetail.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/mkt_controller/MKTDashboardFilter.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PaymentStatusDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/PostCategories.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/web/common/js.jsp</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/mkt_controller/MarketingHome.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Post.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/SlidersDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/post_controller/HPostList.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/auth_controller/Logout.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Size.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductImageDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductFeedbackDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/post_controller/HPostfilter.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/web/management/marketing_header.jsp</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/User.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/DBContext.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/ViewProduct.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductCategoryDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PriceDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Role.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/auth_controller/Register.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/SearchProduct.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/mkt_controller/MarkertingDashboard.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/SliderDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Price.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/SizeDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/controller/DetailSliderServlet.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/auth_controller/Verify.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/Product.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/auth_controller/Login.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/ProductList.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/slider_controller/HomeSlider.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/UserDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/ProductSizeDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/ProductCategory.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/post_controller/FilterPostbyCategory.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/post_controller/PostPagination.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/web/management/marketingfilter.jsp</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/UpdateProduct.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/Pagination.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/product_controller/ProductFilter.java</file>
         </group>
     </open-files>
 </project-private>

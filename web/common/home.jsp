@@ -49,26 +49,7 @@
         </div>
         <jsp:include page="../common/header.jsp" />
         <!-- Header Section End -->
-        <div class="container">
-            <h4>Lọc Hiển Thị</h4>
-            <form id="filterForm">
-                <label><input type="checkbox" id="toggleSliderTitle" checked> Hiện Tiêu Đề Slider</label>
-                <label><input type="checkbox" id="toggleSliderDesc" checked> Hiện Mô Tả Slider</label>
-                <label><input type="checkbox" id="togglePostTitle" checked> Hiện Tiêu Đề Bài Viết</label>
-                <label><input type="checkbox" id="togglePostDate" checked> Hiện Ngày Đăng</label>
-                <br>
-                <label for="postCount">Số lượng bài viết:</label>
-                <input type="number" id="postCount" min="1" value="3">
-                <span id="error-message" style="color: red; display: none;">Số bài viết phải lớn hơn 0</span>
-                <br>
-                <button type="button" id="applyFilter" class="btn btn-primary">Áp dụng</button>
-            </form>
-        </div>
-
-
-
-
-
+        
         <!-- Hero Section Begin -->
         <section class="hero">
             <div class="hero__slider owl-carousel">
@@ -98,9 +79,117 @@
             </div>
         </section>
         <!-- Hero Section End -->
+        
+        <!-- Product Section Begin -->
+        <%
+        String tab = session.getAttribute("tabfilter")+"";
+        List<Product> pList = (List<Product>)session.getAttribute("hpList");
+        
+        Locale locale = new Locale("vi", "VN");
+        Currency currency = Currency.getInstance("VND");
+        DecimalFormatSymbols df = DecimalFormatSymbols.getInstance(locale);
+        df.setCurrency(currency);
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance(locale);
+        numberFormat.setCurrency(currency);
+        
+        %>
+        <section class="product spad" style="
+                 padding-top: 32px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="filter__controls">
+                            <li class="active"><a style="color: <%=tab.equals("new")?"black":"#ccc"%>;" href="../homefilter?tab=new">New Arrivals</a></li>
+                            <li class=""><a style="color: <%=tab.equals("sale")?"black":"#ccc"%>;" href="../homefilter?tab=sale">Hot Sales</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row product__filter">
+
+                    <%
+                    for (Product product : pList) {
+                    int price =product.getPrice() ;
+                    String omoney = numberFormat.format(product.getPrice());
+                    String cmoney = numberFormat.format(price);
+                    if(product.isIs_active()){
+                    %>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+
+
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="../<%=product.getThumbnail()%>">                        
+                                
+                                <ul class="product__hover">
+
+                                    <li><a href="../hproductdetail?proid=<%=product.getProduct_id()%>"><img src="img/icon/search.png" alt=""></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h5 style="cursor: pointer" onclick="window.location.href = '../hproductdetail?proid=<%=product.getProduct_id()%>'"><%=product.getProduct_name()%></h5>
+                                
+                                <div class="rating">
+                                    <%if(product.getRated_star()<=0){
+                                    %>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <% } else if(product.getRated_star()<=1){%>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <% } else if(product.getRated_star()<=2){  %>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <%} else if(product.getRated_star()<=3){%>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <%} else if(product.getRated_star()<=4){%>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <%} else { %>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <%}%>
+                                </div>
+                                <h5>
+                                <%=cmoney%>
+
+                                </h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <%
+                        }
+                    }
+                    %>
+
+
+                </div>
+            </div>
+        </section>
+        <!-- Product Section End -->
         <!-- Latest Blog Section Begin -->
         <section class="latest spad">
-            <div class="container">
+           <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-title">
@@ -110,36 +199,38 @@
                     </div>
                 </div>
 
-               <div class="row" id="postContainer">
-    <%
-    List<Post> poList = (List<Post>) session.getAttribute("poList");
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-    int postIndex = 0;
-    for (Post post : poList) {
-        if (post.getIs_active() == 1) {
-            String date = sdf.format(post.getModified_at());
-    %>
-    <div class="col-lg-4 col-md-6 col-sm-6 post-item <%= postIndex >= 3 ? "hidden" : "" %>">
-        <div class="blog__item">
-            <div class="blog__item__text">
-                                            <div class="blog__item__pic set-bg" data-setbg="../<%=post.getThumbnail()%>"></div>
+                <%
+                List<Post> poList = (List<Post>)session.getAttribute("poList");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                 int i = 0;
+                %>
+                <div class="row">
 
-                <span class="post-date"><img src="img/icon/calendar.png" alt=""> <%= date %></span>
-                <h5 class="post-title"><%= post.getTitle() %></h5>
-                <a href="../hpostdetail?bid=<%= post.getPost_id() %>">Đọc bài viết</a>
-            </div>
-        </div>
-    </div>
-    <%
-            postIndex++;
-        }
-    }
-    %>
-</div>
+                    <%
+                    for (Post post : poList) {
+                    if(post.getIs_active()==1){
+                    String date = sdf.format(post.getModified_at());
+                    %>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="blog__item">
+                            <div class="blog__item__pic set-bg" data-setbg="../<%=post.getThumbnail()%>"></div>
+                            <div class="blog__item__text">
+                                <span><img src="img/icon/calendar.png" alt=""> <%=date%></span>
+                                <h5><%=post.getTitle()%></h5>
+                                <a href="../hpostdetail?bid=<%=post.getPost_id()%>">Đọc bài viết</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <%
+                    i++;
+                    if(i==3) break;
+                    }
+                   }
+                    %>
 
 
-
-
+                </div>
             </div>
         </section>
         <!-- Latest Blog Section End -->
@@ -173,48 +264,7 @@
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/main.js"></script>
 
-     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let posts = document.querySelectorAll(".post-item");
-
-        function updatePostVisibility(count) {
-            posts.forEach((post, index) => {
-                post.style.display = index < count ? "block" : "none";
-            });
-        }
-
-        // Mặc định hiển thị 3 bài
-        updatePostVisibility(3);
-
-        document.getElementById("applyFilter").addEventListener("click", function () {
-            let postCountInput = document.getElementById("postCount");
-            let postCount = parseInt(postCountInput.value) || 1;
-
-            // Kiểm tra nếu số bài viết nhỏ hơn 1
-            if (postCount < 1) {
-                document.getElementById("error-message").style.display = "block";
-                postCountInput.value = 1;
-                return;
-            } else {
-                document.getElementById("error-message").style.display = "none";
-            }
-
-            // Cập nhật số lượng bài viết hiển thị
-            updatePostVisibility(postCount);
-
-            // Kiểm tra trạng thái checkbox khi nhấn "Áp dụng"
-            let showSliderTitle = document.getElementById("toggleSliderTitle").checked;
-            let showSliderDesc = document.getElementById("toggleSliderDesc").checked;
-            let showPostTitle = document.getElementById("togglePostTitle").checked;
-            let showPostDate = document.getElementById("togglePostDate").checked;
-
-            document.querySelectorAll(".slider-title").forEach(el => el.style.display = showSliderTitle ? "block" : "none");
-            document.querySelectorAll(".slider-desc").forEach(el => el.style.display = showSliderDesc ? "block" : "none");
-            document.querySelectorAll(".post-title").forEach(el => el.style.display = showPostTitle ? "block" : "none");
-            document.querySelectorAll(".post-date").forEach(el => el.style.display = showPostDate ? "block" : "none");
-        });
-    });
-</script>
+   
 
     </body>
 

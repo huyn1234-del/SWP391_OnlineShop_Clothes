@@ -12,6 +12,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+/**
+ *
+ * @author ADMIN
+ */
 public class RoleDAO extends DBContext {
 
     public Role getRoleById(int id) {

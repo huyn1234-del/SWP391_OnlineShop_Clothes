@@ -16,7 +16,10 @@ import java.util.List;
 import model.Post;
 import model.PostCategory;
 
-
+/**
+ *
+ * @author ADMIN
+ */
 @WebServlet(name="FilterPostbyCategory", urlPatterns={"/filterpostbycategory"})
 public class FilterPostbyCategory extends HttpServlet {
    

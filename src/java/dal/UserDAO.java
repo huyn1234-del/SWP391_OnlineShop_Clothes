@@ -12,6 +12,12 @@ import java.util.logging.Logger;
 import model.Role;
 import model.User;
 
+
+/**
+ *
+ * @author ADMIN
+ */
+
 public class UserDAO extends DBContext {
   
     public boolean updateVerifyCode(int user_id, String verifyCode) {

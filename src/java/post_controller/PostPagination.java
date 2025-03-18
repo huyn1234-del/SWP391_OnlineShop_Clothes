@@ -13,7 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Post;
 
-
+/**
+ *
+ * @author ADMIN
+ */
 @WebServlet(name="PostPagination", urlPatterns={"/postpagination"})
 public class PostPagination extends HttpServlet {
    

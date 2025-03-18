@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 
 package slider_controller;
 
@@ -18,7 +22,7 @@ import model.Sliders;
 
 /**
  *
- * @author Dell
+ * @author ADMIN
  */
 @WebServlet(name="HomeSlider", urlPatterns={"/homeslider"})
 public class HomeSlider extends HttpServlet {

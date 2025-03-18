@@ -24,7 +24,7 @@ import model.Post;
 
 /**
  *
- * @author Dell
+ * @author ADMIN
  */
 @WebServlet(name="HPostfilter", urlPatterns={"/hpostfilter"})
 public class HPostfilter extends HttpServlet {

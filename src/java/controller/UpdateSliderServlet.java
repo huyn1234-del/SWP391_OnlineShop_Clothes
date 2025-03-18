@@ -18,7 +18,7 @@ import model.Slider;
  *
  * @author Admin
  */
-@WebServlet(name ="UpdateSliderServlet", urlPatterns = ("/updateSlider"))
+@WebServlet(name ="UpdateSliderServlet", urlPatterns = ("/management/updateSlider"))
 
 public class UpdateSliderServlet extends HttpServlet {
 
@@ -67,7 +67,7 @@ public class UpdateSliderServlet extends HttpServlet {
             id = Integer.parseInt(id_raw);
             Slider slider = s.getSliderbyid(id);
             request.setAttribute("updateSlide", slider);
-            request.getRequestDispatcher("updateSlider.jsp").forward(request, response);
+            request.getRequestDispatcher("/management/updateSlider.jsp").forward(request, response);
         } catch (NumberFormatException e) {
             
         }
@@ -112,3 +112,5 @@ public class UpdateSliderServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+
