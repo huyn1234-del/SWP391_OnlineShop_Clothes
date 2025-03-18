@@ -17,43 +17,48 @@ import model.Post;
 import model.PostCategory;
 
 
-@WebServlet(name="FilterPostbyCategory", urlPatterns={"/filterpostbycategory"})
-public class FilterPostbyCategory extends HttpServlet {
+@WebServlet(name="FilterPostbyAuthor", urlPatterns={"/filterpostbyauthor"})
+public class FilterPostbyAuthor extends HttpServlet {
    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
+         HttpSession session = request.getSession();
         PostDAO pdao = new PostDAO();
-        PostCategoryDAO pcdao = new PostCategoryDAO();
         
-        String cid = request.getParameter("cid");
-        List<Post> pList = pdao.getAllPostByCategoryId(cid);
-        List<Post> top6post = select6Post(pList, 0);
-        List<PostCategory> pcList = pcdao.getAllPostCategory();
-        session.setAttribute("mainpage", "blog");
-        session.setAttribute("allpostlist", pList);
-        session.setAttribute("top6post", top6post);
-        session.setAttribute("postcategorylist", pcList);
-        session.setAttribute("cpostpage", 0);
+        
+        String filter = request.getParameter("aid");
+        List<Post> pList = pdao.getAllPostMarketing();
+        if(filter.equals("all")==false){
+            pList = pdao.getAllPostMarketingByAuthorId(filter);
+        } 
+        List<Post> top3post = select3Post(pList, 0); 
         Reset(session);
-        session.setAttribute("sortPostValue", cid);
-        response.sendRedirect(request.getContextPath()+"/common/post.jsp");
-    } 
 
+        
+        session.setAttribute("authorfiltermkt", filter);
+        session.setAttribute("listpostmarketing", pList);
+        session.setAttribute("top3postmarketing", top3post);
+        session.setAttribute("cpostmkt", 0);
+        response.sendRedirect(request.getContextPath()+"/management/listpostmarketing.jsp");
+    } 
+    
     
     public static void Reset(HttpSession session){
-        session.setAttribute("pobegin", "");
-        session.setAttribute("poend", "");
-        session.setAttribute("author", "");
-        session.setAttribute("title", "");
-        session.setAttribute("sortPostValue", "");
-        session.setAttribute("mainpage", "blog");
-        session.setAttribute("ploi", "");
+        session.setAttribute("begindatemkt", "");
+        session.setAttribute("enddatemkt", "");
+        session.setAttribute("authormkt", "");
+        session.setAttribute("titlemkt", "");
+        session.setAttribute("sortValuemkt",null);
+        session.setAttribute("pCategorycmk", null);
+        session.setAttribute("pcmktName", "");
+        session.setAttribute("pmktloi", "");
     }
-    public static List<Post> select6Post( List<Post> pList, int pageNum){
+    
+    public static List<Post> select3Post( List<Post> pList, int pageNum){
         List<Post> top6List = new ArrayList<>();
-        for(int i = pageNum*6;i<=pageNum*6+5;i++){
+        for(int i = pageNum*3;i<=pageNum*3+2;i++){
             if(i>=pList.size()) {
                 break;
             } else {
@@ -63,6 +68,8 @@ public class FilterPostbyCategory extends HttpServlet {
         
         return top6List;
     }
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {

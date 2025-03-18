@@ -225,7 +225,7 @@
 
                     <%
                     for (Product product : pList) {
-                    int price =product.getPrice() - product.getPrice()*product.getDiscount()/100;
+                    int price =product.getPrice();
                     String cmoney = numberFormat.format(price);
                     if(product.isIs_active()){
                     %>

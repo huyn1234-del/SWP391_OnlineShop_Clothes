@@ -155,7 +155,7 @@
                                     <th scope="col">STT</th>
                                     <th scope="col" style="width: 20%">Tên</th>
                                     <th scope="col">Ảnh</th>
-                                    <th scope="col">Danh mục</th> <!-- Chuyển cột danh mục lên đây -->
+                                    <th scope="col">Danh mục</th> 
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Giá(₫)</th>
                                     <th scope="col">Xem</th>
@@ -165,7 +165,7 @@
                                 <!-- START Product item -->
                                 <%
                                     List<Product> pList = (ArrayList<Product>) session.getAttribute("product_list");
-                                    ProductCategoryDAO pcdao = new ProductCategoryDAO();  // Tạo đối tượng DAO cho danh mục sản phẩm
+                                    ProductCategoryDAO pcdao = new ProductCategoryDAO();  
                                     int num = 1;
                                     for (Product p : pList) {
                                         double price = p.getPrice();
@@ -180,7 +180,7 @@
                                     <td class="product-img">
                                         <img src="../<%= p.getThumbnail()%>">
                                     </td>
-                                    <td><%= category != null ? category.getProduct_category_name() : "Không có danh mục" %></td> <!-- Hiển thị tên danh mục -->
+                                    <td><%= category != null ? category.getProduct_category_name() : "Không có danh mục" %></td>
                                     <td>
                                         <%
                                             if(p.isIs_active()==true) {   
