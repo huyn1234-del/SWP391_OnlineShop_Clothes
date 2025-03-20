@@ -22,7 +22,7 @@ import model.User;
 
 
 @MultipartConfig
-@WebServlet(name="AddPostMarketing", urlPatterns={"/addpostmarketing"})
+@WebServlet(name="AddPostMarketing", urlPatterns={"/management/addpostmarketing"})
 public class AddPostMarketing extends HttpServlet {
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -55,7 +55,7 @@ public class AddPostMarketing extends HttpServlet {
         Post post = new Post(1, posttitle, postcontent, img, authorid, is_active, today, today, postCategoryId);
         pdao.AddNewPost(post);
         
-        response.sendRedirect(request.getContextPath()+"/listpostmarketing");
+        response.sendRedirect(request.getContextPath()+"/management/listpostmarketing");
         
     } 
 

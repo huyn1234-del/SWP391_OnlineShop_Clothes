@@ -20,7 +20,7 @@ import model.Post;
  *
  * @author Dell
  */
-@WebServlet(name="ShowHidePostMarketing", urlPatterns={"/showhidepostmarketing"})
+@WebServlet(name="ShowHidePostMarketing", urlPatterns={"/management/showhidepostmarketing"})
 public class ShowHidePostMarketing extends HttpServlet {
    
     /** 
@@ -40,7 +40,7 @@ public class ShowHidePostMarketing extends HttpServlet {
         String pid = request.getParameter("pid");
         
         pdao.ShowHidePost(pid, is_active);
-        response.sendRedirect(request.getContextPath()+"/listpostmarketing");
+        response.sendRedirect(request.getContextPath()+"/management/listpostmarketing");
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

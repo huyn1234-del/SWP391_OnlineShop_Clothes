@@ -28,7 +28,7 @@
         <jsp:include page="../common/headermanage.jsp" />
         <div class="container">
             <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-                <a href="../productlist" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <a href="../management/productlist" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                     <i style="margin-right: 10px; font-size: 24px;" class="bi bi-arrow-90deg-left"></i>
                     <span class="fs-4">Quay lại</span>
                 </a>                
@@ -44,7 +44,7 @@
 
                 <div class="row g-5" style="justify-content: center;">
                     <div class="col-md-8">
-                        <form class="needs-validation" action="../addproduct" method="post" enctype="multipart/form-data">
+                        <form class="needs-validation" action="../management/addproduct" method="post" enctype="multipart/form-data">
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <label for="name" class="form-label">Tên sản phẩm</label>

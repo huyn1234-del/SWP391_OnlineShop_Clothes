@@ -17,7 +17,7 @@ import model.Post;
 import model.PostCategory;
 import model.User;
 
-@WebServlet(name="ListPostMarketing", urlPatterns={"/listpostmarketing"})
+@WebServlet(name="ListPostMarketing", urlPatterns={"/management/listpostmarketing"})
 public class ListPostMarketing extends HttpServlet {
    
 

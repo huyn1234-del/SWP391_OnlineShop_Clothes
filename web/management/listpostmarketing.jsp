@@ -171,8 +171,22 @@
                 <!-- START products -->
                 <div class="product" style="padding: 40px;">
                     <div class="container products" >
+                        <div>
+                            <label><input type="checkbox" id="toggleId" checked>Id</label>
+                            <label><input type="checkbox" id="toggleTitle" checked>Tiêu đề</label>
+                            <label><input type="checkbox" id="toggleImage" checked>Ảnh</label>
+                            <label><input type="checkbox" id="toggleCategory" checked>Danh mục</label>
+                            <label><input type="checkbox" id="toggleAuthor" checked>Tác giả</label>
+                            <label><input type="checkbox" id="toggleCreatedAt" checked>Ngày tạo</label>
+                            <label><input type="checkbox" id="toggleModifiedAt" checked>Ngày sửa đổi</label>
+
+                            <label for="postPerPage">Số bài viết hiển thị trên một trang: </label>
+                            <input type="number" id="postPerPage" value="3" max ="3" min="1" style="width: 60px;">
+                            <button id="applyFilter">Áp dụng</button>
+                        </div> 
+
                         <div class="" id="navbarSupportedContent" style="margin: 10px 0;">
-                            <form action="../listpostfiltermkt" class="d-flex" role="search">
+                            <form action="../management/listpostfiltermkt" class="d-flex" role="search">
                                 <h5 style="font-weight: bold;" class="navbar-brand" href="#">Từ:</h5>
                                 <input value="<%=begin%>" name="begindate" class="form-control me-2" type="date" aria-label="Search">
                                 <h5 style="font-weight: bold;" class="navbar-brand" href="#">Đến:</h5>
@@ -208,7 +222,7 @@
                                             for (PostCategory postCategory : postcategorylist) {
 
                                             %>
-                                            <li class=""><a class="dropdown-item " href="../listpostfiltermkt?cid=<%=postCategory.getPost_category_id()%>"><%=postCategory.getPost_category_name()%></a></li>
+                                            <li class=""><a class="dropdown-item " href="../management/listpostfiltermkt?cid=<%=postCategory.getPost_category_id()%>"><%=postCategory.getPost_category_name()%></a></li>
                                                 <%
                                                     }
                                                 %>
@@ -225,8 +239,8 @@
                                             <%=(authorfiltermkt.length()==0||authorfiltermkt.equals("all"))?"Tất cả bài viết":"Bài viết của bạn"%>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li class=""><a class="dropdown-item " href="../filterpostbyauthor?aid=all">Tất cả bài viết</a></li>
-                                            <li class=""><a class="dropdown-item " href="../filterpostbyauthor?aid=<%=user.getUser_id()%>">Bài viết của bạn</a></li>
+                                            <li class=""><a class="dropdown-item " href="../management/filterpostbyauthor?aid=all">Tất cả bài viết</a></li>
+                                            <li class=""><a class="dropdown-item " href="../management/filterpostbyauthor?aid=<%=user.getUser_id()%>">Bài viết của bạn</a></li>
                                         </ul>
                                     </div>
 
@@ -294,20 +308,20 @@
                                         if(user.getUser_id()==post.getAuthor_id()){
                                         %>
                                         <div class="edit">
-                                            <a href="..\editpostmarketing?pid=<%=post.getPost_id()%>"><i style="color: black;" class="fa-solid fa-pen"></i></a>
+                                            <a href="../management/editpostmarketing?pid=<%=post.getPost_id()%>"><i style="color: black;" class="fa-solid fa-pen"></i></a>
                                         </div>
                                         <%
                                             }
                                         %>
 
                                         <div class="remove">
-                                            <a style="color: white;" href="..\viewpostmarketing?pid=<%=post.getPost_id()%>"><i class="fa-solid fa-circle-info"></i></a>  
+                                            <a style="color: white;" href="../management/viewpostmarketing?pid=<%=post.getPost_id()%>"><i class="fa-solid fa-circle-info"></i></a>  
                                         </div>
                                         <%
                                         if(post.getIs_active()==0){
                                         %>
                                         <div class="remove" style="background-color: greenyellow">                               
-                                            <a href="../showhidepostmarketing?ia=1&pid=<%=post.getPost_id()%>" onclick="return confirm('Show this post?')">
+                                            <a href="../management/showhidepostmarketing?ia=1&pid=<%=post.getPost_id()%>" onclick="return confirm('Show this post?')">
                                                 <i style="color: black;" class="bi bi-eye-fill"></i>
                                             </a>    
                                         </div>
@@ -315,7 +329,7 @@
                                             } else {
                                         %>
                                         <div class="remove" style="background-color: red">   
-                                            <a href="../showhidepostmarketing?ia=0&pid=<%=post.getPost_id()%>" onclick="return confirm('Hide this post?')"><i style="color: black;" class="bi bi-eye-slash-fill"></i></a>   
+                                            <a href="../management/showhidepostmarketing?ia=0&pid=<%=post.getPost_id()%>" onclick="return confirm('Hide this post?')"><i style="color: black;" class="bi bi-eye-slash-fill"></i></a>   
                                         </div>
                                         <%
                                             }
@@ -346,7 +360,7 @@
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
                                     <li class="page-item">
-                                        <a class="page-link" href="../postmktpagi?cpage=<%=cpostpage-1%>" aria-label="Previous">
+                                        <a class="page-link" href="../management/postmktpagi?cpage=<%=cpostpage-1%>" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
@@ -354,17 +368,127 @@
                                     <%
                                     for (int j = 0; j < npage; j++) {
                                     %>
-                                    <li class="page-item"><a class="page-link <%=j==cpostpage?"active":""%>" href="../postmktpagi?cpage=<%=j%>"><%=j+1%></a></li>
+                                    <li class="page-item"><a class="page-link <%=j==cpostpage?"active":""%>" href="../management/postmktpagi?cpage=<%=j%>"><%=j+1%></a></li>
                                         <%
                                             }
                                         %>
                                     <li class="page-item">
-                                        <a class="page-link" href="../postmktpagi?cpage=<%=cpostpage+1%>" aria-label="Next">
+                                        <a class="page-link" href="../management/postmktpagi?cpage=<%=cpostpage+1%>" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
                                 </ul>
                             </nav>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    // Lấy các checkbox tương ứng với từng cột
+                                    let toggleId = document.getElementById("toggleId");
+                                    let toggleTitle = document.getElementById("toggleTitle");
+                                    let toggleImage = document.getElementById("toggleImage");
+                                    let toggleCategory = document.getElementById("toggleCategory");
+                                    let toggleAuthor = document.getElementById("toggleAuthor");
+                                    let toggleCreatedAt = document.getElementById("toggleCreatedAt");
+                                    let toggleModifiedAt = document.getElementById("toggleModifiedAt");
+
+                                    // Hàm cập nhật hiển thị cột
+                                    function updateColumnVisibility() {
+                                        document.querySelectorAll("th:nth-child(1), td:nth-child(1)").forEach(el => {
+                                            el.style.display = toggleId.checked ? "table-cell" : "none";
+                                        });
+                                        document.querySelectorAll("th:nth-child(2), td:nth-child(2)").forEach(el => {
+                                            el.style.display = toggleTitle.checked ? "table-cell" : "none";
+                                        });
+                                        document.querySelectorAll("th:nth-child(3), td:nth-child(3)").forEach(el => {
+                                            el.style.display = toggleImage.checked ? "table-cell" : "none";
+                                        });
+                                        document.querySelectorAll("th:nth-child(4), td:nth-child(4)").forEach(el => {
+                                            el.style.display = toggleCategory.checked ? "table-cell" : "none";
+                                        });
+                                        document.querySelectorAll("th:nth-child(5), td:nth-child(5)").forEach(el => {
+                                            el.style.display = toggleAuthor.checked ? "table-cell" : "none";
+                                        });
+                                        document.querySelectorAll("th:nth-child(6), td:nth-child(6)").forEach(el => {
+                                            el.style.display = toggleCreatedAt.checked ? "table-cell" : "none";
+                                        });
+                                        document.querySelectorAll("th:nth-child(7), td:nth-child(7)").forEach(el => {
+                                            el.style.display = toggleModifiedAt.checked ? "table-cell" : "none";
+                                        });
+                                    }
+
+                                    // Gắn sự kiện thay đổi cho từng checkbox
+                                    [toggleId, toggleTitle, toggleImage, toggleCategory, toggleAuthor, toggleCreatedAt, toggleModifiedAt].forEach(checkbox => {
+                                        checkbox.addEventListener("change", updateColumnVisibility);
+                                    });
+
+                                    // Cập nhật hiển thị ngay từ đầu
+                                    updateColumnVisibility();
+                                });
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    let toggleId = document.getElementById("toggleId");
+                                    let toggleTitle = document.getElementById("toggleTitle");
+                                    let toggleImage = document.getElementById("toggleImage");
+                                    let toggleCategory = document.getElementById("toggleCategory");
+                                    let toggleAuthor = document.getElementById("toggleAuthor");
+                                    let toggleCreatedAt = document.getElementById("toggleCreatedAt");
+                                    let toggleModifiedAt = document.getElementById("toggleModifiedAt");
+                                    let postPerPageInput = document.getElementById("postPerPage");
+                                    let applyFilterButton = document.getElementById("applyFilter");
+
+                                    let posts = document.querySelectorAll("tbody tr"); // Chọn tất cả các hàng (bài viết)
+
+                                    // Hàm cập nhật hiển thị cột
+                                    function updateColumnVisibility() {
+                                        document.querySelectorAll("th:nth-child(1), td:nth-child(1)").forEach(el => {
+                                            el.style.display = toggleId.checked ? "table-cell" : "none";
+                                        });
+                                        document.querySelectorAll("th:nth-child(2), td:nth-child(2)").forEach(el => {
+                                            el.style.display = toggleTitle.checked ? "table-cell" : "none";
+                                        });
+                                        document.querySelectorAll("th:nth-child(3), td:nth-child(3)").forEach(el => {
+                                            el.style.display = toggleImage.checked ? "table-cell" : "none";
+                                        });
+                                        document.querySelectorAll("th:nth-child(4), td:nth-child(4)").forEach(el => {
+                                            el.style.display = toggleCategory.checked ? "table-cell" : "none";
+                                        });
+                                        document.querySelectorAll("th:nth-child(5), td:nth-child(5)").forEach(el => {
+                                            el.style.display = toggleAuthor.checked ? "table-cell" : "none";
+                                        });
+                                        document.querySelectorAll("th:nth-child(6), td:nth-child(6)").forEach(el => {
+                                            el.style.display = toggleCreatedAt.checked ? "table-cell" : "none";
+                                        });
+                                        document.querySelectorAll("th:nth-child(7), td:nth-child(7)").forEach(el => {
+                                            el.style.display = toggleModifiedAt.checked ? "table-cell" : "none";
+                                        });
+                                    }
+
+                                    // Hàm cập nhật số lượng bài viết hiển thị
+                                    function updatePostVisibility() {
+                                        let postPerPage = parseInt(postPerPageInput.value) || 1; // Lấy số bài viết nhập vào
+                                        let maxPosts = posts.length; // Tổng số bài viết
+                                        postPerPage = Math.max(1, Math.min(postPerPage, maxPosts)); // Đảm bảo giá trị nằm trong phạm vi hợp lệ
+
+                                        posts.forEach((post, index) => {
+                                            post.style.display = index < postPerPage ? "table-row" : "none";
+                                        });
+                                    }
+
+                                    // Gắn sự kiện cho các checkbox và nút Apply
+                                    [toggleId, toggleTitle, toggleImage, toggleCategory, toggleAuthor, toggleCreatedAt, toggleModifiedAt].forEach(checkbox => {
+                                        checkbox.addEventListener("change", updateColumnVisibility);
+                                    });
+
+                                    applyFilterButton.addEventListener("click", function () {
+                                        updatePostVisibility(); // Áp dụng số lượng bài viết
+                                        updateColumnVisibility(); // Cập nhật hiển thị các cột
+                                    });
+
+                                    // Cập nhật lần đầu khi trang được tải
+                                    updateColumnVisibility();
+                                    updatePostVisibility();
+                                });
+                            </script>
+
+
 
                         </div>
                         <!-- END PAGE -->

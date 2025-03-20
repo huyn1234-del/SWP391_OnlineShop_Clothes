@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import model.Product;
 
-@WebServlet(name="ProductPaging", urlPatterns={"/productpaging"})
+@WebServlet(name="ProductPaging", urlPatterns={"/management/productpaging"})
 public class ProductPaging extends HttpServlet {
    
 

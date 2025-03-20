@@ -20,7 +20,7 @@ import model.Size;
 import model.ProductImg;
 import dal.ProductImageDAO;
 
-@WebServlet(name="AddProduct", urlPatterns={"/addproduct"})
+@WebServlet(name="AddProduct", urlPatterns={"/management/addproduct"})
 @MultipartConfig(maxFileSize = 16177215)
 public class AddProduct extends HttpServlet {
 
@@ -77,7 +77,7 @@ public class AddProduct extends HttpServlet {
             pidao.addProductImage(new ProductImg(product.getProduct_id(), img_url));
         }
         
-        response.sendRedirect("productlist");
+        response.sendRedirect("/management/productlist");
     } 
 
     @Override

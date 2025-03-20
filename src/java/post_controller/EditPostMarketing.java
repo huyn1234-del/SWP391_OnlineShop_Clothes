@@ -17,7 +17,7 @@ import model.Post;
 
 
 @MultipartConfig
-@WebServlet(name="EditPostMarketing", urlPatterns={"/editpostmarketing"})
+@WebServlet(name="EditPostMarketing", urlPatterns={"/management/editpostmarketing"})
 public class EditPostMarketing extends HttpServlet {
    
 
@@ -45,7 +45,7 @@ public class EditPostMarketing extends HttpServlet {
          
         Post newPost = new Post(editpostmkt.getPost_id(), posttitle, postcontent, img, editpostmkt.getAuthor_id(), is_active, editpostmkt.getCreated_at(), null, postCategoryId);
         pdao.EditPost(newPost);
-        response.sendRedirect(request.getContextPath()+"/listpostmarketing");
+        response.sendRedirect(request.getContextPath()+"/management/listpostmarketing");
     } 
 
     @Override

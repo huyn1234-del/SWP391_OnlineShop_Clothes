@@ -23,7 +23,7 @@ import model.PostCategories;
 import model.PostCategory;
 
 
-@WebServlet(name="ListPostFiltermkt", urlPatterns={"/listpostfiltermkt"})
+@WebServlet(name="ListPostFiltermkt", urlPatterns={"/management/listpostfiltermkt"})
 public class ListPostFiltermkt extends HttpServlet {
    
 

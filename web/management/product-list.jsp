@@ -138,7 +138,7 @@
                                 <div class="container-fluid">
                                     <h5 class="navbar-brand" href="#">Quản lý sản phẩm</h5>
                                     <div class="" id="navbarSupportedContent">
-                                        <form class="d-flex" role="search" action="../searchproduct" method="get">
+                                        <form class="d-flex" role="search" action="../management/searchproduct" method="get">
                                             <input maxlength="500" placeholder="Tìm kiếm sản phẩm" name="search" class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Tìm kiếm">
                                             <button class="btn btn-outline-success" type="submit">Search</button>
                                         </form>
@@ -200,7 +200,7 @@
                                             if(p.isIs_active()==true) {
                                         %>
                                         <div class="edit" style="background-color: red">
-                                            <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=hide" onclick="return confirm('Ẩn sản phẩm này?')">
+                                            <a href="../management/editproduct?pid=<%= p.getProduct_id()%>&button=hide" onclick="return confirm('Ẩn sản phẩm này?')">
                                                 <i style="color: black;" class="bi bi-eye-slash-fill"></i>
                                             </a>
                                         </div>
@@ -208,7 +208,7 @@
                                             } else {
                                         %>
                                         <div class="edit" style="background-color: greenyellow">
-                                            <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=show" onclick="return confirm('Hiện sản phẩm này?')">
+                                            <a href="../management/editproduct?pid=<%= p.getProduct_id()%>&button=show" onclick="return confirm('Hiện sản phẩm này?')">
                                                 <i style="color: black;" class="bi bi-eye-fill"></i>
                                             </a>
                                         </div>
@@ -216,10 +216,10 @@
                                             }
                                         %> 
                                         <div class="edit" style="background-color: black">
-                                            <a style="color: white;" href="..\viewproduct?pid=<%= p.getProduct_id()%>"><i class="fa-solid fa-circle-info"></i></a>  
+                                            <a style="color: white;" href="../management/viewproduct?pid=<%= p.getProduct_id()%>"><i class="fa-solid fa-circle-info"></i></a>  
                                         </div>
                                         <div class="edit" style="background-color: black">
-                                            <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=edit"><i style="color: white;" class="fa-solid fa-pen"></i></a>
+                                            <a href="../management/editproduct?pid=<%= p.getProduct_id()%>&button=edit"><i style="color: white;" class="fa-solid fa-pen"></i></a>
                                         </div>
                                     </td>
                                     <%
@@ -240,7 +240,7 @@
                                         if (cur_page > 1) {
                                     %>
                                     <li class="page-item">
-                                        <a class="page-link" href="../productpaging?p=<%= cur_page - 1 %>" aria-label="Previous">
+                                        <a class="page-link" href="../management/productpaging?p=<%= cur_page - 1 %>" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
@@ -249,14 +249,14 @@
                                         for (int i = 1; i <= total_page; i++) {
                                     %>
                                     <li class="page-item <%= (cur_page == i) ? "active" : "" %>">
-                                        <a class="page-link" href="../productpaging?p=<%= i %>"><%= i %></a>
+                                        <a class="page-link" href="../management/productpaging?p=<%= i %>"><%= i %></a>
                                     </li>
                                     <%
                                         }
                                         if (cur_page < total_page) {
                                     %>
                                     <li class="page-item">
-                                        <a class="page-link" href="../productpaging?p=<%= cur_page + 1 %>" aria-label="Next">
+                                        <a class="page-link" href="../management/productpaging?p=<%= cur_page + 1 %>" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>

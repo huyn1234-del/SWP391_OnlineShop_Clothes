@@ -21,7 +21,7 @@ import model.Post;
  *
  * @author Dell
  */
-@WebServlet(name="PostmktPagi", urlPatterns={"/postmktpagi"})
+@WebServlet(name="PostmktPagi", urlPatterns={"/management/postmktpagi"})
 public class PostmktPagi extends HttpServlet {
    
     /** 

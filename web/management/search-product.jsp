@@ -141,7 +141,7 @@
                                     <h5 class="navbar-brand" href="#">Quản lý sản phẩm</h5>
 
                                     <div class="" id="navbarSupportedContent">
-                                        <form class="d-flex" role="search" action="../searchproduct" method="get">
+                                        <form class="d-flex" role="search" action="../management/searchproduct" method="get">
                                             <input placeholder="Tìm kiếm sản phẩm" name="search" class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Tìm kiếm">
                                             <button class="btn btn-outline-success" type="submit">Search</button>
                                         </form>
@@ -207,7 +207,7 @@
                                         %>
 
                                         <div class="edit" style="background-color: red">
-                                            <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=hide" onclick="return confirm('Ẩn sản phẩm này?')">
+                                            <a href="../management/editproduct?pid=<%= p.getProduct_id()%>&button=hide" onclick="return confirm('Ẩn sản phẩm này?')">
                                                 <i style="color: black;" class="bi bi-eye-slash-fill"></i>
                                             </a>
                                         </div>
@@ -217,7 +217,7 @@
                                         %>
 
                                         <div class="edit" style="background-color: greenyellow">
-                                            <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=show" onclick="return confirm('Hiện sản phẩm này?')">
+                                            <a href="../management/editproduct?pid=<%= p.getProduct_id()%>&button=show" onclick="return confirm('Hiện sản phẩm này?')">
                                                 <i style="color: black;" class="bi bi-eye-fill"></i>
                                             </a>
                                         </div>
@@ -227,7 +227,7 @@
                                         %> 
 
                                         <div class="edit">
-                                            <a href="../editproduct?pid=<%= p.getProduct_id()%>&button=edit"><i style="color: black;" class="fa-solid fa-pen"></i></a>
+                                            <a href="../management/editproduct?pid=<%= p.getProduct_id()%>&button=edit"><i style="color: black;" class="fa-solid fa-pen"></i></a>
                                         </div>
                                     </td>
                                     <%

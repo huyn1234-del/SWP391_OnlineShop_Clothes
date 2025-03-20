@@ -17,7 +17,7 @@ import model.Post;
 import model.PostCategory;
 
 
-@WebServlet(name="FilterPostbyAuthor", urlPatterns={"/filterpostbyauthor"})
+@WebServlet(name="FilterPostbyAuthor", urlPatterns={"/management/filterpostbyauthor"})
 public class FilterPostbyAuthor extends HttpServlet {
    
 

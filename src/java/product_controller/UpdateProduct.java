@@ -22,7 +22,7 @@ import jakarta.servlet.http.Part;
 import java.io.File;
 import java.util.List;
 
-@WebServlet(name="UpdateProduct", urlPatterns={"/updateproduct"})
+@WebServlet(name="UpdateProduct", urlPatterns={"/management/updateproduct"})
 @MultipartConfig(maxFileSize = 16177215)
 public class UpdateProduct extends HttpServlet {
    
@@ -97,7 +97,7 @@ public class UpdateProduct extends HttpServlet {
             pidao.updateProductImage(new ProductImg(productImg.get(i).getProduct_image_id(), product.getProduct_id(),   img_url, productImg.get(i).getIs_active()));
         }
         
-        request.getRequestDispatcher("productpaging").forward(request, response);
+        request.getRequestDispatcher("/management/productpaging").forward(request, response);
     } 
 
     @Override

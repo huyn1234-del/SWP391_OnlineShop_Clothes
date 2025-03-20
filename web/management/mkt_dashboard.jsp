@@ -49,7 +49,7 @@
                 
                 <div class="col-md-12">
 
-                    <form action="../mktdashboardfilter" >     <div class="row" >
+                    <form action="../management/mktdashboardfilter" >     <div class="row" >
                                                       
                                                         <div class="col-md-2">
                                                             <div class="input-group mb-2">

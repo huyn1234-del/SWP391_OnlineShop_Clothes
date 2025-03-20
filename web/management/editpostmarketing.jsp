@@ -156,7 +156,7 @@
 
 
                             <div class="col-md-8">
-                                <form class="needs-validation" action="../editpostmarketing" method="post" enctype="multipart/form-data">
+                                <form class="needs-validation" action="../management/editpostmarketing" method="post" enctype="multipart/form-data">
                                     <div class="row g-3">
 
 

@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Product;
 
-@WebServlet(name="EditProduct", urlPatterns={"/editproduct"})
+@WebServlet(name="EditProduct", urlPatterns={"/management/editproduct"})
 @MultipartConfig(maxFileSize = 16177215)
 public class EditProduct extends HttpServlet {
    
@@ -32,12 +32,12 @@ public class EditProduct extends HttpServlet {
                 Product p = pdao.getProductById(pid);
                 p.setIs_active(false);
                 pdao.updateProduct(p);
-                request.getRequestDispatcher("productpaging").forward(request, response);
+                request.getRequestDispatcher("/management/productpaging").forward(request, response);
             } else if (button.equals("show")) {
                 Product p = pdao.getProductById(pid);
                 p.setIs_active(true);
                 pdao.updateProduct(p);
-                request.getRequestDispatcher("productpaging").forward(request, response);
+                request.getRequestDispatcher("/management/productpaging").forward(request, response);
             } else {
                 Product p = pdao.getProductById(pid);
                 session.setAttribute("product_detail", p);

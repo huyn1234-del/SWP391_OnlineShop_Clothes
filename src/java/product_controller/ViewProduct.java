@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpSession;
 import model.Product;
 
 
-@WebServlet(name="ViewProduct", urlPatterns={"/viewproduct"})
+@WebServlet(name="ViewProduct", urlPatterns={"/management/viewproduct"})
 public class ViewProduct extends HttpServlet {
    
 

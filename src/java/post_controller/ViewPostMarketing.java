@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 import model.Post;
 
 @MultipartConfig
-@WebServlet(name="ViewPostMarketing", urlPatterns={"/viewpostmarketing"})
+@WebServlet(name="ViewPostMarketing", urlPatterns={"/management/viewpostmarketing"})
 public class ViewPostMarketing extends HttpServlet {
    
 
