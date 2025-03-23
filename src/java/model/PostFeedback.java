@@ -16,13 +16,30 @@ public class PostFeedback {
     int is_active;
     String username,profile_picture_url;
     Date create_at, modified_at;
-  
+    String image_url,video_url;
     Post post;
     User user;
     String time_create;
     public PostFeedback() {
     }
 
+    public PostFeedback(int post_feedback_id, int customer_id, int post_id, String review, int is_active, String username, String profile_picture_url, Date create_at, Date modified_at, String image_url, String video_url, Post post, User user, String time_create) {
+        this.post_feedback_id = post_feedback_id;
+        this.customer_id = customer_id;
+        this.post_id = post_id;
+        this.review = review;
+        this.is_active = is_active;
+        this.username = username;
+        this.profile_picture_url = profile_picture_url;
+        this.create_at = create_at;
+        this.modified_at = modified_at;
+        this.image_url = image_url;
+        this.video_url = video_url;
+        this.post = post;
+        this.user = user;
+        this.time_create = time_create;
+    }
+    
     public PostFeedback(int post_feedback_id, int customer_id, int post_id, String review, int is_active, String username, String profile_picture_url, Date create_at, Date modified_at) {
         this.post_feedback_id = post_feedback_id;
         this.customer_id = customer_id;
@@ -182,6 +199,22 @@ public class PostFeedback {
 
     public void setTime_create(String time_create) {
         this.time_create = time_create;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
+    public String getVideo_url() {
+        return video_url;
+    }
+
+    public void setVideo_url(String video_url) {
+        this.video_url = video_url;
     }
     
     

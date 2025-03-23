@@ -71,7 +71,7 @@
                                 <li><%=date%></li>
                                 <li>Chủ đề: <%=ppostcategory.getPost_category_name()%></li>
 
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="blog__details__content">
-                          
+
                             <div class="blog__details__text">
                                 <p><%=ppostdetail.getContent()%></p>
 
@@ -172,13 +172,97 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                            <div class="blog__details__comment">
+                                <h4>Để lại bình luận</h4>
+                                <form action="../customerpostcomment" method="post" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center">
+                                            <textarea maxlength="500" required name="postcomment" placeholder="Comment"></textarea>
+                                            <input type="file" name="image" accept="image/*">
+                                            <input type="file" name="video" accept="video/*">
+                                            <button type="submit" class="site-btn">Bình luận</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <%
+                                int cpfpage = 0;
+                                if (session.getAttribute("pofpage") != null) {
+                                    cpfpage = Integer.parseInt(session.getAttribute("pofpage") + "");
+                                }
+                            %>
+
+                            <!-- DANH SÁCH BÌNH LUẬN -->
+                            <div class="row" style="margin-top: 24px;">
+                                <div class="blog__details__option" style="width: 100%;">
+                                    <div class="row">
+                                        <% 
+                                            for (PostFeedback postFeedback : top3postfblist) {
+                                                date = sdf.format(postFeedback.getModified_at());
+                    
+                                                // Lấy ảnh đại diện
+                                                String profilePictureUrl = postFeedback.getProfile_picture_url();
+                                                String profileImgSrc = (profilePictureUrl != null && (profilePictureUrl.startsWith("http://") || profilePictureUrl.startsWith("https://")))
+                                                    ? profilePictureUrl
+                                                    : request.getContextPath() + "/" + profilePictureUrl;
+                    
+                                                // Lấy hình ảnh & video của bình luận
+                                                String imageUrl = postFeedback.getImage_url();
+                                                String videoUrl = postFeedback.getVideo_url();
+                                        %>
+                                        <div class="col-md-12 row" style="margin: 5px 0;">
+                                            <div class="blog__details__author col-md-12 row">
+                                                <div class="blog__details__author__pic col-md-2">
+                                                    <img src="<%=profileImgSrc%>" alt="">
+                                                </div>
+                                                <div class="blog__details__author__text col-md-9">
+                                                    <h5><%=postFeedback.getUsername()%></h5>
+                                                    <p><%=postFeedback.getReview()%></p>
+                                                    <p style="color: #ddd; font-style: italic;"><%=date%></p>
+
+                                                    <% if (imageUrl != null && !imageUrl.isEmpty()) { %>
+                                                    <img src="<%= request.getContextPath() + "/" + imageUrl %>" alt="Feedback Image" style="max-width: 100%; margin-top: 10px;">
+                                                    <% } %>
+
+                                                    <% if (videoUrl != null && !videoUrl.isEmpty()) { %>
+                                                    <video controls style="max-width: 100%; margin-top: 10px;">
+                                                        <source src="<%= request.getContextPath() + "/" + videoUrl %>" type="video/mp4">
+                                                        Trình duyệt của bạn không hỗ trợ video.
+                                                    </video>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                    </div>
+
+                                    <!-- PHÂN TRANG -->
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="product__pagination">
+                                                <%
+                                                    int totalFeedbacks = allpostfblist.size();
+                                                    int feedbacksPerPage = 3;
+                                                    int npage = (totalFeedbacks % feedbacksPerPage == 0) ? (totalFeedbacks / feedbacksPerPage) : (totalFeedbacks / feedbacksPerPage + 1);
+
+                                                    for (int i = 0; i < npage; i++) {
+                                                %>
+                                                <a class="<%= (i == cpfpage) ? "active" : "" %>" href="../postfbpagination?cpage=<%=i%>"><%= i + 1 %></a>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>  
 
-                                                 
+
+                        </div>
+                    </div>
+                </div>
+            </div>  
+
+
         </section>
         <!-- Blog Details Section End -->
 

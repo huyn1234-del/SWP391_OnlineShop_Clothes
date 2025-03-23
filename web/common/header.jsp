@@ -5,6 +5,7 @@
 <%@page import="model.Cart" %>
 <%@page import="utils.Constants" %>
 
+
 <!-- Offcanvas Menu Begin -->
 <div class="offcanvas-menu-overlay"></div>
 <div class="offcanvas-menu-wrapper">
@@ -29,7 +30,7 @@
         <div class="price">$0.00</div>
     </div>
     <div id="mobile-menu-wrap"></div>
-
+    
 </div>
 <!-- Offcanvas Menu End -->
 <header class="header">
@@ -73,8 +74,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3">
-                <div class="header__logo">
-                    <a href="<%=s%>/homeslider"><img src="<%=s%>/common/img/TeeJean.png" alt=""></a>
+                <div class="header__logo ">
+                    <a href="<%=s%>/homeslider" style="    padding: -10px 0;"><img src="<%=s%>/common/img/Tee&Jean.png" alt=""></a>
                 </div>
             </div>
             <%
