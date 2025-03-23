@@ -75,7 +75,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo ">
-                    <a href="<%=s%>/homeslider" style="    padding: -10px 0;"><img src="<%=s%>/common/img/Tee&Jean.png" alt=""></a>
+                    <a href="<%=s%>/homeslider" "><img src="<%=s%>/common/img/Tee&Jean.png" style="margin-top: -25px;" alt=""></a>
                 </div>
             </div>
             <%
