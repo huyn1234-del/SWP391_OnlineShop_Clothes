@@ -1,4 +1,8 @@
 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package model;
 
 import dal.ProductDAO;
@@ -27,7 +31,7 @@ public class Cart {
                 Product product = daoP.getProductById(Integer.parseInt(s[0]));
                 Size size = daoS.getSizeById(Integer.parseInt(s[1]));
                 int quantity = Integer.parseInt(s[2]);
-                
+
                 if (quantity > 0) {
 
                     CartItem existItem = findCartItemByProductSize(product, size);
@@ -71,13 +75,19 @@ public class Cart {
 
     public int cartSize(String txt) {
         int size = 0;
-        if (txt.isBlank() || txt.isEmpty()) {
+        if (txt == null || txt.isBlank() || txt.isEmpty()) {
             return 0;
         }
 
         for (String p : txt.split("#")) {
             String[] s = p.split(":");
-            size += Integer.parseInt(s[2]);
+            if (s.length >= 3) { // Chỉ xử lý khi đủ phần tử
+                try {
+                    size += Integer.parseInt(s[2]);
+                } catch (NumberFormatException e) {
+                    continue;
+                }
+            }
         }
 
         return size;
