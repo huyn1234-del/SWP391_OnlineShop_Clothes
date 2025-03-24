@@ -61,6 +61,22 @@
             <file>file:/E:/ProjectSWP391/SWP391_OnlineShop_Clothes/web/management/editpostmarketing.jsp</file>
             <file>file:/E:/ProjectSWP391/SWP391_OnlineShop_Clothes/web/management/detailFeedback.jsp</file>
             <file>file:/E:/ProjectSWP391/SWP391_OnlineShop_Clothes/src/java/product_controller/ProductPaging.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PostFeedbackDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/web/common/header.jsp</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/post_controller/PostFBpagination.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/PaymentStatus.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/web/common/css/style.css</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/web/common/sass/_hero.scss</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/post_controller/CustomerPostComment.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PostDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/PostCategoryDAO.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/dal/DBContext.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/web/common/sass/_header.scss</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/post_controller/FilterPostbyCategory.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/post_controller/AddPostMarketing.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/post_controller/HPostDetail.java</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/web/common/hblogdetail.jsp</file>
+            <file>file:/E:/New%20folder/SWP391_OnlineShop_Clothes/src/java/model/PostFeedback.java</file>
         </group>
     </open-files>
 </project-private>
