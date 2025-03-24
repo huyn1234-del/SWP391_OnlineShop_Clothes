@@ -13,6 +13,8 @@ public class Constants {
     public static final String SENT_EMAIL = "huynqhe180360@fpt.edu.vn";
 
     public static final String EMAIL_PASSWORD = "yuob vtea dhnf sqeo";
+    
+    public static int COOKIE_CART_MAXAGE = 60 * 60 * 24 * 7; 
 
 }
 
