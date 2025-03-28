@@ -70,7 +70,7 @@ public User login(String email, String password) {
         ps.setString(2, password);          
         ResultSet rs = ps.executeQuery();         
         if (rs.next()) {             
-            return getUserByEmail(email);  // Cần thay đổi hàm này nếu chưa có
+            return getUserByEmail(email);  
         }     
     } catch (SQLException ex) {         
         Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);     
@@ -120,12 +120,13 @@ public User login(String email, String password) {
                                 ,[verification_code]
                                 ,[reset_password_code]
                                 ,[google_id]
+                                ,[address]
                                 ,[profile_picture_url]
                                 ,[is_active]
                                 ,[is_banned]
                                 ,[role_id])
                           VALUES
-                                (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""";
+                                (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -140,10 +141,11 @@ public User login(String email, String password) {
             ps.setString(9, user.getVerification_code());
             ps.setString(10, user.getReset_password_code());
             ps.setString(11, user.getGoogle_id());
-            ps.setString(12, user.getProfile_picture_url());
-            ps.setBoolean(13, user.isIs_active());
-            ps.setBoolean(14, user.isIs_banned());
-            ps.setInt(15, user.getRole().getRole_id());
+            ps.setString(12, user.getAddress());
+            ps.setString(13, user.getProfile_picture_url());
+            ps.setBoolean(14, user.isIs_active());
+            ps.setBoolean(15, user.isIs_banned());
+            ps.setInt(16, user.getRole().getRole_id());
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -247,13 +249,14 @@ public User login(String email, String password) {
             String dob = rs.getString(9);             
             String verification_code = rs.getString(10);             
             String reset_password_code = rs.getString(11);             
-            String google_id = rs.getString(12);             
-            String profile_picture_url = rs.getString(13);             
-            boolean is_active = rs.getBoolean(14);             
-            boolean is_banned = rs.getBoolean(15);             
-            Role role = roleDAO.getRoleById(rs.getInt(16));              
+            String google_id = rs.getString(12);    
+            String address = rs.getString(13);             
+            String profile_picture_url = rs.getString(14);             
+            boolean is_active = rs.getBoolean(15);             
+            boolean is_banned = rs.getBoolean(16);             
+            Role role = roleDAO.getRoleById(rs.getInt(17));              
 
-            user = new User(user_id, username, password, first_name, last_name, phone, email, gender, dob, verification_code, reset_password_code, google_id, profile_picture_url, is_active, is_banned, role);         
+            user = new User(user_id, username, password, first_name, last_name, phone, email, gender, dob, verification_code, reset_password_code, google_id,address, profile_picture_url, is_active, is_banned, role);         
         }         
         rs.close();     
     } catch (SQLException ex) {         

@@ -65,7 +65,7 @@
             </div>
         </section>
         <!-- Breadcrumb Section End -->
-       
+
         <!-- Shop Section Begin -->
         <%
         String sid = session.getAttribute("fsid")+"";
@@ -83,14 +83,14 @@
         %>
         <section class="shop spad">
             <div class="container">
-                 <form id="filterForm">
-            <label><input type="checkbox" id="toggleName" checked> Hiển thị Tên Sản Phẩm</label>
-            <label><input type="checkbox" id="togglePrice" checked> Hiển thị Giá</label>
-            <label><input type="checkbox" id="toggleRating" checked> Hiển thị Đánh Giá</label>
-            <br>
-            <label>Số sản phẩm mỗi trang: <input type="number" id="productPerPage" value="9" min="1"></label>
-            <button type="button" id="applyFilter" class="btn btn-primary">Xác nhận</button>
-        </form>
+                <form id="filterForm">     
+                    <label><input type="checkbox" id="toggleName" checked> Hiển thị Tên Sản Phẩm</label>   
+                    <label><input type="checkbox" id="togglePrice" checked> Hiển thị Giá</label>        
+                    <label><input type="checkbox" id="toggleRating" checked> Hiển thị Đánh Giá</label>     
+                    <br>    
+                    <label>Số sản phẩm mỗi trang: <input type="number" id="productPerPage" value="9" min="1"></label>    
+                    <button type="button" id="applyFilter" class="btn btn-primary">Xác nhận</button>       
+                </form> 
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="shop__sidebar">
@@ -324,14 +324,11 @@ if(sql1.equals("null")) sql1 = "";
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="product__pagination">
-                                    <%
-                                    for (int i = 0; i < pages; i++) {
-                                    %>
-                                    <a class="<%=i==curpage?"active":""%>" href="../pagination?cpage=<%=i%>"><%=i+1%> </a>
-                                    <%
-                                        }
-                                    %>
+                                    <% for (int i = 0; i < pages; i++) { %>
+                                    <a class="<%=i==curpage?"active":""%>" href="../pagination?cpage=<%=i%>"><%=i+1%> </a> 
+                                    <% } %>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -374,22 +371,18 @@ if(sql1.equals("null")) sql1 = "";
                                                 let nameCheckbox = document.getElementById("toggleName");
                                                 let priceCheckbox = document.getElementById("togglePrice");
                                                 let ratingCheckbox = document.getElementById("toggleRating");
-
                                                 function updateProductVisibility(count) {
                                                     products.forEach((product, index) => {
                                                         product.style.display = index < count ? "block" : "none";
                                                     });
                                                 }
-
                                                 function updateFieldVisibility() {
                                                     document.querySelectorAll(".product-name").forEach(el => el.style.display = nameCheckbox.checked ? "inline-block" : "none");
                                                     document.querySelectorAll(".product-price").forEach(el => el.style.display = priceCheckbox.checked ? "inline-block" : "none");
                                                     document.querySelectorAll(".product-rating").forEach(el => el.style.display = ratingCheckbox.checked ? "block" : "none");
                                                 }
-
                                                 updateProductVisibility(9);
                                                 updateFieldVisibility();
-
                                                 document.getElementById("applyFilter").addEventListener("click", function () {
                                                     let productCountInput = document.getElementById("productPerPage");
                                                     let productCount = parseInt(productCountInput.value) || 1;

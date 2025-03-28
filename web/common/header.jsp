@@ -60,7 +60,7 @@
                                                             ? profilePictureUrl 
                                                             : request.getContextPath() + "/" + profilePictureUrl;
                                 %>
-                                <a href="<%=s%>/profile">
+                                <a href="<%=s%>/changePassword">
                                     <img style="width: 25px;height: 25px;border-radius: 50%" 
                                          src=" <%=profileImgSrc %>" alt=""/> ${sessionScope.account.username}</a>
                                 <a href="<%=s%>/logout">Đăng xuất</a>                      

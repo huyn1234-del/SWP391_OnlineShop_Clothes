@@ -36,37 +36,38 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Cookie[] cookies = request.getCookies();
-        
+
         for (Cookie cookie : cookies) {
-            if(cookie.getName().equals(Constants.COOKIE_REMEMBER)){
+            if (cookie.getName().equals(Constants.COOKIE_REMEMBER)) {
                 request.setAttribute("username", cookie.getValue());
             }
-                    
+
         }
         HttpSession session = request.getSession();
-        
+
         User account = (User) session.getAttribute("account");
-        
-        if(account == null){
+
+        if (account == null) {
             request.getRequestDispatcher("/account/login.jsp").forward(request, response);
             return;
         }
-        
+
         int roleId = account.getRole().getRole_id();
-        
+
         switch (roleId) {
-            case 1 -> response.sendRedirect(request.getContextPath()+"/admindashboard");
-            case 2 -> response.sendRedirect(request.getContextPath()+"/salemanagerdashboard");
-            case 3 -> response.sendRedirect(request.getContextPath()+"/orderlist");
-            case 4 -> response.sendRedirect(request.getContextPath()+"/mktdashboard");
-            default -> response.sendRedirect(request.getContextPath()+"/homeslider");
+            case 1 ->
+                response.sendRedirect(request.getContextPath() + "/admindashboard");
+            case 2 ->
+                response.sendRedirect(request.getContextPath() + "/orderlist");
+            case 3 ->
+                response.sendRedirect(request.getContextPath() + "/marketinghome");
+            case 4 ->
+                response.sendRedirect(request.getContextPath() + "/homeslider");
 
         }
-        
-        
-        
+
     }
 
     /**
@@ -83,7 +84,7 @@ public class Login extends HttpServlet {
 
         HttpSession session = request.getSession();
         UserDAO userDAO = new UserDAO();
-        
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String rememberMe = request.getParameter("rememberMe");
@@ -105,37 +106,37 @@ public class Login extends HttpServlet {
             sendErrorMessage("Tài khoản chưa được kích hoạt!" + activationLink, request, response);
             return;
         }
-        
-        if("On".equals(rememberMe)){
+
+        if ("On".equals(rememberMe)) {
             saveRememberMe(email, response);
         }
-        
+
         session.setAttribute("account", user);
 
         int roleId = user.getRole().getRole_id();
-        
+
         switch (roleId) {
-            case 1 -> response.sendRedirect(request.getContextPath()+"/admindashboard");
-            case 2 -> response.sendRedirect(request.getContextPath()+"/salemanagerdashboard");
-            case 3 -> response.sendRedirect(request.getContextPath()+"/orderlist");
-            case 4 -> response.sendRedirect(request.getContextPath()+"/management/mktdashboard");
-            default -> response.sendRedirect(request.getContextPath()+"/homeslider");
+            case 1 ->
+                response.sendRedirect(request.getContextPath() + "/admindashboard");
+            case 2 ->
+                response.sendRedirect(request.getContextPath() + "/orderlist");
+            case 3 ->
+                response.sendRedirect(request.getContextPath() + "/marketinghome");
+            case 4 ->
+                response.sendRedirect(request.getContextPath() + "/homeslider");
 
         }
-                
-        
     }
 
     private void sendErrorMessage(String error, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("loginError", error);
         request.getRequestDispatcher("account/login.jsp").forward(request, response);
     }
-    
-    private void saveRememberMe(String email, HttpServletResponse response){
+
+    private void saveRememberMe(String email, HttpServletResponse response) {
         Cookie cookie = new Cookie(Constants.COOKIE_REMEMBER, email);
         cookie.setMaxAge(30 * 60);
         response.addCookie(cookie);
     }
-    
 
 }

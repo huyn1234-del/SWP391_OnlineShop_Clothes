@@ -88,7 +88,7 @@ public class ChangePassword extends HttpServlet {
 
         if (checkUpdatePassword) {
             request.setAttribute("success", "Thay đổi mật khẩu thành công.");
-            request.getRequestDispatcher("/changePassword.jsp").forward(request, response);
+            request.getRequestDispatcher("/account/login.jsp").forward(request, response);
         } else {
             request.setAttribute("error", "Đã có lỗi xảy ra khi đổi mật khẩu. Vui lòng thử lại sau.");
             request.getRequestDispatcher("/changePassword.jsp").forward(request, response);

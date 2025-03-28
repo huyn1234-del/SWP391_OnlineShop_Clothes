@@ -22,6 +22,7 @@ public class User {
     private String verification_code;
     private String reset_password_code;
     private String google_id;
+    private String address;
     private String profile_picture_url;
     private boolean is_active;
     private boolean is_banned;
@@ -64,12 +65,14 @@ public class User {
         this.google_id = google_id;
         this.profile_picture_url = profile_picture_url;
         this.is_active = is_active;
-        this.is_banned = is_banned;
+        this.is_banned = is_banned; 
         this.role = role;
     }
-    
-    
 
+ 
+    
+    
+    
     public User(int user_id, String username, String password, String first_name, String last_name, String phone, String email, boolean gender, String dob, String verification_code, String reset_password_code, String google_id, String profile_picture_url, boolean is_active, boolean is_banned, Role role) {
         this.user_id = user_id;
         this.username = username;
@@ -88,6 +91,47 @@ public class User {
         this.is_banned = is_banned;
         this.role = role;
     }
+
+    public User(String username, String password, String firstname, String lastname, String phone, String userEmail, boolean gender, String dob, String verificationCode, String reset_password_code, String google_id, String address, String profile_picture_url, boolean is_active, boolean is_banned, Role role) {
+    this.username = username;
+    this.password = password;
+    this.first_name = firstname;
+    this.last_name = lastname;
+    this.phone = phone;
+    this.email = userEmail;
+    this.gender = gender;
+    this.dob = dob;
+    this.verification_code = verificationCode;
+    this.reset_password_code = reset_password_code;
+    this.google_id = google_id;
+    this.address = address;
+    this.profile_picture_url = profile_picture_url;
+    this.is_active = is_active;
+    this.is_banned = is_banned;
+    this.role = role;
+}
+
+    public User(int user_id, String username, String password, String first_name, String last_name, String phone, String email, boolean gender, String dob, String verification_code, String reset_password_code, String google_id, String address, String profile_picture_url, boolean is_active, boolean is_banned, Role role) {
+    this.user_id = user_id;
+    this.username = username;
+    this.password = password;
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.phone = phone;
+    this.email = email;
+    this.gender = gender;
+    this.dob = dob;
+    this.verification_code = verification_code;
+    this.reset_password_code = reset_password_code;
+    this.google_id = google_id;
+    this.address = address;
+    this.profile_picture_url = profile_picture_url;
+    this.is_active = is_active;
+    this.is_banned = is_banned;
+    this.role = role;
+}
+
+
 
     public int getUser_id() {
         return user_id;
@@ -212,14 +256,23 @@ public class User {
     public Role getRole() {
         return role;
     }
-
+    
     public void setRole(Role role) {
         this.role = role;
     }
+    
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
     @Override
     public String toString() {
-        return "User{" + "user_id=" + user_id + ", username=" + username + ", password=" + password + ", first_name=" + first_name + ", last_name=" + last_name + ", phone=" + phone + ", email=" + email + ", gender=" + gender + ", dob=" + dob + ", verification_code=" + verification_code + ", reset_password_code=" + reset_password_code + ", google_id=" + google_id + ", profile_picture_url=" + profile_picture_url + ", is_active=" + is_active + ", is_banned=" + is_banned + ", role=" + role + '}';
+        return "User{" + "user_id=" + user_id + ", username=" + username + ", password=" + password + ", first_name=" + first_name + ", last_name=" + last_name + ", phone=" + phone + ", email=" + email + ", gender=" + gender + ", dob=" + dob + ", verification_code=" + verification_code + ", reset_password_code=" + reset_password_code + ", google_id=" + google_id +", address=" + address + ", profile_picture_url=" + profile_picture_url + ", is_active=" + is_active + ", is_banned=" + is_banned + ", role=" + role + '}';
     }
 
     

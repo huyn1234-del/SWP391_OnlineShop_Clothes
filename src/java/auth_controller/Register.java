@@ -49,11 +49,9 @@ public class Register extends HttpServlet {
         
         switch (roleId) {
             case 1 -> response.sendRedirect(request.getContextPath()+"/admindashboard");
-            case 2 -> response.sendRedirect(request.getContextPath()+"/salemanagerdashboard");
-            case 3 -> response.sendRedirect(request.getContextPath()+"/orderlist");
-            case 4 -> response.sendRedirect(request.getContextPath()+"/marketinghome");
-            default -> response.sendRedirect(request.getContextPath()+"/homeslider");
-
+            case 2 -> response.sendRedirect(request.getContextPath()+"/orderlist");
+            case 3 -> response.sendRedirect(request.getContextPath()+"/marketinghome");
+            case 4 -> response.sendRedirect(request.getContextPath()+"/homeslider");
         }
         
         
@@ -122,8 +120,8 @@ public class Register extends HttpServlet {
 //        generate verify code 
         String verificationCode = mail.getRandom();
 
-//        initialize user with customer role(id = 5)
-        User newUser = new User(username, password, firstname, lastname, phone, userEmail, gender, dob, verificationCode, null, null, "profile_img/default.jpg", false, false, new Role(5));
+//        initialize user with customer role(id = 4)
+        User newUser = new User(username, password, firstname, lastname, phone, userEmail, gender, dob, verificationCode, null, null,null, "profile_img/default.jpg", false, false, new Role(4));
 
 //        insert to database
         Integer userId = userDAO.insertUser(newUser);
