@@ -28,18 +28,16 @@ public class Product {
         this.product_category_id = product_category_id;
     }
     
-    public Product(String product_name, int price, int total_quantity, int discount, String description, String thumbnail, boolean is_active, int rated_star, int brand_id, int product_category_id) {
+    public Product(String product_name, int price, int total_quantity, String description, String thumbnail, boolean is_active, int rated_star, int brand_id, int product_category_id) {
         this.product_name = product_name;
         this.price = price;
+        this.total_quantity = total_quantity;
         this.description = description;
         this.thumbnail = thumbnail;
         this.is_active = is_active;
+        this.rated_star = rated_star;
         this.brand_id = brand_id;
         this.product_category_id = product_category_id;
-    }
-
-    public Product(String name, int price, int total_quantity, String description, String img, boolean _active, int i, int brand, int category) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public int getProduct_id() {

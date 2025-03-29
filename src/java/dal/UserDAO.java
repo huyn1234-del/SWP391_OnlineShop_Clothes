@@ -403,4 +403,32 @@ public User login(String email, String password) {
         }
         return false;
     }
+    public List<User> getAllSaler(){
+        List<User> sList = new ArrayList<>();
+        
+        
+            String sql = "select * from Users\n" +
+                        "where role_id in (3)";
+
+        try {
+            PreparedStatement pre = connection.prepareStatement(sql);
+            ResultSet rs = pre.executeQuery();
+
+            while (rs.next()) {
+                int user_id = rs.getInt("user_id");
+                String username = rs.getString("username");
+                String first_name = rs.getString("first_name");
+                String last_name = rs.getString("last_name");
+                
+                User user = new User(user_id, username, first_name, last_name);
+                sList.add(user);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+        return sList;
+    }
+
 }

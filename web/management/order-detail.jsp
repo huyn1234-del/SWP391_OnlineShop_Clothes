@@ -71,19 +71,8 @@
                             <p><strong>Ngày nhận hàng (dự kiến):</strong> 
                                 <c:if test="${order.receiveDate != null}"><fmt:formatDate value="${receiveDate}" pattern="dd/MM/yyyy HH:mm:ss" /></c:if>
                                 <c:if test="${order.receiveDate == null}"><span class="text-muted">Không có</span></c:if></p>
-                                <p><strong>Phương thức thanh toán:</strong> <span 
-                                    <c:if test="${order.paymentMethodId == 2}">class="badge-primary badge font-weight-bold"</c:if>
-                                    <c:if test="${order.paymentMethodId == 1}">class="badge-info badge font-weight-bold"</c:if>
-                                    > ${order.paymentMethodName}</span></p>
-                            <p><strong>Trạng thái thanh toán:</strong> <span  <c:if test="${order.paymentStatusId == 1}">class="badge-warning badge font-weight-bold"</c:if>
-                                                                                                                         <c:if test="${order.paymentStatusId == 2}">class="badge-success badge font-weight-bold"</c:if>
-                                                                                                                         <c:if test="${order.paymentStatusId == 3}">class="badge-danger badge font-weight-bold"</c:if>
-                                                                                                                         s                                          <c:if test="${order.paymentStatusId == 4}">class="badge-warning badge font-weight-bold"</c:if>
-                                                                                                                         <c:if test="${order.paymentStatusId == 5}">class="badge-info badge font-weight-bold"</c:if>
-                                                                                                                         <c:if test="${order.paymentStatusId == 5}">class="badge-success badge font-weight-bold"</c:if>
-                                                                                                                         >${order.paymentStatusName}</span></p>
-                            <p ><strong>Mã giao dịch VNPAY:</strong> ${order.vnpTxnRef != null ? order.vnpTxnRef: '<span class="text-muted">Không có</span>'}</p>
-                            <p ><strong>Mã vận đơn:</strong> ${order.shippingCode != null ? order.shippingCode: '<span class="text-muted">Không có</span>'} </p>
+
+
                             <p><strong>Tổng tiền:</strong> <span class="badge badge-pink"><fmt:formatNumber value="${order.totalAmount}" type="currency" currencySymbol="₫" groupingUsed="true" /></span></p>
                             <p><strong>Trạng thái đơn hàng:</strong> <span <c:if test="${order.orderStatusId == 1}">class="badge-warning badge font-weight-bold"</c:if>
                                                                                                                     <c:if test="${order.orderStatusId == 2}">class="badge-primary badge font-weight-bold"</c:if>
@@ -105,7 +94,7 @@
                             <p><strong>Tên người nhận:</strong> ${order.receiverName}</p>
                             <p><strong>Số điện thoại:</strong> ${order.phone}</p>
                             <p><strong>Email:</strong> ${order.email}</p>
-                            <p><strong>Địa chỉ:</strong> ${order.address}, ${order.wardName}, ${order.districtName}, ${order.provinceName}</p>
+                            <p><strong>Địa chỉ:</strong> ${order.address}</p>
                         </div>
                     </div>
                 </div>
@@ -155,10 +144,6 @@
                                 </tr>
 
                                 <tr>
-                                    <td colspan="5" class="text-end"><strong>Sử dụng voucher</strong></td>
-                                    <td colspan="1" class="text-danger">-<fmt:formatNumber value="${subtotal*order.voucherPercent/100}" type="currency" currencySymbol="₫" groupingUsed="true" /></td>
-                                </tr>
-                                <tr>
                                     <td colspan="5" class="text-end"><strong>Phí vận chuyển</strong></td>
                                     <td colspan="1"><fmt:formatNumber value="${order.shippingFee}" type="currency" currencySymbol="₫" groupingUsed="true" /></td>
                                 </tr>
@@ -185,68 +170,25 @@
 
                 </c:if>
 
-                <c:if test="${order.orderStatusId == 6}">
+<c:if test="${order.orderStatusId == 2}">
+    <form action="${pageContext.request.contextPath}/packagedone" method="post" style="margin-left: 20px">
+        <input type="hidden" name="orderId" value="${order.orderId}">
+        <button type="submit" class="btn btn-info btn-lg">
+            Đóng gói thành công
+        </button>
+    </form>
+</c:if>
 
-                    <form action="${pageContext.request.contextPath}/createorderghn" method="post" style="margin-left: 20px">
-                        <input type="hidden" name="orderId" value="${order.orderId}">                      
-                        <button type="submit" class="btn btn-info btn-lg" >
-                            Tạo đơn vận chuyển GHN
-                        </button>
-                    </form>
+<c:if test="${order.orderStatusId == 1 || order.orderStatusId == 2 || order.orderStatusId == 6 || order.orderStatusId == 3}">
+    <form action="${pageContext.request.contextPath}/cancelorder" method="post" style="margin-left: 20px">
+        <input type="hidden" name="orderId" value="${order.orderId}">
+        <button type="submit" class="btn btn-danger btn-lg me-2">
+            Hủy đơn hàng
+        </button>
+    </form>
+</c:if>
 
-                </c:if>
-
-                <c:if test="${order.orderStatusId == 2}">
-
-                    <form action="${pageContext.request.contextPath}/packagedone" method="post" style="margin-left: 20px">
-                        <input type="hidden" name="orderId" value="${order.orderId}">                      
-                        <button type="submit" class="btn btn-info btn-lg" >
-                            Đóng gói thành công
-                        </button>
-                    </form>
-
-                </c:if>
-                <c:if test="${order.orderStatusId == 1 || order.orderStatusId == 2 || order.orderStatusId == 6 ||order.orderStatusId == 3}">
-                    <button id="cancelButton" style="margin-left: 20px" onclick="cancelOrder(${order.orderId},${order.paymentMethodId},${order.paymentStatusId})" type="button" class="btn btn-danger btn-lg me-2" >
-                        Hủy đơn hàng
-                    </button>
-                </c:if>
-                <c:if test="${order.orderStatusId == 5 && order.paymentStatusId == 4}">
-                    <form style="margin-left: 20px" action="${pageContext.request.contextPath}/refundpayment" method="post" class="me-2"> 
-                        <input type="hidden" name="vnp_TxnRef" value="${order.vnpTxnRef}">
-                        <input type="hidden" name="amount" value="${order.totalAmount}">
-                        <input type="hidden" name="vnp_CreateDate" value="${order.vnpCreateDate}">
-                        <input type="hidden" name="vnp_CreateBy" value="${sessionScope.account.username}">
-                        <input type="hidden" name="orderId" value="${order.orderId}">
-                        <button  type="submit" class="btn btn-warning btn-lg" >
-                            Hoàn tiền
-                        </button>
-                    </form>
-                </c:if>
-
-
-            </div>
-        </div>
-        <!-- Bootstrap JS with Popper.js -->
-
-        <jsp:include page="../common/js.jsp" />
-
-
-        <script>
-            function cancelOrder(orderId, methodId, payStatus) {
-                document.getElementById('cancelButton').disabled = true;
-                const xhr = new XMLHttpRequest();
-                xhr.open("POST", "cancelorder", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send("orderId=" + orderId + "&methodId=" + methodId + "&payStatus=" + payStatus);
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        alert("Hủy đơn hàng thành công !");
-                        location.reload();
-                    }
-                };
-            }
-
+<script>
             function goBack() {
                 window.location.href = "${pageContext.request.contextPath}/orderlist";
             }
@@ -259,12 +201,6 @@
             <%session.removeAttribute("notify");%>
         </c:if>
 
-        <c:if test="${not empty sessionScope.refundMsg}">
-            <script>
-                alert('${sessionScope.refundMsg}');
-            </script>
-            <%session.removeAttribute("refundMsg");%>
-        </c:if>
 
 
     </body>

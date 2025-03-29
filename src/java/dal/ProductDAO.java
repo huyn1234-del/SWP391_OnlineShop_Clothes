@@ -462,18 +462,18 @@ public class ProductDAO extends DBContext {
         String sql = "insert into Products \n"
                 + "(product_name, price, total_quantity, description, thumbnail, is_active, rated_star, brand_id, product_category_id)\n"
                 + "values \n"
-                + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pre = connection.prepareStatement(sql);
             pre.setString(1, p.getProduct_name());
             pre.setInt(2, p.getPrice());
             pre.setInt(3, p.getTotal_quantity());
-            pre.setString(5, p.getDescription());
-            pre.setString(6, p.getThumbnail());
-            pre.setBoolean(7, p.isIs_active());
-            pre.setInt(8, p.getRated_star());
-            pre.setInt(9, p.getBrand_id());
-            pre.setInt(10, p.getProduct_category_id());
+            pre.setString(4, p.getDescription());
+            pre.setString(5, p.getThumbnail());
+            pre.setBoolean(6, p.isIs_active());
+            pre.setInt(7, p.getRated_star());
+            pre.setInt(8, p.getBrand_id());
+            pre.setInt(9, p.getProduct_category_id());
             pre.execute();
         } catch (SQLException ex) {
             Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -497,13 +497,13 @@ public class ProductDAO extends DBContext {
             pre.setString(1, p.getProduct_name());
             pre.setInt(2, p.getPrice());
             pre.setInt(3, p.getTotal_quantity());
-            pre.setString(5, p.getDescription());
-            pre.setString(6, p.getThumbnail());
-            pre.setBoolean(7, p.isIs_active());
-            pre.setInt(8, p.getRated_star());
-            pre.setInt(9, p.getBrand_id());
-            pre.setInt(10, p.getProduct_category_id());
-            pre.setInt(11, p.getProduct_id());
+            pre.setString(4, p.getDescription());
+            pre.setString(5, p.getThumbnail());
+            pre.setBoolean(6, p.isIs_active());
+            pre.setInt(7, p.getRated_star());
+            pre.setInt(8, p.getBrand_id());
+            pre.setInt(9, p.getProduct_category_id());
+            pre.setInt(10, p.getProduct_id());
             pre.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -512,8 +512,9 @@ public class ProductDAO extends DBContext {
 
     public List<Product> searchProduct(String s) {
         List<Product> list = new ArrayList<>();
-        String sql = "select * from Products \n "
-                + "where product_name like ? and total_quantity > 0";
+        String sql = """
+                     select * from Products 
+                      where product_name like ? and total_quantity > 0""";
         try {
             PreparedStatement pre = connection.prepareStatement(sql);
             pre.setString(1, "%" + s + "%");
@@ -538,7 +539,6 @@ public class ProductDAO extends DBContext {
         }
         return list;
     }
-
     public Product getHighestId() {
         Product p = new Product();
         String sql = "select top 1 * from Products \n "
@@ -570,5 +570,5 @@ public class ProductDAO extends DBContext {
 //        ProductDAO pdao = new ProductDAO();
 //        List<Product> pList = pdao.updateProduct();
 //        System.out.println(p);
-//    }
+//    } 
 }

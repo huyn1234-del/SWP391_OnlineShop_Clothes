@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Product"%>
 <%@page import="java.util.*" %>
+<%@page import="model.ProductCategory"%>
+<%@page import="dal.ProductCategoryDAO"%>
 <%@page import="java.text.NumberFormat"%>
 
 
@@ -160,6 +162,7 @@
                                     <th scope="col">STT</th>
                                     <th scope="col" style="width: 20%">Tên</th>
                                     <th scope="col">Ảnh</th>
+                                    <th scope="col">Danh mục</th> 
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Giá(₫)</th>
                                     <th scope="col">Xem</th>
@@ -168,7 +171,17 @@
                             <tbody>
 
                                 <!-- START Product item -->
-                                <%  
+                                <%
+                                    List<Product> pList = (ArrayList<Product>) session.getAttribute("product_list");
+                                    ProductCategoryDAO pcdao = new ProductCategoryDAO();  
+                                    int num = 1;
+                                    for (Product s : pList) {
+                                        double price = s.getPrice();
+                                        Locale vietnameseLocale = new Locale("vi", "VN");
+                                        NumberFormat formatter = NumberFormat.getNumberInstance(vietnameseLocale);
+                                        String formattedAmount = formatter.format(price);
+                                        ProductCategory category = pcdao.getProductCategories(s.getProduct_category_id());
+                              
                                     List<Product> search = (ArrayList<Product>) session.getAttribute("search_product");
                                     if (search != null) {
                                         for (Product p : search) {
@@ -182,7 +195,7 @@
                                     <td class="product-img">
                                         <img src="../<%= p.getThumbnail()%>">
                                     </td>
-
+                                    <td><%= category != null ? category.getProduct_category_name() : "Không có danh mục" %></td>
                                     <td>
                                         <%
                                             if(p.isIs_active()==true) {   
@@ -237,7 +250,9 @@
 
                                 </tr>
                                 <!-- END Product item -->
-
+    <%
+        } 
+    %>
                             </tbody>
                         </table>
 

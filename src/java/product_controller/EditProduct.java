@@ -32,12 +32,12 @@ public class EditProduct extends HttpServlet {
                 Product p = pdao.getProductById(pid);
                 p.setIs_active(false);
                 pdao.updateProduct(p);
-                request.getRequestDispatcher("productpaging").forward(request, response);
+                request.getRequestDispatcher("/productpaging").forward(request, response);
             } else if (button.equals("show")) {
                 Product p = pdao.getProductById(pid);
                 p.setIs_active(true);
                 pdao.updateProduct(p);
-                request.getRequestDispatcher("productpaging").forward(request, response);
+                request.getRequestDispatcher("/productpaging").forward(request, response);
             } else {
                 Product p = pdao.getProductById(pid);
                 session.setAttribute("product_detail", p);

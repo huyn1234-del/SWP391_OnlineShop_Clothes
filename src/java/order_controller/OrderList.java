@@ -20,8 +20,8 @@ import model.User;
 
 @WebServlet(name="OrderList", urlPatterns={"/orderlist"})
 public class OrderList extends HttpServlet {
-   
 
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -76,7 +76,7 @@ public class OrderList extends HttpServlet {
         );
 
         session.setAttribute("order_list", order);
-        response.sendRedirect(request.getContextPath() + "/management/order-list.jsp");
+        response.sendRedirect(request.getContextPath() + "/management/list-order.jsp");
         }
     } 
 
@@ -98,3 +98,4 @@ public class OrderList extends HttpServlet {
     }// </editor-fold>
 
 }
+

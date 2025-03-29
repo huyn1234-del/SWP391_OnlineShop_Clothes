@@ -25,34 +25,10 @@ import model.User;
 
 public class OrderDAO extends DBContext {
 
-    public int getOrderIdByVNP(String vnp_TxnRef) {
-        String sql = """
-                     select order_id
-                     from Orders
-                     where vnp_TxnRef = ?""";
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, vnp_TxnRef);
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return -1;
-
-    }
-
     public Order getOrderBySaleIdAndOrderId(int sid, int ordId) {
         String sql = """
-                     select o.*,pm.payment_method_name,ps.payment_status_name,os.order_status_name
+                     select o.*,os.order_status_name
                        from Orders o
-                       left join Payment_Methods pm on pm.payment_method_id = o.payment_method_id
-                       left join Payment_Status ps on ps.payment_status_id = o.payment_status_id
                        left join Order_Status os on os.order_status_id = o.order_status_id
                        WHERE [salerId] = ? and [order_id] = ?""";
 
@@ -70,30 +46,15 @@ public class OrderDAO extends DBContext {
                 String phone = rs.getString("phone");
                 String email = rs.getString("email");
                 String address = rs.getString("address");
-                String wardCode = rs.getString("ward_code");
-                String wardName = rs.getString("ward_name");
-                int districtId = rs.getInt("district_id");
-                String districtName = rs.getString("district_name");
-                int provinceId = rs.getInt("province_id");
-                String provinceName = rs.getString("province_name");
                 int totalPrice = rs.getInt("total_price");
                 int shippingFee = rs.getInt("shipping_fee");
-                int voucherId = rs.getInt("voucher_id");
-                int voucherPercent = rs.getInt("voucher_percent");
                 int totalAmount = rs.getInt("total_amount");
                 int totalGram = rs.getInt("total_gram");
-                int paymentMethodId = rs.getInt("payment_method_id");
-                String vnpTxnRef = rs.getString("vnp_TxnRef");
-                String vnpCreateDate = rs.getString("vnp_CreateDate");
-                int paymentStatusId = rs.getInt("payment_status_id");
                 int orderStatusId = rs.getInt("order_status_id");
-                String shippingCode = rs.getString("shipping_code");
                 int saleId = rs.getInt("salerId");
 
-                String paymentMethodName = rs.getString("payment_method_name");
-                String paymentStatusName = rs.getString("payment_status_name");
                 String orderStatusName = rs.getString("order_status_name");
-                return new Order(oid, cid, orderedDate, receiveDate, receiverName, phone, email, address, wardCode, wardName, districtId, districtName, provinceId, provinceName, totalPrice, shippingFee, voucherId, voucherPercent, totalAmount, totalGram, paymentMethodId, vnpTxnRef, vnpCreateDate, paymentStatusId, orderStatusId, shippingCode, saleId, paymentMethodName, paymentStatusName, orderStatusName);
+                return new Order(oid, cid, orderedDate, receiveDate, receiverName, phone, email, address, totalPrice, shippingFee, totalAmount, totalGram, orderStatusId, saleId, orderStatusName);
 
             }
         } catch (SQLException ex) {
@@ -105,10 +66,8 @@ public class OrderDAO extends DBContext {
 
     public Order getOrderByCustomerIdAndOrderId(int cusId, int ordId) {
         String sql = """
-                     select o.*,pm.payment_method_name,ps.payment_status_name,os.order_status_name
+                     select o.*,os.order_status_name
                        from Orders o
-                       left join Payment_Methods pm on pm.payment_method_id = o.payment_method_id
-                       left join Payment_Status ps on ps.payment_status_id = o.payment_status_id
                        left join Order_Status os on os.order_status_id = o.order_status_id
                        WHERE [customer_id] = ? and [order_id] = ?""";
 
@@ -126,30 +85,15 @@ public class OrderDAO extends DBContext {
                 String phone = rs.getString("phone");
                 String email = rs.getString("email");
                 String address = rs.getString("address");
-                String wardCode = rs.getString("ward_code");
-                String wardName = rs.getString("ward_name");
-                int districtId = rs.getInt("district_id");
-                String districtName = rs.getString("district_name");
-                int provinceId = rs.getInt("province_id");
-                String provinceName = rs.getString("province_name");
                 int totalPrice = rs.getInt("total_price");
                 int shippingFee = rs.getInt("shipping_fee");
-                int voucherId = rs.getInt("voucher_id");
-                int voucherPercent = rs.getInt("voucher_percent");
                 int totalAmount = rs.getInt("total_amount");
                 int totalGram = rs.getInt("total_gram");
-                int paymentMethodId = rs.getInt("payment_method_id");
-                String vnpTxnRef = rs.getString("vnp_TxnRef");
-                String vnpCreateDate = rs.getString("vnp_CreateDate");
-                int paymentStatusId = rs.getInt("payment_status_id");
                 int orderStatusId = rs.getInt("order_status_id");
-                String shippingCode = rs.getString("shipping_code");
                 int saleId = rs.getInt("salerId");
 
-                String paymentMethodName = rs.getString("payment_method_name");
-                String paymentStatusName = rs.getString("payment_status_name");
                 String orderStatusName = rs.getString("order_status_name");
-                return new Order(oid, cid, orderedDate, receiveDate, receiverName, phone, email, address, wardCode, wardName, districtId, districtName, provinceId, provinceName, totalPrice, shippingFee, voucherId, voucherPercent, totalAmount, totalGram, paymentMethodId, vnpTxnRef, vnpCreateDate, paymentStatusId, orderStatusId, shippingCode, saleId, paymentMethodName, paymentStatusName, orderStatusName);
+                return new Order(oid, cid, orderedDate, receiveDate, receiverName, phone, email, address, totalPrice, shippingFee, totalAmount, totalGram, orderStatusId, saleId, orderStatusName);
 
             }
         } catch (SQLException ex) {
@@ -162,10 +106,8 @@ public class OrderDAO extends DBContext {
     public List<Order> getOrderByCustomer(int id) {
         List<Order> oList = new ArrayList<>();
         String sql = """
-                     select o.*,pm.payment_method_name,ps.payment_status_name,os.order_status_name
+                     select o.*,os.order_status_name
                        from Orders o
-                       left join Payment_Methods pm on pm.payment_method_id = o.payment_method_id
-                       left join Payment_Status ps on ps.payment_status_id = o.payment_status_id
                        left join Order_Status os on os.order_status_id = o.order_status_id
                        WHERE [customer_id] = ?
                         order by o.ordered_date desc""";
@@ -182,30 +124,15 @@ public class OrderDAO extends DBContext {
                 String phone = rs.getString("phone");
                 String email = rs.getString("email");
                 String address = rs.getString("address");
-                String wardCode = rs.getString("ward_code");
-                String wardName = rs.getString("ward_name");
-                int districtId = rs.getInt("district_id");
-                String districtName = rs.getString("district_name");
-                int provinceId = rs.getInt("province_id");
-                String provinceName = rs.getString("province_name");
                 int totalPrice = rs.getInt("total_price");
                 int shippingFee = rs.getInt("shipping_fee");
-                int voucherId = rs.getInt("voucher_id");
-                int voucherPercent = rs.getInt("voucher_percent");
                 int totalAmount = rs.getInt("total_amount");
                 int totalGram = rs.getInt("total_gram");
-                int paymentMethodId = rs.getInt("payment_method_id");
-                String vnpTxnRef = rs.getString("vnp_TxnRef");
-                String vnpCreateDate = rs.getString("vnp_CreateDate");
-                int paymentStatusId = rs.getInt("payment_status_id");
                 int orderStatusId = rs.getInt("order_status_id");
-                String shippingCode = rs.getString("shipping_code");
                 int saleId = rs.getInt("salerId");
 
-                String paymentMethodName = rs.getString("payment_method_name");
-                String paymentStatusName = rs.getString("payment_status_name");
                 String orderStatusName = rs.getString("order_status_name");
-                Order order = new Order(oid, cid, orderedDate, receiverName, phone, email, address, wardCode, wardName, districtId, districtName, provinceId, provinceName, totalPrice, shippingFee, voucherId, voucherPercent, totalAmount, totalGram, paymentMethodId, vnpTxnRef, vnpCreateDate, paymentStatusId, orderStatusId, shippingCode, saleId, paymentMethodName, paymentStatusName, orderStatusName);
+                Order order = new Order(oid, cid, orderedDate, receiverName, phone, email, address, totalPrice, shippingFee, totalAmount, totalGram, orderStatusId, saleId, orderStatusName);
                 oList.add(order);
             }
         } catch (SQLException ex) {
@@ -237,96 +164,6 @@ public class OrderDAO extends DBContext {
         return false;
     }
 
-    public boolean updateOrderStatus(String vnp_TxnRef, int orderStatusId) {
-        String sql = """
-                     UPDATE [dbo].[Orders]
-                         SET 
-                            [order_status_id] = ?
-                       WHERE [vnp_TxnRef] = ?""";
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, orderStatusId);
-            ps.setString(2, vnp_TxnRef);
-
-            int n = ps.executeUpdate();
-
-            return n > 0;
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean updatePaymentStatus(int orderId, int paymentStatusId) {
-        String sql = """
-                     UPDATE [dbo].[Orders]
-                        SET 
-                           [payment_status_id] = ?
-                      WHERE [order_id] = ?""";
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, paymentStatusId);
-            ps.setInt(2, orderId);
-
-            int n = ps.executeUpdate();
-
-            return n > 0;
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean updatePaymentStatus(String vnp_TxnRef, int paymentStatusId) {
-        String sql = """
-                     UPDATE [dbo].[Orders]
-                        SET 
-                           [payment_status_id] = ?
-                      WHERE [vnp_TxnRef] = ?""";
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, paymentStatusId);
-            ps.setString(2, vnp_TxnRef);
-
-            int n = ps.executeUpdate();
-
-            return n > 0;
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean updateVnPayField(int orderId, String vnp_TxnRef, String vnp_CreateDate) {
-        String sql = """
-                     UPDATE [dbo].[Orders]
-                        SET 
-                           [vnp_TxnRef] = ?
-                           ,[vnp_CreateDate] = ?
-                      WHERE [order_id] = ?""";
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, vnp_TxnRef);
-            ps.setString(2, vnp_CreateDate);
-            ps.setInt(3, orderId);
-
-            int n = ps.executeUpdate();
-
-            return n > 0;
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return false;
-    }
-
     public int insertOrder(Order order) {
 
         String sql = """
@@ -337,26 +174,13 @@ public class OrderDAO extends DBContext {
                                            ,[phone]
                                            ,[email]
                                            ,[address]
-                                           ,[ward_code]
-                                           ,[ward_name]
-                                           ,[district_id]
-                                           ,[district_name]
-                                           ,[province_id]
-                                           ,[province_name]
                                            ,[total_price]
                                            ,[shipping_fee]
-                                           ,[voucher_id]
-                                           ,[voucher_percent]
                                            ,[total_amount]
                                            ,[total_gram]
-                                           ,[payment_method_id]
-                                           ,[vnp_TxnRef]
-                                           ,[vnp_CreateDate]
-                                           ,[payment_status_id]
                                            ,[order_status_id]
-                                           ,[shipping_code])
                                            
-                                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""";
+                                     VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -366,24 +190,12 @@ public class OrderDAO extends DBContext {
             ps.setString(4, order.getPhone());
             ps.setString(5, order.getEmail());
             ps.setString(6, order.getAddress());
-            ps.setString(7, order.getWardCode());
-            ps.setString(8, order.getWardName());
-            ps.setInt(9, order.getDistrictId());
-            ps.setString(10, order.getDistrictName());
-            ps.setInt(11, order.getProvinceId());
-            ps.setString(12, order.getProvinceName());
-            ps.setInt(13, order.getTotalPrice());
-            ps.setInt(14, order.getShippingFee());
-            ps.setInt(15, order.getVoucherId());
-            ps.setInt(16, order.getVoucherPercent());
-            ps.setInt(17, order.getTotalAmount());
-            ps.setInt(18, order.getTotalGram());
-            ps.setInt(19, order.getPaymentMethodId());
-            ps.setString(20, null);
-            ps.setString(21, null);
-            ps.setInt(22, order.getPaymentStatusId());
-            ps.setInt(23, order.getOrderStatusId());
-            ps.setString(24, null);
+            ps.setInt(7, order.getTotalPrice());
+            ps.setInt(8, order.getShippingFee());
+            ps.setInt(9, order.getTotalAmount());
+            ps.setInt(10, order.getTotalGram());
+            ps.setInt(11, order.getOrderStatusId());
+            ps.setString(12, null);
 
             ps.executeUpdate();
 
@@ -415,29 +227,14 @@ public class OrderDAO extends DBContext {
                 String phone = rs.getString("phone");
                 String email = rs.getString("email");
                 String address = rs.getString("address");
-                String wardCode = rs.getString("ward_code");
-                String wardName = rs.getString("ward_name");
-                int districtId = rs.getInt("district_id");
-                String districtName = rs.getString("district_name");
-                int provinceId = rs.getInt("province_id");
-                String provinceName = rs.getString("province_name");
                 int totalPrice = rs.getInt("total_price");
                 int shippingFee = rs.getInt("shipping_fee");
-                int voucherId = rs.getInt("voucher_id");
-                int voucherPercent = rs.getInt("voucher_percent");
                 int totalAmount = rs.getInt("total_amount");
                 int totalGram = rs.getInt("total_gram");
-                int paymentMethodId = rs.getInt("payment_method_id");
-                String vnpTxnRef = rs.getString("vnp_TxnRef");
-                String vnpCreateDate = rs.getString("vnp_CreateDate");
-                int paymentStatusId = rs.getInt("payment_status_id");
                 int orderStatusId = rs.getInt("order_status_id");
-                String shippingCode = rs.getString("shipping_code");
                 int saleId = rs.getInt("salerId");
                 Order order = new Order(oid, cid, orderedDate, receiverName, phone, email, address,
-                        wardCode, wardName, districtId, districtName, provinceId, provinceName, totalPrice, shippingFee,
-                        voucherId, voucherPercent, totalAmount, totalGram, paymentMethodId, vnpTxnRef, vnpCreateDate,
-                        paymentStatusId, orderStatusId, shippingCode, saleId);
+                        totalPrice, shippingFee, totalAmount, totalGram, orderStatusId, saleId);
                 oList.add(order);
             }
         } catch (SQLException ex) {
@@ -463,30 +260,16 @@ public class OrderDAO extends DBContext {
                 String phone = rs.getString("phone");
                 String email = rs.getString("email");
                 String address = rs.getString("address");
-                String wardCode = rs.getString("ward_code");
-                String wardName = rs.getString("ward_name");
-                int districtId = rs.getInt("district_id");
-                String districtName = rs.getString("district_name");
-                int provinceId = rs.getInt("province_id");
-                String provinceName = rs.getString("province_name");
                 int totalPrice = rs.getInt("total_price");
                 int shippingFee = rs.getInt("shipping_fee");
-                int voucherId = rs.getInt("voucher_id");
-                int voucherPercent = rs.getInt("voucher_percent");
                 int totalAmount = rs.getInt("total_amount");
                 int totalGram = rs.getInt("total_gram");
-                int paymentMethodId = rs.getInt("payment_method_id");
-                String vnpTxnRef = rs.getString("vnp_TxnRef");
-                String vnpCreateDate = rs.getString("vnp_CreateDate");
-                int paymentStatusId = rs.getInt("payment_status_id");
                 int orderStatusId = rs.getInt("order_status_id");
-                String shippingCode = rs.getString("shipping_code");
                 int saleId = rs.getInt("salerId");
                 String receiveDate = rs.getString("receive_date");
                 order = new Order(oid, cid, orderedDate, receiveDate, receiverName, phone, email, address,
-                        wardCode, wardName, districtId, districtName, provinceId, provinceName, totalPrice, shippingFee,
-                        voucherId, voucherPercent, totalAmount, totalGram, paymentMethodId, vnpTxnRef, vnpCreateDate,
-                        paymentStatusId, orderStatusId, shippingCode, saleId);
+                        totalPrice, shippingFee,
+                         totalAmount, totalGram, orderStatusId, saleId);
             }
         } catch (SQLException ex) {
             Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -511,29 +294,15 @@ public class OrderDAO extends DBContext {
                 String phone = rs.getString("phone");
                 String email = rs.getString("email");
                 String address = rs.getString("address");
-                String wardCode = rs.getString("ward_code");
-                String wardName = rs.getString("ward_name");
-                int districtId = rs.getInt("district_id");
-                String districtName = rs.getString("district_name");
-                int provinceId = rs.getInt("province_id");
-                String provinceName = rs.getString("province_name");
                 int totalPrice = rs.getInt("total_price");
                 int shippingFee = rs.getInt("shipping_fee");
-                int voucherId = rs.getInt("voucher_id");
-                int voucherPercent = rs.getInt("voucher_percent");
                 int totalAmount = rs.getInt("total_amount");
                 int totalGram = rs.getInt("total_gram");
-                int paymentMethodId = rs.getInt("payment_method_id");
-                String vnpTxnRef = rs.getString("vnp_TxnRef");
-                String vnpCreateDate = rs.getString("vnp_CreateDate");
-                int paymentStatusId = rs.getInt("payment_status_id");
                 int orderStatusId = rs.getInt("order_status_id");
-                String shippingCode = rs.getString("shipping_code");
                 int saleId = rs.getInt("salerId");
                 order = new Order(cid, orderedDate, receiverName, phone, email, address,
-                        wardCode, wardName, districtId, districtName, provinceId, provinceName, totalPrice, shippingFee,
-                        voucherId, voucherPercent, totalAmount, totalGram, paymentMethodId, vnpTxnRef, vnpCreateDate,
-                        paymentStatusId, orderStatusId, shippingCode, saleId);
+                         totalPrice, shippingFee,
+                         totalAmount, totalGram, orderStatusId, saleId);
             }
         } catch (SQLException ex) {
             Logger.getLogger(RoleDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -726,10 +495,8 @@ public class OrderDAO extends DBContext {
     public List<Order> getOrderPending(String startDate, String endDate) {
         List<Order> oList = new ArrayList<>();
         StringBuilder sql = new StringBuilder("""
-                 select o.*, pm.payment_method_name, ps.payment_status_name, os.order_status_name
+                 select o.*, os.order_status_name
                    from Orders o
-                   left join Payment_Methods pm on pm.payment_method_id = o.payment_method_id
-                   left join Payment_Status ps on ps.payment_status_id = o.payment_status_id
                    left join Order_Status os on os.order_status_id = o.order_status_id
                    WHERE o.order_status_id = 1
                  """);
@@ -754,31 +521,16 @@ public class OrderDAO extends DBContext {
                 String phone = rs.getString("phone");
                 String email = rs.getString("email");
                 String address = rs.getString("address");
-                String wardCode = rs.getString("ward_code");
-                String wardName = rs.getString("ward_name");
-                int districtId = rs.getInt("district_id");
-                String districtName = rs.getString("district_name");
-                int provinceId = rs.getInt("province_id");
-                String provinceName = rs.getString("province_name");
                 int totalPrice = rs.getInt("total_price");
                 int shippingFee = rs.getInt("shipping_fee");
-                int voucherId = rs.getInt("voucher_id");
-                int voucherPercent = rs.getInt("voucher_percent");
                 int totalAmount = rs.getInt("total_amount");
                 int totalGram = rs.getInt("total_gram");
-                int paymentMethodId = rs.getInt("payment_method_id");
-                String vnpTxnRef = rs.getString("vnp_TxnRef");
-                String vnpCreateDate = rs.getString("vnp_CreateDate");
-                int paymentStatusId = rs.getInt("payment_status_id");
                 int orderStatusId = rs.getInt("order_status_id");
-                String shippingCode = rs.getString("shipping_code");
                 int saleId = rs.getInt("salerId");
 
-                String paymentMethodName = rs.getString("payment_method_name");
-                String paymentStatusName = rs.getString("payment_status_name");
                 String orderStatusName = rs.getString("order_status_name");
 
-                Order order = new Order(oid, cid, orderedDate, receiverName, phone, email, address, wardCode, wardName, districtId, districtName, provinceId, provinceName, totalPrice, shippingFee, voucherId, voucherPercent, totalAmount, totalGram, paymentMethodId, vnpTxnRef, vnpCreateDate, paymentStatusId, orderStatusId, shippingCode, saleId, paymentMethodName, paymentStatusName, orderStatusName);
+                Order order = new Order(oid, cid, orderedDate, receiverName, phone, email, address, totalPrice, shippingFee, totalAmount, totalGram, orderStatusId, saleId, orderStatusName);
                 oList.add(order);
             }
         } catch (SQLException ex) {
@@ -791,10 +543,8 @@ public class OrderDAO extends DBContext {
     public List<Order> getOrderBySale(int id, String begin, String end) {
         List<Order> oList = new ArrayList<>();
         StringBuilder sql = new StringBuilder("""
-                     select o.*,pm.payment_method_name,ps.payment_status_name,os.order_status_name
+                     select o.*,os.order_status_name
                        from Orders o
-                       left join Payment_Methods pm on pm.payment_method_id = o.payment_method_id
-                       left join Payment_Status ps on ps.payment_status_id = o.payment_status_id
                        left join Order_Status os on os.order_status_id = o.order_status_id
                        WHERE [salerId] = ?
                      """);
@@ -819,30 +569,15 @@ public class OrderDAO extends DBContext {
                 String phone = rs.getString("phone");
                 String email = rs.getString("email");
                 String address = rs.getString("address");
-                String wardCode = rs.getString("ward_code");
-                String wardName = rs.getString("ward_name");
-                int districtId = rs.getInt("district_id");
-                String districtName = rs.getString("district_name");
-                int provinceId = rs.getInt("province_id");
-                String provinceName = rs.getString("province_name");
                 int totalPrice = rs.getInt("total_price");
                 int shippingFee = rs.getInt("shipping_fee");
-                int voucherId = rs.getInt("voucher_id");
-                int voucherPercent = rs.getInt("voucher_percent");
                 int totalAmount = rs.getInt("total_amount");
                 int totalGram = rs.getInt("total_gram");
-                int paymentMethodId = rs.getInt("payment_method_id");
-                String vnpTxnRef = rs.getString("vnp_TxnRef");
-                String vnpCreateDate = rs.getString("vnp_CreateDate");
-                int paymentStatusId = rs.getInt("payment_status_id");
                 int orderStatusId = rs.getInt("order_status_id");
-                String shippingCode = rs.getString("shipping_code");
                 int saleId = rs.getInt("salerId");
 
-                String paymentMethodName = rs.getString("payment_method_name");
-                String paymentStatusName = rs.getString("payment_status_name");
                 String orderStatusName = rs.getString("order_status_name");
-                Order order = new Order(oid, cid, orderedDate, receiverName, phone, email, address, wardCode, wardName, districtId, districtName, provinceId, provinceName, totalPrice, shippingFee, voucherId, voucherPercent, totalAmount, totalGram, paymentMethodId, vnpTxnRef, vnpCreateDate, paymentStatusId, orderStatusId, shippingCode, saleId, paymentMethodName, paymentStatusName, orderStatusName);
+                Order order = new Order(oid, cid, orderedDate, receiverName, phone, email, address, totalPrice, shippingFee, totalAmount, totalGram, orderStatusId, saleId, orderStatusName);
                 oList.add(order);
             }
         } catch (SQLException ex) {
@@ -949,10 +684,8 @@ public class OrderDAO extends DBContext {
     public List<Order> getOrderByFilterDate(String startDate, String endDate) {
         List<Order> oList = new ArrayList<>();
         StringBuilder sql = new StringBuilder("""
-                 select o.*, pm.payment_method_name, ps.payment_status_name, os.order_status_name
+                 select o.*, os.order_status_name
                    from Orders o
-                   left join Payment_Methods pm on pm.payment_method_id = o.payment_method_id
-                   left join Payment_Status ps on ps.payment_status_id = o.payment_status_id
                    left join Order_Status os on os.order_status_id = o.order_status_id
                  """);
 
@@ -976,31 +709,16 @@ public class OrderDAO extends DBContext {
                 String phone = rs.getString("phone");
                 String email = rs.getString("email");
                 String address = rs.getString("address");
-                String wardCode = rs.getString("ward_code");
-                String wardName = rs.getString("ward_name");
-                int districtId = rs.getInt("district_id");
-                String districtName = rs.getString("district_name");
-                int provinceId = rs.getInt("province_id");
-                String provinceName = rs.getString("province_name");
                 int totalPrice = rs.getInt("total_price");
                 int shippingFee = rs.getInt("shipping_fee");
-                int voucherId = rs.getInt("voucher_id");
-                int voucherPercent = rs.getInt("voucher_percent");
                 int totalAmount = rs.getInt("total_amount");
                 int totalGram = rs.getInt("total_gram");
-                int paymentMethodId = rs.getInt("payment_method_id");
-                String vnpTxnRef = rs.getString("vnp_TxnRef");
-                String vnpCreateDate = rs.getString("vnp_CreateDate");
-                int paymentStatusId = rs.getInt("payment_status_id");
                 int orderStatusId = rs.getInt("order_status_id");
-                String shippingCode = rs.getString("shipping_code");
                 int saleId = rs.getInt("salerId");
 
-                String paymentMethodName = rs.getString("payment_method_name");
-                String paymentStatusName = rs.getString("payment_status_name");
                 String orderStatusName = rs.getString("order_status_name");
 
-                Order order = new Order(oid, cid, orderedDate, receiverName, phone, email, address, wardCode, wardName, districtId, districtName, provinceId, provinceName, totalPrice, shippingFee, voucherId, voucherPercent, totalAmount, totalGram, paymentMethodId, vnpTxnRef, vnpCreateDate, paymentStatusId, orderStatusId, shippingCode, saleId, paymentMethodName, paymentStatusName, orderStatusName);
+                Order order = new Order(oid, cid, orderedDate, receiverName, phone, email, address, totalPrice, shippingFee, totalAmount, totalGram, orderStatusId, saleId, orderStatusName);
                 oList.add(order);
             }
         } catch (SQLException ex) {
@@ -1180,28 +898,6 @@ public class OrderDAO extends DBContext {
         }
         return false;
     }
-
-    public boolean updateShippingCode(int orderId, String shipping_code) {
-        String sql = """
-                     UPDATE [dbo].[Orders]
-                         SET 
-                            [shipping_code] = ?
-                       WHERE [order_id] = ?""";
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, shipping_code);
-            ps.setInt(2, orderId);
-
-            int n = ps.executeUpdate();
-
-            return n > 0;
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return false;
-    }
     
     public List<FeedbackChart> getTotalRatingByBrandInMonth(int month, int year) {
         List<FeedbackChart> sList = new ArrayList<>();
@@ -1244,21 +940,11 @@ public class OrderDAO extends DBContext {
         String receiverName = "Nguyễn Văn A";    // Tên người nhận
         String phone = "0123456789";              // Số điện thoại người nhận
         String email = "nguyenvana@example.com"; // Email người nhận
-        String address = "123 Đường ABC";        // Địa chỉ giao hàng
-        String wardCode = "001";                  // Mã phường
-        String wardName = "Phường 1";             // Tên phường
-        int districtId = 1;                       // ID quận
-        String districtName = "Quận 1";           // Tên quận
-        int provinceId = 1;                       // ID tỉnh
-        String provinceName = "TP.HCM";           // Tên tỉnh
+        String address = "123 Đường ABC";        // Địa chỉ giao hàng       
         int totalPrice = 1000000;                 // Tổng giá tiền
         int shippingFee = 50000;                  // Phí vận chuyển
-        int voucherId = 1;                        // ID voucher (nếu không có thì để 0)
-        int voucherPercent = 0;                   // Phần trăm giảm giá (nếu không có thì để 0)
         int totalAmount = 950000;                  // Tổng số tiền sau khi giảm giá
         int totalGram = 1000;                     // Tổng trọng lượng (gram)
-        int paymentMethodId = 1;                  // ID phương thức thanh toán
-        int paymentStatusId = 1;                  // ID trạng thái thanh toán
         int orderStatusId = 1;                    // ID trạng thái đơn hàng
 
         // Tạo đối tượng Order
@@ -1269,20 +955,10 @@ public class OrderDAO extends DBContext {
                 phone,
                 email,
                 address,
-                wardCode,
-                wardName,
-                districtId,
-                districtName,
-                provinceId,
-                provinceName,
                 totalPrice,
                 shippingFee,
-                voucherId,
-                voucherPercent,
                 totalAmount,
                 totalGram,
-                paymentMethodId,
-                paymentStatusId,
                 orderStatusId
         );
 
@@ -1292,3 +968,4 @@ public class OrderDAO extends DBContext {
 
     }
 }
+

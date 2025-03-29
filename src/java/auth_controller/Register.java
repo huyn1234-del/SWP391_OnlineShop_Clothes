@@ -48,10 +48,15 @@ public class Register extends HttpServlet {
         int roleId = account.getRole().getRole_id();
         
         switch (roleId) {
-            case 1 -> response.sendRedirect(request.getContextPath()+"/admindashboard");
-            case 2 -> response.sendRedirect(request.getContextPath()+"/orderlist");
-            case 3 -> response.sendRedirect(request.getContextPath()+"/marketinghome");
-            case 4 -> response.sendRedirect(request.getContextPath()+"/homeslider");
+            case 1 ->
+                response.sendRedirect(request.getContextPath() + "/admindashboard");
+            case 2 ->
+                response.sendRedirect(request.getContextPath() + "/saledashboard");
+            case 3 ->
+                response.sendRedirect(request.getContextPath() + "/management/mktdashboard");
+            case 4 ->
+                response.sendRedirect(request.getContextPath() + "/homeslider");
+
         }
         
         
