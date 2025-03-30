@@ -70,7 +70,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
     String videoUrl = saveFile(videoPart, "product_video");  
 
     // Thêm feedback vào database  
-PostFeedback pf = new PostFeedback(0, userid, postid, comment, 1, null, null, null, null, imageUrl, videoUrl, null, null, null);
+    PostFeedback pf = new PostFeedback(0, userid, postid, comment, 1, null, null, null, null, imageUrl, videoUrl, null, null, null);
     pfdao.AddCustomerPostFeedback(pf);  
 
     response.sendRedirect(request.getContextPath() + "/hpostdetail");  

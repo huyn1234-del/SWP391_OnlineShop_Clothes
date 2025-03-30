@@ -78,8 +78,7 @@
         if(cid.equals("null")) cid = "";
         if(bid.equals("null")) bid = "";
         if(pid.equals("null")) pid = "";
-        if(price1.equals("null")) price1 = "";
-        if(price2.equals("null")) price2 = "";
+        
         %>
         <section class="shop spad">
             <div class="container">
@@ -168,47 +167,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-heading">
-                                            <a data-toggle="collapse" data-target="#collapseThree">Lọc theo giá</a>
-                                        </div>
-                                        <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
-                                            <div class="card-body">
-                                                <%
-                                                    List<Price> prList = (List<Price>)session.getAttribute("prList");
-                                                    int maxPrice = Integer.parseInt(session.getAttribute("maxPrice")+"");
-                                                %>
-                                                <div class="shop__sidebar__price">
-                                                    <ul>
-                                                        <%
-                                                         for (Price price : prList) {
-
-                                                        %>
-                                                        <li><a style="color: <%=pid.equals(price.getPrice_id()+"")?"black":"#b7b7b7"%>" href="../productfilter?pid=<%=price.getPrice_id()%>">₫<%=price.getFrom()%>.000 - ₫<%=price.getTo()%>.000</a></li>
-                                                            <%
-                                                                }
-                                                            %>
-                                                        <li><a style="color: <%=pid.equals("max")?"black":"#b7b7b7"%>" href="../productfilter?pid=max">₫<%=maxPrice%>.000+</a></li>
-                                                    </ul>
-                                                </div>
-                                                <form action="../productfilter">
-                                                    <div class="row" style="margin-top: 14px;">
-                                                        <div class="col-md-5">
-                                                            <input value="<%=price1%>" name="price1" type="number" min="0" max="1000000000" required="" placeholder="Từ" style="width: 100%;"> 
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            --
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <input value="<%=price2%>" name="price2" type="number" min="0" max="1000000000" required="" placeholder="Đến" style="width: 100%;"> 
-                                                        </div>
-                                                    </div>
-                                                    <button style="margin-top: 10px;
-                                                            width: 100%;" type="submit" class="btn btn-dark">Áp dụng</button> 
-                                                </form>                 
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                     <div class="card">
                                         <div class="card-heading">
                                             <a data-toggle="collapse" data-target="#collapseFour">Kích cỡ</a>
@@ -282,7 +241,6 @@ if(sql1.equals("null")) sql1 = "";
                                                 <option <%=sortValue.equals("low")?"selected":""%> value="low">Giá: Thấp đến Cao</option>
                                                 <option <%=sortValue.equals("high")?"selected":""%> value="high">Giá: Cao đến Thấp</option>
                                                 <option <%=sortValue.equals("rate")?"selected":""%> value="rate">Đánh giá của người dùng</option>
-                                                <option <%=sortValue.equals("best")?"selected":""%> value="best">Bán chạy nhất</option>
                                             </select>
                                             <button type="submit" class="btn btn-outline-dark">Áp dụng</button>
                                         </form>

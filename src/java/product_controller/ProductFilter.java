@@ -49,15 +49,6 @@ public class ProductFilter extends HttpServlet {
             sql += " AND brand_id = " + bid;
         }
 
-        // Lọc theo khoảng giá
-        if (request.getParameter("price1") != null) {
-            int price1 = Integer.parseInt(request.getParameter("price1"));
-            int price2 = Integer.parseInt(request.getParameter("price2"));
-            sql += " AND price BETWEEN " + price1 + " AND " + price2;
-            session.setAttribute("price1", price1);
-            session.setAttribute("price2", price2);
-        }
-
         // Lọc theo đánh giá (rating star)
         String rate = request.getParameter("rate");
         if (rate == null && session.getAttribute("rate") != null) rate = session.getAttribute("rate") + "";

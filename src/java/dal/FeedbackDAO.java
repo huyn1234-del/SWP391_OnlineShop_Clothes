@@ -40,7 +40,8 @@ public class FeedbackDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                ProductFeedback feedback = new ProductFeedback(
+                ProductFeedback feedback;
+                feedback = new ProductFeedback(
                         rs.getInt("feedback_id"),
                         rs.getInt("customer_id"),
                         rs.getInt("product_id"),

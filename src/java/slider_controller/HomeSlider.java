@@ -42,7 +42,7 @@ public class HomeSlider extends HttpServlet {
         ProductDAO pdao = new ProductDAO();
         PostDAO podao = new PostDAO();
         List<Sliders> sList = sld.getAllSliders();  
-        List<Product> pList = pdao.getHotProduct();
+        List<Product> pList = pdao.getNewProduct();
         List<Post> poList = podao.getNewPost();
         String tabfilter = "hot";
         

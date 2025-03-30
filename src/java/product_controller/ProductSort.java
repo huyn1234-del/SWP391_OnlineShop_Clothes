@@ -62,14 +62,7 @@ public class ProductSort extends HttpServlet {
                    return (o2.getRated_star()-o1.getRated_star());
                }
            }); 
-       } else if(sortValue.equals("best")){
-           String s = "";
-           for (Product product : apList) {
-               s+=product.getProduct_id()+","; 
-           }
-           s = s.substring(0, s.length()-1);
-           apList = pdao.getAllHotProduct(s);
-       }
+       } 
        int totalProduct = apList.size();
         int npage = totalProduct/9 + 1;
         int cpage = 0;

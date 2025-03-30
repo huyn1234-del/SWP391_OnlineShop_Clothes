@@ -3,12 +3,45 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/master/Real/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/dal/ProductDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/master/Real/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/product_controller/ProductList.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/master/Real/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/product_controller/EditProduct.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/master/Real/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/web/management/add-product.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/master/Real/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/web/management/product-list.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/STUDY%20RESOURCE/SWP391/master/Real/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/product_controller/AddProduct.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/web/common/header.jsp</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/product_controller/ProductFilter.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/dal/SliderDAO.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/dal/PostDAO.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/post_controller/FilterPostbyCategory.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/controller/MKTdashboardServlet.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/slider_controller/HomeSlider.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/model/PostFeedback.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/product_controller/HProductDetail.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/auth_controller/Logout.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/product_controller/HomeFilter.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/dal/UserDAO.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/controller/DeleteSliderServlet.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/product_controller/FBpagination.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/web/common/product.jsp</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/dal/ProductFeedbackDAO.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/web/common/hproductdetail.jsp</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/web/common/home.jsp</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/dal/ProductDAO.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/post_controller/HPostDetail.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/dal/PostFeedbackDAO.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/controller/UpdateSliderServlet.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/controller/AddSliderServlet.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/controller/DetailCustomerServlet.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/post_controller/HPostList.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/controller/SliderServlet.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/dal/ProductCategoryDAO.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/controller/UpdateFeedbackServlet.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/controller/CustomerServlet.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/post_controller/ViewPostMarketing.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/post_controller/HPostfilter.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/controller/UpdateCustomerServlet.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/dal/FeedbackDAO.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/model/ProductFeedback.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/controller/HideSliderServlet.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/web/common/post.jsp</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/model/User.java</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/web/common/hblogdetail.jsp</file>
+            <file>file:/E:/SWP391/SWP391_OnlineShop_Clothes/SWP391_OnlineShop_Clothes/src/java/model/ProductCategory.java</file>
         </group>
     </open-files>
 </project-private>

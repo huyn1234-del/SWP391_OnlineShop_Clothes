@@ -131,6 +131,15 @@ public class User {
     this.role = role;
 }
 
+public User(int user_id, String first_name, String last_name, String phone, boolean gender, String dob, String address) {
+    this.user_id = user_id;
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.phone = phone;
+    this.gender = gender;
+    this.dob = dob;
+    this.address = address;
+}
 
 
     public int getUser_id() {

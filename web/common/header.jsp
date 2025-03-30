@@ -88,7 +88,6 @@
                         <li class="<%=currentPage.contains("home.jsp")?"active":""%>"><a href="<%=s%>/homeslider">Trang chủ</a></li>
                         <li class="<%=currentPage.contains("product.jsp")?"active":""%>"><a href="<%=s%>/homeproduct">Sản phẩm</a></li>
                         <li class="<%=currentPage.contains("post.jsp")?"active":""%>"><a href="<%=s%>/hpostlist">Blogs</a></li>
-                        <li class="<%=currentPage.contains("contact")?"active":""%>"><a href="<%=s%>/contact">Liên hệ</a></li>
                     </ul>
                 </nav>
             </div>
