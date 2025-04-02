@@ -54,6 +54,12 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
     }  
 
     String comment = request.getParameter("postcomment");  
+   if (comment == null || comment.trim().isEmpty()) {  
+    session.setAttribute("error", "Bình luận không được để trống hoặc chỉ chứa dấu cách.");  
+    response.sendRedirect(request.getHeader("Referer"));  
+    return;  
+}
+
     if (comment.length() > 500) {  
         comment = comment.substring(0, 500);  
     }  

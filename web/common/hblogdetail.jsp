@@ -192,6 +192,17 @@
                                     cpfpage = Integer.parseInt(session.getAttribute("pofpage") + "");
                                 }
                             %>
+                             <% 
+                            String error = (String) session.getAttribute("error");
+                            if (error != null) { 
+                            %>
+                            <div style="color: red; font-weight: bold;">
+                                <%= error %>
+                            </div>
+                            <%  
+                                session.removeAttribute("error"); 
+                            } 
+                            %>
 
                             <!-- DANH SÁCH BÌNH LUẬN -->
                             <div class="row" style="margin-top: 24px;">
